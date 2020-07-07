@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+
+      #menu {position: fixed; top: 150px; left:10px; width: 400px; float: left;}
+      #menu a li {list-style: none;border: solid 1px black; width: 120px; height: 50px; text-align: center; line-height: 50px;}
+      #menu a {color: black; text-decoration: none; }
+
+      #this {background: salmon; color : white;}
+      #cal {width: 700px; position: absolute; left: 400px; top: 0px;}
+      #cal table {width: 700px; text-align: left;border: solid 1px #ccc; border-collapse: collapse;}
+#chat {width: 100px; position: fixed; right : 30px; bottom: 30px;}
+      #cal table tr {height: 85px; width: 100px;}
+      #cal table th, td {border: solid 1px #ccc;}
+      #ch {position: fixed; bottom : 33px; right: 52px; font-size: 30px;}
+    </style>
+  </head>
+  <body>
+
+      <div id="menu">
+        <ul>
+            <a href="02.html"><li>SMS</li></a>
+            <a href="03.html"><li>MAIL</li></a>
+            <a href="04.html"><li>일반 게시판</li></a>
+            <a href="05.html"><li id="this">캘린더 게시판</li></a>
+        </ul>
+      </div>
+
+      <div id="cal">
+
+        <h2>7월</h2>
+        <table>
+            <thead align="center">
+                <th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th><th>일</th>
+            </thead>
+
+            <tr valign="top">
+              <td></td><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+            </tr>
+
+            <tr valign="top">
+              <td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+            </tr>
+
+            <tr  valign="top">
+              <td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+            </tr>
+
+            <tr valign="top">
+              <td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td>
+            </tr>
+
+            <tr valign="top">
+              <td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td>
+            </tr>
+        </table>
+      </div>
+
+<img src="01.png" id="chat">
+<p id="ch">chat</p>
+
+
+
+  </body>
+</html>
