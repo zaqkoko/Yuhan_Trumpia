@@ -7,7 +7,8 @@ $pw = $_POST["pw"];
 
 $sql ="INSERT INTO user VALUES ('".$id."', '".$pw."')";
 $ret = mysqli_query($con, $sql);
-if($ret) {echo "입력됨";}
+
+if($ret) {echo "성공";}
 
 mysqli_close($con);
 

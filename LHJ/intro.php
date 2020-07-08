@@ -16,7 +16,7 @@
   <body>
 
     <center> <h1>TOY</h1> </center>
-<form action="login.php" method="post">
+<form action="main.php" method="post">
 
     <table>
         <tr>
