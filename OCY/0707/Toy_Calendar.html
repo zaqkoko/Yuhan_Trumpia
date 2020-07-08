@@ -3,8 +3,33 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <style>
-      table, th, td ,tr
+    <style media="screen">
+      #calendar
+      {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        margin-left: -410px;
+        margin-top: -125px;
+      }
+      #menubar
+      {
+        position: fixed;
+        left: 50px;
+        top: 250px;
+        display: block;
+      }
+      #chat
+      {
+        position: fixed;
+        right: 50px;
+        bottom: 50px;
+      }
+      #user
+      {
+        float: right;
+      }
+      table, th, tr ,td
       {
         border: 1px
         solid skyblue;
@@ -22,8 +47,13 @@
     </style>
   </head>
   <body>
-    <table align="center" width="820" height="500">
-      <caption><font font size="6">2020년 7월</font></caption>
+    <div id="user">
+      OOO님, 환영합니다.
+      <input type="button" name="logout" value="Log out">
+    </div>
+    <div id="calendar">
+    <table align="center" width="820px" height="500px">
+      <caption><input type="button" name="leftselect" value="<"><font font size="6">2020년 7월</font><input type="button" name="rightselect" value=">"></caption>
       <colgroup>
         <col width="70" />
         <col width="70" />
@@ -95,5 +125,13 @@
         <td style="background-color: #DCDCDC;"><font font color="grey">8</font></td>
       </tr>
     </table>
+  </div>
+  <div id="menubar">
+    <a href="#"><img id="sms" src="icon/sms.png" alt="sms" width="75"></a><p>
+    <a href="#"><img id="history" src="icon/history.png" alt="history" width="75"></a><p>
+    <a href="#"><img id="cal" src="icon/t_calendar_clicked.png" alt="sms" width="75"></a><p>
+    <a href="#"><img id="adress" src="icon/adress.png" alt="sms" width="75"></a><p>
+  </div>
+    <a href="#"><img id="chat" src="icon/chat.png" alt="chat" width="75"></a>
   </body>
 </html>
