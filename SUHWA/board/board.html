@@ -3,6 +3,28 @@
 <head>
 	<title>board</title>
 	<link rel="stylesheet" type="text/css" href="board_css.css">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function() {
+		var t1=0;
+		var t2=$("#t2").val();
+		var t3=$("#t3").val();
+		$("#click").click(function() {
+			t1++;
+		$(".table").append(
+
+			 "<tr>",
+			"<td><input type='checkbox'></td>",
+			"<td>"+t1+"</td>",
+			"<td>"+t2+"</td>",
+			"<td>"+t3+"</td>"
+			 ,"</tr>"
+			 // var dn=1;
+			 // $("#dvar").html("<p>전송내역"+dn+"</p>");
+		);
+		});
+	});
+	</script>
 </head>
 <body>
 	<div class="userI">
@@ -10,12 +32,20 @@
 		<p>User Name</p>
 		<hr>
 	</div>
+	<!-- 임의 입력 요소 -->
+	<input id="t2" type="text" name="" value="test">
+	<input id="t3" type="text" name="" value="tests">
+	<button type="button" name="button" id="click">확인</button>
+
+	<!-- 임의 임력 요소 끝 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
-		<p>전송내역  0건</p>
+		<div id="dvar">
+			<p>전송내역 <span>0</span>건 </p>
+		</div>
 		<hr>
 	</div>
-		<table width="1000px" cellpadding="10%">
+		<table class="table" width="1000px" cellpadding="10%">
 			<th ><input type="checkbox" name=""></td>
 			<th width="30%"><p>번호</p></th>
 			<th width="50%"><p>내용</p></th>
@@ -27,60 +57,9 @@
 					<td>아무말아무말아무말</td>
 					<td>2020.07.07 - <br>13:00</td>
 				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+
+				<!-- 임시 -->
+
 			</tr>
 		</table>
 <!-- 메뉴바 -->
