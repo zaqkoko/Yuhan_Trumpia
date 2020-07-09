@@ -4,32 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="send.css" />
   </head>
   <body>
-    <div id="contact-panel" class="panel">
-      <form id="contact" action="#">
-        <h1>수신자를 추가하세요</h1>
-        <div>
-          <label>
-            <input type="text" name="person" id="name" placeholder="김병호" />
-          </label>
-          <label>
+    <form action="send.php" method="POST">
+      <table align="center">
+        <tr>
+          <td>From</td>
+          <td>
             <input
-              type="text"
-              name="phone"
-              id="name"
-              placeholder="01012345678"
+              type="email"
+              name="femail"
+              placeholder="example@example.com"
             />
-          </label>
-        </div>
-        <div>
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    </div>
-    <div id="show-panel" class="panel"></div>
-    <script src="send.js"></script>
+          </td>
+          <br />
+        </tr>
+        <tr>
+          <td>Phone Number</td>
+          <td><input type=""</td>
+        </tr>
+      </table>
+    </form>
   </body>
 </html>
-<

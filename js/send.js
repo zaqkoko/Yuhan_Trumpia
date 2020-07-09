@@ -1,6 +1,6 @@
 (function (global) {
-  var AddressBook = function (name, phone, email) {
-    return new AddressBook.init(name, phone, email);
+  var AddressBook = function (name, phone) {
+    return new AddressBook.init(name, phone);
   };
 
   AddressBook.prototype = {
@@ -9,11 +9,10 @@
       //add data here
     ],
     searchResults: [],
-    addNewContact: function (name, phone, email) {
+    addNewContact: function (name, phone) {
       this.data.push({
         name: name,
         phone: phone,
-        email: email,
       });
       return this;
     },
@@ -42,7 +41,7 @@
 
         return this.searchResults;
       } else {
-        console.log("There are no results");
+        console.log("결과가 없습니다");
       }
       return this;
     },
@@ -51,11 +50,11 @@
     },
   };
 
-  AddressBook.init = function (name, phone, email) {
+  AddressBook.init = function (name, phone) {
     var self = this;
     //set up the address book
-    if (name || phone || email) {
-      self.addNewContact(name || "", phone || "", email || "");
+    if (name || phone) {
+      self.addNewContact(name || "", phone || "");
     }
   };
 
@@ -73,23 +72,14 @@ var form = document.getElementById("contact");
 form.addEventListener("submit", function () {
   if (!window.contactList) {
     //check if we already have a contact list
-    window.contactList = $ab(
-      form.person.value,
-      form.phone.value,
-      form.email.value
-    );
+    window.contactList = $ab(form.person.value, form.phone.value);
   } else {
     //saves new values rather than deleting old ones as well
-    contactList.addNewContact(
-      form.person.value,
-      form.phone.value,
-      form.email.value
-    );
+    contactList.addNewContact(form.person.value, form.phone.value);
   }
 
   form.person.value = "";
   form.phone.value = "";
-  form.email.value = "";
 
   event.preventDefault();
 });
@@ -113,13 +103,11 @@ searchForm.addEventListener("submit", function () {
         results[i].name +
         "<br>Phone:" +
         results[i].phone +
-        "<br>Email:" +
-        results[i].email +
         "</div><hr>";
     }
   } else {
     document.getElementById("results").innerHTML +=
-      '<div class="contact-item">There are no results for this name</div><hr>';
+      '<div class="contact-item">결과가 없습니다.</div><hr>';
   }
 
   //do something with the results
@@ -139,13 +127,11 @@ document.getElementById("js-show-all").addEventListener("click", function () {
           contacts[i].name +
           "<br>Phone:" +
           contacts[i].phone +
-          "<br>Email:" +
-          contacts[i].email +
           "</div><hr>";
       }
     } else {
       document.getElementById("show-panel").innerHTML +=
-        '<div class="contact-item">You have no contacts. Why not add  a few?</div><hr>';
+        '<div class="contact-item"> 기록이 없습니다.</div><hr>';
     }
   }
   document.getElementById("show-panel").style.display = "block";
