@@ -52,14 +52,22 @@
     <style>
       #box1 {
         padding-top: 50px;
+        width: 1600px;
+        height: 400px;
+        border: 1px;
         text-align: center;
-        position: relative;
       }
       * {
         font-size: 13px;
       }
 
       #content {
+        padding-top: 50px;
+        width: 400px;
+        float: right;
+        border: 1px;
+        margin-top: -405px;
+        margin-right: 500px;
         text-align: center;
       }
 
@@ -68,9 +76,12 @@
         border: 1px;
       }
       table {
-        width: 20%;
-        height: 20%;
-        margin: auto;
+        padding-top: 50px;
+        width: 400px;
+        height: 100px;
+        float: right;
+        border: 1px;
+        margin: 5px 5px 5px 0px;
         text-align: center;
       }
     </style>
@@ -93,6 +104,7 @@
           ).value = new Date().toISOString().slice(0, 16);
         </script>
       </form>
+      <br />
 
       <form>
         <p>메세지 보내기</p>
@@ -108,7 +120,7 @@
     <div id="content">
       <div id="breadcrumb">주소록</div>
       <form class="add-form" action="" onsubmit="return false" method="post">
-        <div style="padding-bottom: 10px;">
+        <div style="padding-bottom: 10px; padding-top: 10px;">
           <input type="text" id="search" placeholder="Search" />
           <label for="search">&#128270;</label>
         </div>
