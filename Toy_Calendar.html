@@ -2,9 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>hi</title>
+    <title>Calendar</title>
     <style media="screen">
-      #calendar
+      #calendar_table
       {
         position: absolute;
         top: 25%;
@@ -29,6 +29,16 @@
       {
         float: right;
       }
+      #caption
+      {
+        position: fixed;
+        top : 50px;
+        left : 43%;
+      }
+      #YYYYMM
+      {
+        display: inline-block;
+      }
       table, th, tr ,td
       {
         border: 1px
@@ -44,19 +54,30 @@
         text-align: left;
         vertical-align: top;
       }
+      tr td:nth-child(1)
+      {
+			  color: red;
+		  }
+      tr td:nth-child(7)
+      {
+			  color: blue;
+		  }
     </style>
-    <script type="text/javascript">
-
-    </script>
   </head>
   <body>
     <div id="user">
       OOO님, 환영합니다.
       <input type="button" name="logout" value="Log out">
     </div>
-    <div id="calendar">
-    <table align="center" width="820px" height="500px">
-      <caption><input type="button" name="leftselect" value="<"><font font size="6">2020년 7월</font><input type="button" name="rightselect" value=">"></caption>
+    <div id="caption">
+      <input type="button" name="leftselect" value="<" onclick="prevMonth()">
+        <font font size="6">
+          <div id="YYYYMM">
+          </div>
+        </font>
+      <input type="button" name="rightselect" value=">" onclick="nextMonth()">
+    </div>
+    <table id="calendar_table" align="center" width="820px" height="500px">
       <colgroup>
         <col width="70" />
         <col width="70" />
@@ -66,75 +87,117 @@
         <col width="70" />
         <col width="70" />
       </colgroup>
-      <th style="background-color: #F08080;">SUN</th>
-      <th style="background-color: #F08080;">MON</th>
-      <th style="background-color: #F08080;">TUE</th>
-      <th style="background-color: #F08080;">WED</th>
-      <th style="background-color: #F08080;">THU</th>
-      <th style="background-color: #F08080;">FRI</th>
-      <th style="background-color: #F08080;">SAT</th>
-      <tr>
-        <td style="background-color: #DCDCDC;"><font font color="grey">28</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">29</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">0</font></td>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>5</td>
-        <td>6</td>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-        <td>10</td>
-        <td>11</td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td>13</td>
-        <td>14</td>
-        <td>15</td>
-        <td>16</td>
-        <td>17</td>
-        <td>18</td>
-      </tr>
-      <tr>
-        <td>19</td>
-        <td>20</td>
-        <td>21</td>
-        <td>22</td>
-        <td>23</td>
-        <td>24</td>
-        <td>25</td>
-      </tr>
-      <tr>
-        <td>26</td>
-        <td>27</td>
-        <td>28</td>
-        <td>29</td>
-        <td>30</td>
-        <td>31</td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">1</font></td>
-      </tr>
-      <tr>
-        <td style="background-color: #DCDCDC;"><font font color="grey">2</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">3</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">4</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">5</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">6</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">7</font></td>
-        <td style="background-color: #DCDCDC;"><font font color="grey">8</font></td>
-      </tr>
+      <th style="background-color: #ebbcbc;">SUN</th>
+      <th style="background-color: #ebbcbc;">MON</th>
+      <th style="background-color: #ebbcbc;">TUE</th>
+      <th style="background-color: #ebbcbc;">WED</th>
+      <th style="background-color: #ebbcbc;">THU</th>
+      <th style="background-color: #ebbcbc;">FRI</th>
+      <th style="background-color: #ebbcbc;">SAT</th>
     </table>
-  </div>
-  <div id="menubar">
-    <a href="#"><img id="sms" src="icon/sms.png" alt="sms" width="75"></a><p>
-    <a href="#"><img id="history" src="icon/his.png" alt="history" width="75"></a><p>
-    <a href="#"><img id="cal" src="icon/cal.png" alt="calendar" width="75"></a><p>
-    <a href="#"><img id="address" src="icon/address.png" alt="address" width="75"></a><p>
-  </div>
+    <div id="menubar">
+     <a href="#"><img id="sms" src="icon/sms.png" alt="sms" width="75"></a><p>
+     <a href="#"><img id="history" src="icon/his.png" alt="history" width="75"></a><p>
+     <a href="#"><img id="cal" src="icon/cal.png" alt="calendar" width="75"></a><p>
+     <a href="#"><img id="address" src="icon/address.png" alt="address" width="75"></a><p>
+    </div>
     <a href="#"><img id="chat" src="icon/chat.png" alt="chat" width="75"></a>
+    <script type="text/javascript">
+      let today = new Date();
+      let todayYear = today.getFullYear();
+      let todayMonth = today.getMonth() + 1;
+      let calendar = document.getElementById("calendar_table");
+
+      function buildCalendar()
+      {
+        let firstDate = new Date(today.getFullYear(), today.getMonth(),1);
+        let lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
+        let day = firstDate.getDay();
+        let week = Math.ceil(lastDate.getDate()/7) + 1;
+        let today_yearMonth = todayYear + "년 " + todayMonth + "월";
+        let leftDays = 7;
+        let setDays = 1;
+        let nextMonthDate = 1;
+        for(i = 1; i < week; i++)
+        {
+          let row = calendar.insertRow();
+          while(day != 0)
+          {
+            row.insertCell().innerHTML = "";
+            day -= 1;
+            leftDays -= 1;
+          } //1주
+          while(leftDays != 0)
+          {
+            if(setDays > lastDate.getDate())
+            {
+              row.insertCell().innerHTML = "";
+              leftDays -= 1;
+              nextMonthDate += 1;
+            }
+            else
+            {
+              row.insertCell().innerHTML = setDays;
+              setDays += 1;
+              leftDays -= 1;
+            }
+          }
+          leftDays = 7;
+        }
+        setDays -= 1;
+        if(setDays != lastDate.getDate())
+        {
+          let row = calendar.insertRow();
+          while(setDays != lastDate.getDate())
+          {
+            setDays++;
+            leftDays--;
+            row.insertCell().innerHTML = setDays;
+          }
+          while(leftDays != 0)
+          {
+            row.insertCell().innerHTML = nextMonthDate;
+            nextMonthDate++;
+            leftDays--;
+          }
+        }
+        document.getElementById("YYYYMM").innerHTML = today_yearMonth;
+      }
+      buildCalendar();
+
+      function deleteCalendar()
+      {
+        while(calendar.rows.length > 1)
+        {
+          calendar.deleteRow(1);
+        }
+      }
+
+      function prevMonth()
+      {
+        todayMonth = todayMonth - 1;
+        if(todayMonth == 0)
+        {
+          todayMonth = 12;
+          todayYear -= 1;
+        }
+        deleteCalendar();
+        today = new Date(todayYear,todayMonth - 1);
+        buildCalendar();
+      }
+
+      function nextMonth()
+      {
+        todayMonth += 1;
+        if(todayMonth == 13)
+        {
+          todayMonth = 1;
+          todayYear = todayYear + 1;
+        }
+        deleteCalendar();
+        today = new Date(todayYear, todayMonth - 1);
+        buildCalendar();
+      }
+    </script>
   </body>
 </html>
