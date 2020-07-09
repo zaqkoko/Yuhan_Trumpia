@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "firstName": "정",
+    "lastName": "석원",
+    "phone": "01029933875"
+  },
+  {
+    "id": 2,
+    "firstName": "오",
+    "lastName": "창용",
+    "phone": "01033339573"
+  },
+  {
+    "id": 3,
+    "firstName": "이",
+    "lastName": "수화",
+    "phone": "01000000000"
+  },
+  {
+    "id": 4,
+    "firstName": "이",
+    "lastName": "현주",
+    "phone": "01011111111"
+  }
+]

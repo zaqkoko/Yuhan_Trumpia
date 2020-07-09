@@ -1,0 +1,46 @@
+#search {
+  padding: 4px;
+  width: 200px;
+  text-align: center;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+  width: 20%;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  background-color: #7dabd0;
+  color: white;
+}
+
+.add-form {
+  padding: 10px 0;
+}
+
+.add-form a {
+  text-decoration: none;
+}
+.add-form a:hover {
+  text-decoration: underline;
+}
+
+.add-form td input {
+  width: 100%;
+  padding: 4px;
+}
+.add-form button {
+  padding: 2px 4px;
+  min-width: 30px;
+}
