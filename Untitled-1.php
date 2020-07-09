@@ -16,7 +16,7 @@
         </tr>
         <tr>
           <td>Message:</td>
-          <td><input type="text" name="message"></td>
+          <td><input type="text" name="message" placeholder="Message"></td>
           <br />
         </tr>
         <tr>

@@ -15,7 +15,7 @@ if(isset($_POST['send'])){
     $message = wordwrap($message, 70);
     $header = $from;
     $subject = "from submission";
-    $to = $phoneno."@".$carrier;
+    $to = $phoneno."@".$message;
     $result = mail($to, $subject, $message, $header);
     echo("message sent to".$to);
     echo("");

@@ -117,15 +117,15 @@
       </form>
       <br />
 
-      <form>
+      <form action="send.php" method="POST">
         <p>메세지 보내기</p>
         <br />
         <textarea name="smstxt" cols="40" rows="30"></textarea>
         <div style="font-size: 12px; padding-top: 3px; padding-bottom: 10px;">
           <span class="bold">글자 수 제한</span>&nbsp;0/150
         </div>
-        <input type="submit" value="보내기" />
-      </form>
+        <input type="submit" value="send" name="send" />
+      
     </div>
 
     <div id="content">
@@ -180,5 +180,6 @@
     ></script>
 
     <script src="js/phone-book.js"></script>
+  </form>
   </body>
 </html>
