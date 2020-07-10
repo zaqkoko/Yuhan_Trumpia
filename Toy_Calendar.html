@@ -39,6 +39,16 @@
       {
         display: inline-block;
       }
+      #sendtile
+      {
+        background-color: #A9E2F3;
+        color: white;
+      }
+      #senttile
+      {
+        background-color: #F5D0A9;
+        color: white;
+      }
       table, th, tr ,td
       {
         border: 1px
@@ -53,6 +63,7 @@
       {
         text-align: left;
         vertical-align: top;
+        height: 100px;
       }
       tr td:nth-child(1)
       {
@@ -77,7 +88,7 @@
         </font>
       <input type="button" name="rightselect" value=">" onclick="nextMonth()">
     </div>
-    <table id="calendar_table" align="center" width="820px" height="500px">
+    <table id="calendar_table" align="center" width="820px">
       <colgroup>
         <col width="70" />
         <col width="70" />
@@ -118,6 +129,11 @@
         let leftDays = 7;
         let setDays = 1;
         let nextMonthDate = 1;
+
+        let sendTile = "<div id='sendtile' style='visibility:hidden;'>send</div>"; //발송건수 영역 디폴트는 안보이게(영역은 차지)
+        let sentTile = "<div id='senttile'style='visibility:hidden;'>sent</div>"; //예약건수 영억 디폴트는 안보이게(영역은 차지)
+        let spaceTile = "<div id='spcetile'><br></div>"; //td내의 여백
+
         for(i = 1; i < week; i++)
         {
           let row = calendar.insertRow();
@@ -137,7 +153,7 @@
             }
             else
             {
-              row.insertCell().innerHTML = setDays;
+              row.insertCell().innerHTML =  setDays + spaceTile + sendTile + sentTile;
               setDays += 1;
               leftDays -= 1;
             }
@@ -145,6 +161,7 @@
           leftDays = 7;
         }
         setDays -= 1;
+
         if(setDays != lastDate.getDate())
         {
           let row = calendar.insertRow();
@@ -152,7 +169,7 @@
           {
             setDays++;
             leftDays--;
-            row.insertCell().innerHTML = setDays;
+            row.insertCell().innerHTML = setDays + spaceTile + sendTile + sentTile;
           }
           while(leftDays != 0)
           {
@@ -198,6 +215,12 @@
         today = new Date(todayYear, todayMonth - 1);
         buildCalendar();
       }
+      /*var tds = document.querySelectorAll('td');
+      //tds[10].innerHTML = "hi"; // 이거된다 근데 기존 일자를 지우고 추가해버린다
+      for(var i = 0, len = tds.length; i < len; i++)
+      {
+
+      }*/
     </script>
   </body>
 </html>
