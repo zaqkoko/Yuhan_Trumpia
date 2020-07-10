@@ -130,7 +130,7 @@
         let setDays = 1;
         let nextMonthDate = 1;
 
-        let sendTile = "<div id='sendtile' style='visibility:hidden;'>send</div>"; //발송건수 영역 디폴트는 안보이게(영역은 차지)
+        let sendTile = "<div id='sendtile'style='visibility:hidden;'>send</div>"; //발송건수 영역 디폴트는 안보이게(영역은 차지)
         let sentTile = "<div id='senttile'style='visibility:hidden;'>sent</div>"; //예약건수 영억 디폴트는 안보이게(영역은 차지)
         let spaceTile = "<div id='spcetile'><br></div>"; //td내의 여백
 
@@ -222,5 +222,8 @@
 
       }*/
     </script>
+    <?php
+     include "calphp.php";
+    ?>
   </body>
 </html>
