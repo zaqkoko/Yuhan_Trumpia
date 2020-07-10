@@ -2,10 +2,14 @@
 $conn = mysqli_connect("localhost", "root", "04540121", "send");
 $sql = "
   INSERT INTO sender
-    (sms_text, sent_date)
+    (name, mobile, send_num, sms_text, sent_date, send_date)
     VALUES(
+        '정석원',
+        01029933875, 
+        01033339573,
         '{$_POST['sms_text']}',
-        NOW()
+        NOW(),
+        NULL,
     )
 ";
 

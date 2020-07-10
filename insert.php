@@ -1,28 +1,11 @@
-<!DOCTYPE html>
+<?php
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>MySql-PHP 연결 테스트</title>
-</head>
+$conn = mysqli_connect("localhost", "root", "04540121", "send");
+$sql = "SELECT id, title FROM sender";
+$result = mysqli_query($conn, $sql);
 
-<body>
+while ($row = mysqli_fetch_assoc($result)) {
+    echo $row["id"], $row["title"];
+}
 
-    <?php
-    echo "MySql 연결 테스트<br>";
-
-    $db = mysqli_connect("localhost", "root", "04540121", "send");
-
-    if ($db) {
-        echo "connect : 성공<br>";
-    } else {
-        echo "disconnect : 실패<br>";
-    }
-
-    $result = mysqli_query($db, 'SELECT VERSION() as VERSION');
-    $data = mysqli_fetch_assoc($result);
-    echo $data['VERSION'];
-    ?>
-
-</body>
-
-</html>
+mysqli_close($conn); // 디비 접속 닫기 //된다!!!!
