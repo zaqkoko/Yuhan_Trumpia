@@ -1,26 +1,53 @@
 <!DOCTYPE html>
-<html>
-<title>Form</title>
-<body>
-<form action="process.php" method="post">
-   Name:<input class="input" type="text" 
+<html lang="kr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        * {background : #7dabd0; margin : 0 auto;}
+        h1 {font-size:130px; font-weight: bold; color : #fff; padding-top: 100px;}
+        table tr, td{color : #fff; font-weight : bold; font-size : 20px;
+          padding-left: 15px;}
+        table input {border: none; background: #fff; color: #7dabd0; font-weight: bold;}
+        #bt {font-size: 20px;}
+        table a {color : #fff;}
 
-placeholder="name" name="name" 
+    </style>
+  </head>
+  <body>
 
-required><br><br>
-   Email:<input class="input" type="email" 
+    <center> <h1>TOY</h1> </center>
+<form action="login.php" method="post">
 
-placeholder="email" name="email" 
+    <table>
+        <tr>
+            <td align="right" valign="bottom">ID</td>
+            <td  valign="top">
+                <input type="text" name="id" style="height:25px; width:300px;" padding>
+            </td>
+            <td rowspan="2" valign="bottom">
+                <input id="bt" type="submit" name="login" value="LOGIN" style="height : 62px;" >
+            </td>
+        </tr>
 
-required><br><br>
-   Phone:<input class="input" type="text" 
+        <tr>
+            <td align="right" valign="bottom">PW</td>
+            <td  valign="top">
+                <input type="password" name="pw" style="height:25px; width:300px;">
+            </td>
+        </tr>
 
-placeholder="phone" name="phone" 
+        <tr>
+          <td> </td>
+          <td> </td>
+          <td><a href="signup.php">SIGN UP</a></td>
+        </tr>
+    </table>
 
-required><br><br>
-    <button  type="submit" name="btn-
 
-save">Submit</button>
+
 </form>
-</body>
-</html> 
+    </div>
+
+  </body>
+</html>

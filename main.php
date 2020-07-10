@@ -1,3 +1,9 @@
+<?php
+session_start();
+$name = $_SESSION['name'];
+//$name에 $_SESSION['name'] 저장?입력?... 지정
+ ?>
+
 <!DOCTYPE html>
 <html lang="kr" dir="ltr">
   <head>
@@ -11,8 +17,8 @@
         #his {width: 200px; padding: 30px;}
         #cal {width: 200px; padding: 30px;}
         #add {width: 200px; padding: 30px;}
-        #nim {position: fixed; top: 10px; right: 10px;}
-        #name {position: fixed; top: 10px; right: 30px;}
+        #nim {position: fixed; top: 10px; right: 10px; color : #7dabd0; font-weight : bold;}
+
     </style>
   </head>
   <body>
@@ -23,22 +29,11 @@
       <a href="#"> <img id="add" src="icon/main_address.png" alt=""></a>
     </div>
       <a href="#"> <img id="chat" src="icon/chat.png" alt=""> </a>
-      <p id="name">아이디</p>
-      <p id="nim">님</p>
+      <p id="nim">안녕 <?php echo $name; ?> 님</p>
+
+
 
   </body>
+
+
 </html>
-
-<?php
-
-$con=mysqli_connect("localhost", "root", "04540121", "login") or die("실패");
-
-$id = $_POST["id"];
-$pw = $_POST["pw"];
-
-$sql ="INSERT INTO user VALUES ('".$id."', '".$pw."')";
-$ret = mysqli_query($con, $sql);
-
-mysqli_close($con);
-
- ?>
