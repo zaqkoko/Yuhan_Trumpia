@@ -11,7 +11,7 @@ $sql = "
     )
 ";
 
-$result = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql); // mysqli_query
 if ($result === false) {
     echo "저장하는 과정에서 문제가 생겼습니다.";
     error_log(mysqli_error($conn));
