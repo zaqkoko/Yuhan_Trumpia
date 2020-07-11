@@ -1,15 +1,13 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "04540121", "send");
 $sql = "
-  INSERT INTO sender
-    (name, mobile, send_num, sms_text, sent_date, send_date)
+  INSERT INTO sms
+    (send_time, send_type, send_message, receiver)
     VALUES(
-        '정석원',
-        01029933875, 
-        01033339573,
+        NOW(), 
+        1,
         '{$_POST['sms_text']}',
-        NOW(),
-        NULL,
+        01033339573
     )
 ";
 
@@ -20,5 +18,5 @@ if ($result === false) {
 } else {
     echo '성공했습니다. <a href="send.php">돌아가기</a>';
 }
-mysqli_query($conn, $sql);
+
 echo $sql;
