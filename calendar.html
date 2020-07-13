@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <style media="screen"> /* CSS 펼치기 */
+      #userLine
+      {
+        float: right; /*우측정렬*/
+      }
+      .caption
+      {
+        position: fixed; /*절대위치. 상하좌우 %를 사용해서 해당 위치에 배치시킨다.*/
+        top : 5.5%;
+        left : 42.5%;
+        font-size: 200%;
+      }
+      .calendarTable
+      {
+        position: fixed;
+        top: 12.5%;
+        left: 25%;
+        width: 50%;
+      }
+      table, th, tr ,td
+      {
+        border: 1px
+        solid skyblue;
+        border-collapse: collapse /*테이블과 셀 사이의 간격을 없앤다.*/
+      }
+      th
+      {
+        width: 70px;
+        height: 30px;
+        background-color: #ebbcbc;
+      }
+      .menuBar
+      {
+        position: fixed;
+        left: 2.5%;
+        top: 25%;
+        /* width: 10%; 동작하지 않음 */
+      }
+      img
+      {
+        width: 75px; /* width값을 '%'단위로 바꾸면 menuBar 클래스로 묶인 아이콘들과 chat 아이콘의 크기가 맞지 않음 해결 필요. */
+      }
+      #chat
+      {
+        position: fixed;
+        right: 2.5%;
+        bottom: 2.5%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="userLine"> <!--회원 이름 영역 //페이지 최상단 우측-->
+      OOO님, 환영합니다.
+      <input type="button" name="logout" value="Log out"> <!--로그아웃 버튼 //페이지 최상단 최우측-->
+    </div>
+    <span class="caption"> <!--캡션 //달력의 위 //inline속성을 원해서 span사용-->
+      <input type="button" name="leftButton" value="<"> <!--이전 달 선택 버튼-->
+      <span id="YearMonthText"> <!--현재 년,월 표시 텍스트-->
+        2020년 7월 <!--임시 년월. 공백으로 바꾸고 js로 자동출력 해줄 것.-->
+      </span>
+      <input type="button" name="rightButton" value=">"> <!--다음 달 선택 버튼-->
+    </span>
+    <table class="calendarTable"> <!--달력 테이블 //페이지 중앙-->
+      <th>SUN</th> <!--일,월,화,수,목,금,토 table header cell //달력 상단부-->
+      <th>MON</th>
+      <th>TUE</th>
+      <th>WED</th>
+      <th>THU</th>
+      <th>FRI</th>
+      <th>SAT</th>
+    </table>
+    <div class="menuBar"> <!--메뉴바 //페이지 좌측 고정-->
+      <a href="#"><img src="img/sms2.png" alt="sms" title="sms"></a><p> <!--각 페이지 링크, 현재 페이지는 흰색 아이콘으로 표시-->
+      <a href="#"><img src="img/hi2.png" alt="history" title="history"></a><p>
+      <a href="#"><img src="img/cal.png" alt="calendar_clicked" title="calendar_clicked"></a><p> <!--현재는 캘린더 페이지-->
+      <a href="#"><img src="img/ad2.png" alt="addressbook" title="addressbook"></a>
+    </div>
+    <a href="#"><img id="chat" src="img/cht.png" alt="chat" title="chat"></a> <!--채팅 버튼 //최우측 최하단//메뉴바와는 따로 떨어져있음-->
+  </body>
+</html>
