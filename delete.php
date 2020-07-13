@@ -3,4 +3,4 @@
   $q="TRUNCATE sms";
   $r=mysqli_query($con,$q);
  ?>
- alert("삭제되었습니다.");
+<!-- 데이터 전체삭제 -->
