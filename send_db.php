@@ -4,7 +4,7 @@ $sql = "
   INSERT INTO sms
     (send_time, send_type, send_message, receiver)
     VALUES(
-        NOW(),
+        '{$_POST['send_time']}',
         1,
         '{$_POST['sms_text']}',
         '01033339573'
