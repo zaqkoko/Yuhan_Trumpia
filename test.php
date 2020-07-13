@@ -13,3 +13,5 @@
   $q="DELETE sms WHERE id="echo "<script>document.write(n);</script>";
   $r=mysqli_query($con,$q);
  ?>
+ <!-- 선택삭제 -->
+ <!-- 아직 미완, 수정 중 -->

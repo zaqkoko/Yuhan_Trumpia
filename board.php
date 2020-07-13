@@ -9,7 +9,7 @@
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		alert("^^7.");
+		alert("^^77~");
 
 		//전체선택
 		$("#allCheck").click(function(){
@@ -21,25 +21,34 @@
 		});
 		//전체선택 중 일부 체크박스 선택 해제 시
 		$(".checkbox").click(function(){
-		    if($(".checked").is(":checked")){
+		    if(($(".checked").is(":checked")).length){
 		        $("#allCheck").prop("checked", true);
         	}else{
             $("#allCheck").prop("checked", false);
         	}
 		    });
 
-		//삭제버튼 클릭
+	//	삭제버튼 클릭
 		$("#delete").click(function () {
-			//전체삭제
-			if($("#allCheck").is(":checked")){
+			alert("클릭!");
+			// //전체삭제
+			// if($("#allCheck").is(":checked")){
+			// 	// include delete.php
+			// 	//  alert("삭제되었습니다.");
+			// 	//  	window.location.reload();
+			// }else{
+			// 	//선택삭제
+			// 	for(var i=0;i<($("input:checkbox:checked").length);i++;){
+			// 		// if($("input:checkbox[value='"+i+"']:checked")){
+			// 		// 	$(".test").append(
+			// 		// 		"<p>삭제"+i+"</p>"
+			// 		// 	);
+			// 		$(".test").append(
+			// 			"<p>".$("input:checkbox:checked").length."</p>"
+			// 		);
+			// 		}
+			// 	}
 
-			}else{
-				//선택삭제
-				for(var i=0;i<($(".checkbox").is(":checked")).length;i++){
-					if($(".checkbox").is(":checked")){}
-				}
-
-			}
 
 		});
 
@@ -50,7 +59,7 @@
 <body>
 	<div class="userI">
 		<button>Logout</button>
-		<p>User Name</p>
+		<p>User Name 님 환영합니다.</p>
 		<hr>
 	</div>
 
@@ -71,7 +80,7 @@
 				include "sql.php";
 				?>
 				<!-- 임시 -->
-
+			</tr>
 		</table>
 		<!-- 메뉴바 -->
 	<div class="menu">
@@ -82,6 +91,10 @@
 	</div>
 	<img id="cht" src="img/cht.png">
 	<!-- php -->
+	<div class="test">
+		<p>삭제^^~</p>
+
+	</div>
 
 
 </body>

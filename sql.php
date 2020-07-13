@@ -7,8 +7,8 @@ $r=mysqli_query($con,$q);
 
 $num=0;
 while($row=mysqli_fetch_array($r)){
- $num ++;
-  echo "<tr><td><input type='checkbox' class='checkbox' value='".n."'></td><td>"
+  $num++;
+  echo "<tr><td><input type='checkbox' class='checkbox' value='".$num."'></td><td>"
   .$row[receiver]."</td><td>".$row[send_message]."</td><td>".$row[send_time].
   "</td></tr>";
 }
