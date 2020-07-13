@@ -5,7 +5,7 @@ $sql = "
     (send_time, send_type, send_message, receiver)
     VALUES(
         '{$_POST['send_time']}',
-        1,
+        '{$_POST['send_type']}',
         '{$_POST['sms_text']}',
         '01033339573'
     )

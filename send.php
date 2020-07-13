@@ -14,29 +14,30 @@
         <p id="clock">00:00</p>
         <p>예약 버튼을 누르지 않으면 현재 시간으로 발송됩니다</p>
 
-        <input type="button" name="reserve" id="reserve" value="예약">
+        <input type="button" name="send_type" id="send_type" value="예약" onclick="change()"></input>
         <label>날짜 설정 :</label>
         <input type="datetime-local" id="send_time" name="send_time">
         <div style="text-align: center;"></div>
 
-        <script>
-            function send_time() {
-                document.getElementById('send_time').value = new Date().tolocaleString();
-                replace(/T/, ' '). // T대신 공백
-                setInterval(send_time, 1000);
-            }
-            send_time();
-        </script>
-
-        <textarea name="sms_text" cols="40" rows="30" placeholder="메세지를 입력하세요"></textarea>
+        <textarea name="sms_text" cols="50" rows="30" placeholder="메세지를 입력하세요"></textarea>
         <div style="font-size: 12px; padding-top: 3px; padding-bottom: 10px;">
             <span class="bold">글자 수 제한</span>&nbsp;0/150
         </div>
-        <input type="submit" />
+        <input type="submit" value="보내기" />
 
     </form>
 
     <script>
+        function send_time() {
+            document.getElementById('send_time').value = new Date().tolocaleString();
+            replace(/T/, ' '); // T대신 공백
+        }
+
+        function change() {
+            var type = document.getElementById('send_type');
+
+        }
+
         var clockTarget = document.getElementById("clock");
 
         function clock() {
