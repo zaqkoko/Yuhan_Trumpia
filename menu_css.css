@@ -1,0 +1,48 @@
+/* all font-size가 13px일 떄 */
+
+/* 왼쪽메뉴바, 채팅 마크업 */
+/* <div class="menu">
+  <img src="img/sms.png">
+  <img src="img/cal.png">
+  <img src="img/hi2.png">
+  <img src="img/ad.png">
+</div>
+<img id="cht" src="img/KakaoTalk_20200707_135753569.png"> */
+
+img{
+	float: left;
+	width: 50px;
+	height: 50px;
+	padding:15px 0;
+}
+.menu{
+	width: 50px;
+	margin:0;
+	padding-left: 5%;
+	position: fixed;
+	top: 20%;
+}
+#cht{
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+}
+/* 유저이름 마크업
+<div class="userI">
+  <button>Logout</button>
+  <p>User Name 님 환영합니다.</p>
+  <hr>
+</div>*/
+.userI{
+  float: right;
+  height: 28px;
+}
+hr{width: 250px;}
+.userI>button{
+float: right;
+padding: 5px;
+}
+.userI>p{
+  width: 200px;
+  padding-top: 10px;
+}

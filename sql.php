@@ -2,12 +2,15 @@
 $con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
 
 // mysqli_query("SET NAMES UTF8");
-$q="SELECT * FROM test1";
+$q="SELECT * FROM sms";
 $r=mysqli_query($con,$q);
 
-
+$num=0;
 while($row=mysqli_fetch_array($r)){
-  echo "<tr><td><input type='checkbox'></td><td>".$row[id]."</td><td>".$row[text]."</td></tr>";
+ $num ++;
+  echo "<tr><td><input type='checkbox' class='checkbox' value='".n."'></td><td>"
+  .$row[receiver]."</td><td>".$row[send_message]."</td><td>".$row[send_time].
+  "</td></tr>";
 }
 
 

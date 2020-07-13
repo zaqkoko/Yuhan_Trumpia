@@ -4,92 +4,84 @@
 	<meta charset="utf-8">
 	<title>board</title>
 
-<link rel="stylesheet" type="text/css" href="board_css.css">
-<link rel="stylesheet" href="sql.php">
+	<link rel="stylesheet" type="text/css" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 	<script type="text/javascript">
 	$(document).ready(function() {
-		var t1=0;
-		var t2=$("#t2").val();
-		var t3=$("#t3").val();
-		// $("#click").click(function() {
-		// 	t1++;
-		// $(".table").append(
-		//
-		// 	 "<tr>",
-		// 	"<td><input type='checkbox'></td>",
-		// 	"<td>"+t1+"</td>",
-		// 	"<td>"+t2+"</td>",
-		// 	"<td>"+t3+"</td>"
-		// 	 ,"</tr>"
-		// 	 // var dn=1;
-		// 	 // $("#dvar").html("<p>전송내역"+dn+"</p>");
-		// );
-		// });
-// php
+		alert("^^7.");
 
-$("#click").click(function () {
-	var list= <?php  $list ?>
-	$(".test").append();
-});
+		//전체선택
+		$("#allCheck").click(function(){
+			if($("#allCheck").is(":checked")){
+				$(".checkbox").prop("checked",true);
+			}else{
+				$(".checkbox").prop("checked",false);
+			}
+		});
+		//전체선택 중 일부 체크박스 선택 해제 시
+		$(".checkbox").click(function(){
+		    if($(".checked").is(":checked")){
+		        $("#allCheck").prop("checked", true);
+        	}else{
+            $("#allCheck").prop("checked", false);
+        	}
+		    });
 
+		//삭제버튼 클릭
+		$("#delete").click(function () {
+			//전체삭제
+			if($("#allCheck").is(":checked")){
 
+			}else{
+				//선택삭제
+				for(var i=0;i<($(".checkbox").is(":checked")).length;i++){
+					if($(".checkbox").is(":checked")){}
+				}
+
+			}
+
+		});
 
 	});
 	</script>
 
 </head>
 <body>
-
 	<div class="userI">
 		<button>Logout</button>
 		<p>User Name</p>
 		<hr>
 	</div>
-	<!-- 임의 입력 요소 -->
-	<input id="t2" type="text" name="" value="test">
-	<input id="t3" type="text" name="" value="tests!">
-	<button type="button" name="button" id="click">확인</button>
 
-	<!-- 임의 임력 요소 끝 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
 		<div id="dvar">
 			<p>전송내역 <span>0</span>건</p>
-		</div>
 		<hr>
 	</div>
+	</div>
 		<table class="table" width="1000px" cellpadding="10%">
-			<th ><input type="checkbox" name=""></td>
+			<th><input type="checkbox" id="allCheck"></td>
 			<th width="30%"><p>번호</p></th>
 			<th width="50%"><p>내용</p></th>
 			<th width="30%"><p>시간</p></th>
 			<tr id="dcell">
-				<tr>
-					<td ><input type="checkbox" name=""></td>
-					<td>000-0000-0000</td>
-					<td>아무말아무말아무말</td>
-					<td>2020.07.07 - <br>13:00</td>
-
 				<?php
 				include "sql.php";
 				?>
 				<!-- 임시 -->
 
 		</table>
-<!-- 메뉴바 -->
-<div class="menu">
-	<img src="img/sms2.png">
-	<img src="img/cal2.png">
-	<img src="img/hi.png">
-	<img src="img/ad2.png">
-</div>
-<img id="cht" src="img/cht.png">
-<!-- php -->
-<div class="test">
-<p>딩디기</p>
-</div>
+		<!-- 메뉴바 -->
+	<div class="menu">
+		<img src="img/sms.png">
+		<img src="img/cal.png">
+		<img src="img/hi2.png">
+		<img src="img/ad.png">
+	</div>
+	<img id="cht" src="img/cht.png">
+	<!-- php -->
 
 
 </body>
