@@ -1,9 +1,0 @@
-form
-    content(입력)
-    mobilenumber(입력)
-    시간(자동)
-    만든이(자동)
-
-form submit
-
-새로고침
