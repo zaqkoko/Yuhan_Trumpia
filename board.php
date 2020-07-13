@@ -3,31 +3,45 @@
 <head>
 	<meta charset="utf-8">
 	<title>board</title>
-	<link rel="stylesheet" type="text/css" href="board_css.css">
+
+<link rel="stylesheet" type="text/css" href="board_css.css">
+<link rel="stylesheet" href="sql.php">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+
 	<script type="text/javascript">
 	$(document).ready(function() {
 		var t1=0;
 		var t2=$("#t2").val();
 		var t3=$("#t3").val();
-		$("#click").click(function() {
-			t1++;
-		$(".table").append(
+		// $("#click").click(function() {
+		// 	t1++;
+		// $(".table").append(
+		//
+		// 	 "<tr>",
+		// 	"<td><input type='checkbox'></td>",
+		// 	"<td>"+t1+"</td>",
+		// 	"<td>"+t2+"</td>",
+		// 	"<td>"+t3+"</td>"
+		// 	 ,"</tr>"
+		// 	 // var dn=1;
+		// 	 // $("#dvar").html("<p>전송내역"+dn+"</p>");
+		// );
+		// });
+// php
 
-			 "<tr>",
-			"<td><input type='checkbox'></td>",
-			"<td>"+t1+"</td>",
-			"<td>"+t2+"</td>",
-			"<td>"+t3+"</td>"
-			 ,"</tr>"
-			 // var dn=1;
-			 // $("#dvar").html("<p>전송내역"+dn+"</p>");
-		);
-		});
+$("#click").click(function () {
+	var list= <?php  $list ?>
+	$(".test").append();
+});
+
+
+
 	});
 	</script>
+
 </head>
 <body>
+
 	<div class="userI">
 		<button>Logout</button>
 		<p>User Name</p>
@@ -35,7 +49,7 @@
 	</div>
 	<!-- 임의 입력 요소 -->
 	<input id="t2" type="text" name="" value="test">
-	<input id="t3" type="text" name="" value="tests">
+	<input id="t3" type="text" name="" value="tests!">
 	<button type="button" name="button" id="click">확인</button>
 
 	<!-- 임의 임력 요소 끝 -->
@@ -57,11 +71,12 @@
 					<td>000-0000-0000</td>
 					<td>아무말아무말아무말</td>
 					<td>2020.07.07 - <br>13:00</td>
-				</tr>
 
+				<?php
+				include "sql.php";
+				?>
 				<!-- 임시 -->
 
-			</tr>
 		</table>
 <!-- 메뉴바 -->
 <div class="menu">
@@ -71,8 +86,12 @@
 	<img src="img/ad2.png">
 </div>
 <img id="cht" src="img/cht.png">
+<!-- php -->
+<div class="test">
+<p>딩디기</p>
+</div>
+
+
 </body>
 
 </html>
-
-
