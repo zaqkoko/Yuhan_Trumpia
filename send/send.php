@@ -56,9 +56,9 @@
 
     <!-- Left Menu Bar !-->
     <div id="menuBar">
-        <a href="#"><img class="icon" src="../img/sms.png" title="sms_click"></a>
-        <a href="#"><img class="icon" src="../img/hi2.png" title="history"></a>
-        <a href="#"><img class="icon" src="../img/cal2.png" title="calendar"></a>
+        <a href="send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
+        <a href="../board.php"><img class="icon" src="../img/hi2.png" title="history"></a>
+        <a href="../calendar/calendar.html"><img class="icon" src="../img/cal2.png" title="calendar"></a>
         <a href="#"><img class="icon" src="../img/ad2.png" title="addressbook"></a>
     </div>
     <a href="#"><img class="chat" id="chat" src="../img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
@@ -71,12 +71,23 @@
                 <h4>예약 버튼을 누르지 않으면 현재 시간으로 발송됩니다</h4>
 
                 <div id="time">
+
+                    <!-- 현재, 예약인지 -->
+                    <label for="send_type" style="padding-right: 5px;">발송 : </label>
+                    <select name="send_type" id="send_type">
+                        <option value="1'">현재</option>
+                        <option value="2'">예약</option>
+                    </select>
+
                     <label style="padding-right: 10px;">날짜 설정</label>
-                    <input type="datetime-local" id="send_time" name="send_time" disabled>
-                    <input type="button" name="send_type" id="send_type" value="예약" onclick="change()"></input>
+
+                    <!-- 날짜, 시간 불러오기 -->
+                    <input type="datetime-local" id="send_time" name="send_time">
+
                 </div>
 
-                <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;"> <br> <br>
+                <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;">
+                <br> <br>
 
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br> <br>
@@ -101,12 +112,6 @@
 
         function change() {
             var type = document.getElementById('send_type');
-        }
-
-        function send() {
-            if (document.getElementById('send_time').disabled == true) {
-                document.getElementById('send_time').value = NULL;
-            }
         }
 
         // jQuery.
@@ -176,8 +181,8 @@
 
             // 각 시간을 텍스트화 한다. 문자열을 그대로 리턴한다.
             // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 3항 연산으로 진행함.
-            clockTarget.innerText = `현재 시각 : ${month+1}월 ${clockDate}일 ${week[day]}요일 ` +
-                `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes }` : minutes }:${seconds < 10 ? `0${seconds }` : seconds }`;
+            clockTarget.innerText = `현재 시각 : ${month + 1}월 ${clockDate}일 ${week[day]}요일 ` +
+                `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 
         }
 
