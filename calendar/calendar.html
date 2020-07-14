@@ -20,8 +20,8 @@
       }
       #YearMonthText
       {
-        /* 해당 텍스트에 밑줄치기 */
-        text-decoration: underline;
+        /* 해당 텍스트 굵게 처리. */
+        font-weight: bold;
       }
       #calendarTable
       {
@@ -52,6 +52,11 @@
         /* 수직 정렬 상단 */
         vertical-align: top;
       }
+      /* 셀에 마우스를 올렸을때, 하늘색으로 채움. */
+      td:hover
+      {
+        background-color: skyblue;
+      }
       #menuBar
       {
         position: fixed;
@@ -74,15 +79,27 @@
       }
       #sendtile
       {
-        background-color: #A9E2F3;
-        color: white;
+        background-color: #BCF5A9;
+        color: gray;
         /*visibility: hidden;*/
       }
       #senttile
       {
         background-color: #F5D0A9;
-        color: white;
+        color: gray;
         /*visibility: hidden;*/
+      }
+      /* 발송 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. */
+      #sendtile:hover
+      {
+        color : black;
+        font-size: 125.5%;
+      }
+      /* 발송 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. */
+      #senttile:hover
+      {
+        color : black;
+        font-size: 125.5%;
       }
       /* tr,td의 앞에서부터 1번째 요소들은 */
       tr td:nth-child(1)
@@ -96,6 +113,14 @@
         /* 파랑색으로 */
 			  color: blue;
 		  }
+      /* 타일 누르면 나오는 모달 */
+      .modal
+      {
+        /* 모달의 디폴트는 안보이게. 영역도 차지하지 않음. 누르면 보이게. */
+        display: none;
+        /* */
+        z-index: 1;
+      }
     </style>
   </head>
   <body>
@@ -130,15 +155,29 @@
     <!--메뉴바 //페이지 좌측 고정-->
     <div id="menuBar">
       <!--각 페이지 링크, 현재 페이지는 흰색 아이콘으로 표시-->
-      <a href="#"><img class="icon" src="img/sms2.png" alt="sms" title="sms"></a>
+      <a href="#"><img class="icon" src="../img/sms2.png" alt="sms" title="sms"></a>
       <!--대리님 첨삭. img 태그로 효과 주지말고, 아이콘들에 따로 class를 지정해주자.-->
-      <a href="#"><img class="icon" src="img/hi2.png" alt="history" title="history"></a>
+      <a href="#"><img class="icon" src="../img/hi2.png" alt="history" title="history"></a>
       <!--현재는 캘린더 페이지-->
-      <a href="#"><img class="icon" src="img/cal.png" alt="calendar_clicked" title="calendar_clicked"></a>
-      <a href="#"><img class="icon" src="img/ad2.png" alt="addressbook" title="addressbook"></a>
+      <a href="#"><img class="icon" src="../img/cal.png" alt="calendar_clicked" title="calendar_clicked"></a>
+      <a href="#"><img class="icon" src="../img/ad2.png" alt="addressbook" title="addressbook"></a>
     </div>
     <!--채팅 버튼 //최우측 최하단//메뉴바와는 따로 떨어져있음-->
-    <a href="#"><img class="icon" id="chat" src="img/cht.png" alt="chat" title="chat"></a>
+    <a href="#"><img class="icon" id="chat" src="../img/cht.png" alt="chat" title="chat"></a>
+    <!--모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
+    <div id="sendModal" class="modal">
+      <!--모달 컨텐츠-->
+      <div class="modal_content">
+        <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
+        <span class="close">&times;</span>
+        <ul>
+          <li>2020.07.14 09:00, 01033339573, hi. it's Modal Test1</li>
+          <li>2020.07.14 10:00, 01033339573, hi. it's Modal Test2</li>
+          <li>2020.07.14 11:00, 01033339573, hi. it's Modal Test3</li>
+          <li>2020.07.14 12:00, 01033339573, hi. it's Modal Test4</li>
+        </ul>
+      </div>
+    </div>
 
     <!-- JavaScript -->
     <script type="text/javascript">
@@ -154,7 +193,7 @@
        // 달력 생성 함수
        function buildCalendar()
        {
-         // 이번달의 첫번째 날. 이번 년도, 이번 달, 1일을 저장 (출력해주는게 아니라서 getMonth에 +1을 안해야 이번 달)
+         // 이번달의 첫번째 날. 이번 년도, 이번 달, 1일을 저장 (과장님 첨삭. 출력해주는게 아니라서 getMonth에 +1을 안해야 이번 달이 됨.)
          let firstDate = new Date(today.getFullYear(), today.getMonth(),1);
          // 이번달의 마지막 날. 이번 년도, 다음 달, 0일을 저장 (이번 달 말일을 의미함)
          let lastDate = new Date(today.getFullYear(), today.getMonth()+1,0);
@@ -170,12 +209,12 @@
          let setDays = 1;
          // 다음 달의 1일.
          let nextMonthDate = 1;
-         // 발송건수 영역 디폴트는 안보이게(영역은 차지) 내용은 db에서 받아온 후 출력하게 하기
+         // 발송건수 영역 디폴트는 안보이게(영역은 차지) 누르면 sendModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
          let sendTile = "<div id='sendtile'>send</div>";
-         // 예약건수 영억 디폴트는 안보이게(영역은 차지) 내용은 db에서 받아온 후 출력하게 하기
+         // 예약건수 영억 디폴트는 안보이게(영역은 차지) 누르면 sentModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
          let sentTile = "<div id='senttile'>sent</div>";
          // td내의 여백
-         let spaceTile = "<div id='spcetile'><br></div>";
+         let spaceTile = "<div id='spacetile'><br></div>";
 
          //이번 달의 모든 week를 다 count 할때까지 돌린다 (4주짜리 달력이면 4번 반복실행)
          for(i = 0; i < week; i++)
@@ -221,10 +260,10 @@
          }
          /*
             문제 발생. 1일이 금요일이고 막일이 30일일 경우 || 1일이 토요일이고 막일이 31일일 경우,
-            5번째 table row를 작성해야 함.
+            5번째 table row를 작성해야 함. (기존에는 4줄까지 출력되고 setDays 카운트가 멈춤)
             setDays가 막일까지 이르지 못했을 경우의 제어문 삽입
          */
-         // 마지막 일 출력후 ++ 되어서 일이 마지막일 +1이 될테니 1을 줄여줌.
+         // 카운트가 멈춘 setDays를 1 줄여서 막일과 검사하고 출력시에 먼저 1을 올려줄것 (이거 안하면 웹페이지가 로드가 안됨)
          setDays -= 1;
 
          // 일이 막일까지 이르지 못했을 경우
@@ -313,6 +352,17 @@
          // 다음 달의 달력 출력 함수
          buildCalendar();
        }
+
+       /*  팝업창? 필요업음
+        function sendPopup()
+       {
+         let url = "sendPopup.html";
+         let name = "sendtile";
+         let option = "width = '100px', height = '70px', top = '100px', left = '200px', location = no"
+
+         window.open(url, name, option);
+       }
+       */
     </script> <!--참고한 링크 : https://hokeydokey.tistory.com/57 -->
   </body>
 </html>
