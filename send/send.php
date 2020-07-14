@@ -7,14 +7,7 @@
     <title>ToySend</title>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
-    <!-- CSS !-->
     <style media="screen">
-        /* 우측 상단 로그인/로그아웃 */
-        #userLine {
-            border: 1px;
-            float: right;
-        }
-
         /* 날짜 영역 */
         #time {
             display: flex;
@@ -23,45 +16,12 @@
             padding-bottom: 10px;
             border: 3px;
         }
-
-        /* Left Menu Bar */
-        #menuBar {
-            position: fixed;
-            left: 2.5%;
-            top: 25%;
-        }
-
-        /* Left Menu Bar */
-        .icon {
-            width: 20%;
-            padding: 10px;
-            display: block;
-        }
-
-        /* Chat */
-        .chat {
-            width: 70px;
-            display: block;
-        }
     </style>
 </head>
 
 <body>
-    <!-- 로그아웃 !-->
-    <form action="index.php" method="POST">
-        <div id="userLine">000님, 환영합니다.
-            <input type="submit" name="logout" value="Log Out">
-        </div>
-    </form>
 
-    <!-- Left Menu Bar !-->
-    <div id="menuBar">
-        <a href="send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
-        <a href="../board.php"><img class="icon" src="../img/hi2.png" title="history"></a>
-        <a href="../calendar/calendar.html"><img class="icon" src="../img/cal2.png" title="calendar"></a>
-        <a href="#"><img class="icon" src="../img/ad2.png" title="addressbook"></a>
-    </div>
-    <a href="#"><img class="chat" id="chat" src="../img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
+    <?php include '../title.php'; ?>
 
     <!-- 메세지 보내기 !-->
     <form action="send_db.php" method="POST">
@@ -187,13 +147,14 @@
         }
 
         function init() {
-            // 함수 clock() 실행
+            // 함수 clock() 실행  -   clock() 함수를 먼저 부르지 않으면 1초간의 딜레이 후 clock()함수가 불러지기 때문에
             clock();
-            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
+            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용.
+            // (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
             setInterval(clock, 1000);
         }
 
-        // init() 실행
+        // 최초 init() 실행
         init();
     </script>
 </body>
