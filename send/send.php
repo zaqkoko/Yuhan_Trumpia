@@ -189,7 +189,7 @@
         function init() {
             // 함수 clock() 실행
             clock();
-            // setInterval - Clock()함수를 1000(1초)마다 다시 부른다.
+            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
             setInterval(clock, 1000);
         }
 
