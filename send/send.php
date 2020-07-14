@@ -68,11 +68,11 @@
         <div>
             <center>
                 <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
-                <h4>예약 버튼을 누르지 않으면 현재 시간으로 발송됩니다</h4>
+                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
 
                 <div id="time">
 
-                    <!-- 현재, 예약인지 -->
+                    <!-- 현재, 예약인지 선택. Select Box -->
                     <label for="send_type" style="padding-right: 5px;">발송 : </label>
                     <select name="send_type" id="send_type">
                         <option value="1'">현재</option>
@@ -86,12 +86,15 @@
 
                 </div>
 
+                <!-- 수신 번호 입력 -->
                 <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;">
                 <br> <br>
 
+                <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br> <br>
 
+                <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>
         </div>
@@ -104,18 +107,14 @@
         function send_time() {
 
             // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.    new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
-            document.getElementById('send_time').value = new Date().toLocaleString(); //  tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
+            document.getElementById('send_time').value = new Date().toISOString().slice(0, -1); //  tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
 
             // T대신 공백값 넣기.
             replace(/T/, ' ');
         }
 
-        function change() {
-            var type = document.getElementById('send_type');
-        }
-
         // jQuery.
-        // TextArea 글자 수 제한 함수.
+        // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         $(function() {
             // sms_text 라는 element 요소에 keyup이 발생했을 때에 대한 정보를 저장한다. 
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
@@ -132,7 +131,8 @@
 
         // JQuery.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
-        // $(document).ready(function(){ == JS onload와 같은 기능.   // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
+        // $(document).ready(function(){ == JS onload와 같은 기능.
+        // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
         $(document).ready(function() {
             // subButton id값을 가진 요소를 클릭 했을 때.
             $("#subButton").click(function() {
@@ -180,18 +180,19 @@
             var seconds = date.getSeconds();
 
             // 각 시간을 텍스트화 한다. 문자열을 그대로 리턴한다.
-            // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 3항 연산으로 진행함.
+            // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 진행함.
             clockTarget.innerText = `현재 시각 : ${month + 1}월 ${clockDate}일 ${week[day]}요일 ` +
                 `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 
         }
 
         function init() {
-            // 최초 함수 clock() 실행
+            // 함수 clock() 실행
             clock();
             // setInterval - Clock()함수를 1000(1초)마다 다시 부른다.
             setInterval(clock, 1000);
         }
+
         // init() 실행
         init();
     </script>
