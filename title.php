@@ -45,9 +45,9 @@
     </form>
     <!-- Left Menu Bar !-->
     <div id="menuBar">
-        <a href="send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
-        <a href="../board.php"><img class="icon" src="../img/hi2.png" title="history"></a>
-        <a href="../calendar/calendar.html"><img class="icon" src="../img/cal2.png" title="calendar"></a>
+        <a href="../send/send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
+        <a href="../board/board.php"><img class="icon" src="../img/hi2.png" title="history"></a>
+        <a href="../calendar/calendar.php"><img class="icon" src="../img/cal2.png" title="calendar"></a>
         <a href="#"><img class="icon" src="../img/ad2.png" title="addressbook"></a>
     </div>
     <a href="#"><img class="chat" id="chat" src="../img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
