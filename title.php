@@ -1,4 +1,15 @@
 <head>
+    <!-- id & name 세션으로 받아옴 -->
+    <?php
+    session_start();
+
+    if ($_SESSION['name'] == "") {
+        $name = $_SESSION['id'];
+    } else {
+        $name = $_SESSION['name'];
+    }
+    ?>
+
     <style media="screen">
         /* 우측 상단 로그인/로그아웃 */
         #userLine {
@@ -28,21 +39,18 @@
     </style>
 </head>
 
-<!-- Session id 받아오는 것 적용 필요 -->
-<!-- Session id 받아오는 것 적용 필요 -->
-<!-- Session id 받아오는 것 적용 필요 -->
-<!-- Session id 받아오는 것 적용 필요 -->
-<!-- Session id 받아오는 것 적용 필요 -->
-
 <body>
     <!-- 로그아웃 !-->
-    <form action="index.php" method="POST">
-        <div id="userLine">000님, 환영합니다.
+    <form action="../index.php" method="POST">
+        <div id="userLine">
+            안녕하세요 <?php echo $name; ?> 님
             <input type="submit" name="logout" value="Log Out">
         </div>
     </form>
-    <!-- Left Menu Bar !-->
+    <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
+
+        <!-- 상대경로 -->
         <a href="../send/send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
         <a href="../board/board.php"><img class="icon" src="../img/hi2.png" title="history"></a>
         <a href="../calendar/calendar.php"><img class="icon" src="../img/cal2.png" title="calendar"></a>
