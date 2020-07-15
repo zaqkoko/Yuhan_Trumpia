@@ -46,7 +46,7 @@
                     <label style="padding-right: 10px;">날짜 설정</label>
 
                     <!-- 날짜, 시간 불러오기 -->
-                    <input type="datetime-local" id="send_time" name="send_time">
+                    <input type="datetime-local" id="send_time" name="send_time" readonly>
 
                 </div>
 
@@ -72,37 +72,61 @@
 
         function send_time() {
             // new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
-            // tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
-            document.getElementById('send_time').value = new Date().toISOString().slice(0, 16);
+            // toISOString() - ISO형식으로 반환(ISO 8601), 반환값은 YYYY:MM-DDTHH:mm:ss.sssz 임. slice로 뒷 5글자 제거(밀리초 + . 포함)
+            document.getElementById('send_time').value = new Date().toISOString().slice(0, -5);
 
         }
 
+        // change() = 함수 요소 값이 바뀔 때 발생함. ※ input, textarea, select 요소로 제한됨 (select, check, radio = 마우스로 선택하면 이벤트 발생, 다른 요소는 포커스에서 벗어나면 발생)
+        // send_type id값을 가진 요소의 값이 바뀔 때 실행한다.
         jQuery('#send_type').change(function() {
+
+            // 변수 state에 id send_type의 선택된 value값을 state에 넣는다.
             var state = jQuery('#send_type option:selected').val();
+
+            // 만약 선택된 값이 1' 이라면
             if (state == "1'") {
+
+                // id send_time의 readonly를 활성화
                 document.getElementById('send_time').readOnly = true;
+
+                // send_time 함수 호출 (send_time 함수를 호출하지 않으면 SetInterval의 1초간의 딜레이가 생기기 때문에 send_time()함수를 부른다.)
                 send_time();
+
+                // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
+                // send_time() 함수를 1초마다 실행, millsecond로 1000이 1초임.
                 timer = setInterval(function() {
                     send_time();
                 }, 1000);
 
+
+                // 만약 선택된 값이 2'라면
             } else if (state == "2'") {
+
+                // id send_time의 readonly 비활성화
                 document.getElementById('send_time').readOnly = false;
+
+                // SetInterval 종료 (인자값으로 setInterval 을 담은 변수를 넣어주어야 한다)
                 clearInterval(timer);
+
+                // 예약으로 보낼 때는 초까지 선택을 하지 않기 때문에 16 까지 출력함.
+                document.getElementById('send_time').value = new Date().toISOString().slice(0, 16);
+
+
+                // 그 외라면
             } else {
+
+                // id send_time의 readonly 비활성화
                 document.getElementById('send_time').readOnly = true;
+
+                // SetInterval 종료
+                clearInterval(timer);
+
+                // 값 삭제
+                document.getElementById('send_time').value = "";
+
             }
         });
-
-        function send_time2() {
-
-            // 함수 send_time 실행  -   send_time 함수를 먼저 부르지 않으면 1초간의 딜레이 후 send_time()함수가 불러짐.
-            // send_time();
-
-            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
-            // setInterval(func send_time, 1000)    1000 쓰는 이유 : millisecond로 1000 = 1초.
-            // setInterval(send_time, 1000);
-        }
 
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
@@ -138,6 +162,7 @@
                 }
             })
         });
+
 
         /* 보류 
 
