@@ -68,9 +68,9 @@
     <script>
         // MySql db - DateTime에 넣기 위해 필요한 함수
 
-        // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.   
-
         function send_time() {
+
+            // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.
             // new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
             // toISOString() - ISO형식으로 반환(ISO 8601), 반환값은 YYYY:MM-DDTHH:mm:ss.sssz 임. slice로 뒷 5글자 제거(밀리초 + . 포함)
             document.getElementById('send_time').value = new Date().toISOString().slice(0, -5);
@@ -90,7 +90,7 @@
                 // id send_time의 readonly를 활성화
                 document.getElementById('send_time').readOnly = true;
 
-                // send_time 함수 호출 (send_time 함수를 호출하지 않으면 SetInterval의 1초간의 딜레이가 생기기 때문에 send_time()함수를 부른다.)
+                // send_time 함수 호출 (send_time 함수를 호출하지 않으면 SetInterval의 1초간의 딜레이가 생기기 때문에 send_time()함수를 먼저 한 번 부른다.)
                 send_time();
 
                 // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
@@ -128,30 +128,37 @@
             }
         });
 
+
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         $(function() {
-            // sms_text 라는 element 요소에 keyup이 발생했을 때에 대한 정보를 저장한다. 
+
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
-            // keyup이 발생시 'e'가 sms_text에 keyup이 발생했을 때 대한 정보를 e에 담는다.
+            // id sms_text에 keyup 이벤트가 발생했을 때에 대한 정보를 'e' 에 담는다.
             $('#sms_text').keyup(function(e) {
 
-                // content 라는 변수에 keyup이 발생했을 때에 대한 값을 content에 저장한다.
+                // content 라는 변수에 sms text 의 keyup이 발생했을 때에 대한 값을 content에 저장한다. this = 콘솔 로그 찍으니 textarea id=sms_text ~ 구문 나옴.
                 var content = $(this).val();
+
                 // counter 라는 element 요소의 내용을 counter.length + /150 으로 바꾼다.
+                // $.html = id counter의 요소 안의 내용을 지우고 새로운 내용을 넣음.       ### -> counter의 길이값 + '/150'  // 참고 링크 : https://www.codingfactory.net/10324
                 $('#counter').html(content.length + '/150');
             });
+            // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
             $('#sms_text').keyup();
         });
+
 
         // JQuery.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
         // $(document).ready(function(){ == JS onload와 같은 기능.
         // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
         $(document).ready(function() {
+
             // subButton id값을 가진 요소를 클릭 했을 때.
             $("#subButton").click(function() {
                 var Check = 0;
+
                 // receiver id값의 ""이면 경고창 띄우기.
                 if ($("#receiver").val() == "") {
                     alert("번호를 입력해주세요")
