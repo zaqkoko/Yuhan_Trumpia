@@ -3,13 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>board</title>
-
+	 <!-- board.css파일을 링크한다 -->
 	<link rel="stylesheet" type="text/css" href="board_css.css">
+	<!-- 스크립트에 제이쿼리 파일 url을 연결 -->
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 
 	<script type="text/javascript">
-
+	//가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.reday()를 실행)
 	$(document).ready(function() {
+		//새로고침 확인용
 		alert("ㅠddsdad");
 
 		//전송내역 출력
