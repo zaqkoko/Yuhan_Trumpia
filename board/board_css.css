@@ -63,10 +63,19 @@ padding: 5px;
 table tr, td{
 	border-bottom: 1px solid #7dabd0;
 }
+td{
+  padding: 5px;
+}
+input[type="checkbox"]{
+  display:block;
+  text-align: center;
+  transform: scale(1.5);
+
+}
 th{
 	background: #7dabd0;
 	color: white;
-  padding: 10px;
+  padding: 15px;
 }
 .tt	{
 	width: 1000px;
@@ -89,6 +98,9 @@ th{
 	width: 100px;
 	float: right;
 }
+
+
+
 
 
 
