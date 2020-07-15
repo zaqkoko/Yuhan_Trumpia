@@ -5,11 +5,7 @@
     <title>Calendar</title>
     <!--CSS-->
     <style media="screen">
-      #userLine
-      {
-        /* 우측 정렬 */
-        float: right;
-      }
+
       #caption
       {
         /* 절대 위치. 상하좌우 %를 사용해서 해당 위치에 배치시킨다. */
@@ -57,26 +53,8 @@
       {
         background-color: skyblue;
       }
-      #menuBar
-      {
-        position: fixed;
-        left: 2.5%;
-        top: 25%;
-        /* width: 10%; 동작하지 않음. */
-      }
-      .icon
-      {
-        /* width값을 '%'단위로 바꾸면 menuBar 클래스로 묶인 아이콘들과 chat 아이콘의 크기가 맞지 않음. */
-        width: 75px;
-        padding: 10px;
-        display: block;
-      }
-      #chat
-      {
-        position: fixed;
-        right: 2.5%;
-        bottom: 2.5%;
-      }
+
+
       #sendtile
       {
         background-color: #BCF5A9;
@@ -165,6 +143,7 @@
     </style>
   </head>
   <body>
+    <?php include '../title.php';?>
     <!--회원 이름 영역 //페이지 최상단 우측-->
     <div id="userLine">
       OOO님, 환영합니다.
@@ -197,17 +176,9 @@
     </table>
 
     <!--메뉴바 //페이지 좌측 고정 // 하나로 고정해서 통일하기-->
-    <div id="menuBar">
-      <!--각 페이지 링크, 현재 페이지는 흰색 아이콘으로 표시-->
-      <a href="#"><img class="icon" src="../img/sms2.png" alt="sms" title="sms"></a>
-      <!--대리님 첨삭. img 태그로 효과 주지말고, 아이콘들에 따로 class를 지정해주자.-->
-      <a href="#"><img class="icon" src="../img/hi2.png" alt="history" title="history"></a>
-      <!--현재는 캘린더 페이지-->
-      <a href="#"><img class="icon" src="../img/cal.png" alt="calendar_clicked" title="calendar_clicked"></a>
-      <a href="#"><img class="icon" src="../img/ad2.png" alt="addressbook" title="addressbook"></a>
-    </div>
+
     <!--채팅 버튼 //최우측 최하단//메뉴바와는 따로 떨어져있음-->
-    <a href="#"><img class="icon" id="chat" src="../img/cht.png" alt="chat" title="chat"></a>
+
 
     <!--모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
     <div id="sendModal" class="modal">
