@@ -157,6 +157,7 @@
 
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
+        // 왜 썼는지 주석.
         $(function() {
 
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
