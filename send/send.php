@@ -69,22 +69,22 @@
         var a = new Date(Date.now());
         var b = new Date().getTimezoneOffset() * 60000;
         var c = new Date(Date.now() - b);
-        console.log(a); /* 출력 값 : 1594794969278 */
-        console.log(b); /* 출력 값 : -32400000 */
-        console.log(c); /* 출력 값 : Thu Jul 16 2020 00:37:13 GMT+0900 (대한민국 표준시) */
+        console.log(a); /* 출력 값 : 당시 1594794969278 */
+        console.log(b); /* 출력 값 : 당시 -32400000 */
+        console.log(c); /* 출력 값 : 당시 Thu Jul 16 2020 00:37:13 GMT+0900 (대한민국 표준시) */
         console.log(a.toISOString().slice(0, -5));
-        console.log(c.toISOString().slice(0, -5)); /* 출력 값 : 2020-07-15T15:37:13 (ISO는 UTC를 0으로 받아오기 때문에 -9시간하면 현재 시간이 나온다.) */
+        console.log(c.toISOString().slice(0, -5)); /* 출력 값 : 당시 2020-07-15T15:37:13 (ISO는 UTC를 0으로 받아오기 때문에 -9시간하면 현재 시간이 나온다.) */
 
 
         // MySql db - DateTime에 넣기 위해 필요한 함수
         function send_time() {
 
-            // toISOString는 UTC가 +0로 받아오기 때문에 현재 시간에 계속 -9시간인 시간이 출력되어 +9 시간을 해주어야 했음.
-            // toLocaleString(), toString()은 시간이 정상적으로 출력이 되지않았음.
+            // toISOString는 UTC +0 으로 받아오기 때문에 현재 시간에 계속 -9시간인 시간이 출력되어 +9 시간을 해주어야 했음.
+            // toLocaleString(), toString() 등은 시간이 정상적으로 출력이 되지않았음.
 
             // new Date() - 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
-            // getTimezoneOffset() - UTC(협정세계시)와 시스템이 시스템이 속해있는 지역의 시간의 차이를 분 단위로 리턴. (서울은 UTC +9시간이므로 -540으로 자동 리턴함)
-            // 밀리값으로 만들어야 하기 때문에 * 60000 을 해줌으로 시간 차이를 밀리값으로 저장함. (이유 : Date.now()가 밀리초값으로 반환되기 때문)
+            // getTimezoneOffset() - UTC(협정세계시)와 시스템이 속해있는 지역의 시간의 차이를 분 단위로 리턴함. (서울은 UTC +9시간이므로 -540으로 자동 리턴함)
+            // 밀리초값으로 만들어야 하기 때문에 * 60000 을 해줌으로 시간 차이를 밀리값으로 저장함. (이유 : Date.now()가 밀리초값으로 반환되기 때문)
             var timezone = new Date().getTimezoneOffset() * 60000; // 60000 = 60초 = 1분
 
             // Date.now() - UTC 기준으로 1970년 1월 1일 0시 0분 0초부터 현재까지 경과된 밀리초를 반환
