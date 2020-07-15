@@ -69,17 +69,19 @@
         color: gray;
         /*visibility: hidden;*/
       }
-      /* 예약 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. */
+      /* 예약 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. 커서를 포인터로.*/
       .sendtile:hover
       {
         color : black;
         font-size: 125.5%;
+        cursor: pointer;
       }
-      /* 발송 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. */
+      /* 발송 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. 커서를 포인터로.*/
       .senttile:hover
       {
         color : black;
         font-size: 125.5%;
+        cursor: pointer;
       }
       /* tr,td의 앞에서부터 1번째 요소들은 */
       tr td:nth-child(1)
@@ -331,7 +333,7 @@
         }
       }
 
-      // 달력 클리어해주는 함수
+      // 달력 클리어해주는 함수  잘 안됨 ~~~~
       function calendarClear()
       {
         // 모든 셀을 선택
@@ -385,9 +387,9 @@
       // 모달을 저장
       let modal = document.getElementById('sendModal');
       // 타일을 저장. 요부분 html컬렉션으로 어케해야할지 고쳐보자
-      let tile = document.getElementsByClassName("sendtile");
+      let tile = document.getElementsByClassName('sendtile');
       // 첫번째 닫기 버튼을 저장
-      let btn = document.getElementsByClassName("close")[0];
+      let btn = document.getElementsByClassName('close');
 
       // sendtile을 클릭하면
       tile.onclick = function()
