@@ -38,6 +38,7 @@
                     <!-- 현재, 예약인지 선택. Select Box -->
                     <label for="send_type" style="padding-right: 5px;">발송 : </label>
                     <select name="send_type" id="send_type">
+                        <option value="" selected="selected">선택</option>
                         <option value="1'">현재</option>
                         <option value="2'">예약</option>
                     </select>
@@ -45,7 +46,7 @@
                     <label style="padding-right: 10px;">날짜 설정</label>
 
                     <!-- 날짜, 시간 불러오기 -->
-                    <input type="datetime" id="send_time" name="send_time">
+                    <input type="datetime-local" id="send_time" name="send_time">
 
                 </div>
 
@@ -67,26 +68,40 @@
     <script>
         // MySql db - DateTime에 넣기 위해 필요한 함수
 
+        // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.   
+
         function send_time() {
-
-            // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.    new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
-            document.getElementById('send_time').value = new Date().toISOString().slice(0, -5); //  tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
+            // new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
+            // tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
+            document.getElementById('send_time').value = new Date().toISOString().slice(0, 16);
 
         }
 
-        if ($("#send_type option:selected").val() == '2') {
-            clearInterval(send_time);
-        }
+        jQuery('#send_type').change(function() {
+            var state = jQuery('#send_type option:selected').val();
+            if (state == "1'") {
+                document.getElementById('send_time').readOnly = true;
+                send_time();
+                timer = setInterval(function() {
+                    send_time();
+                }, 1000);
 
+            } else if (state == "2'") {
+                document.getElementById('send_time').readOnly = false;
+                clearInterval(timer);
+            } else {
+                document.getElementById('send_time').readOnly = true;
+            }
+        });
 
         function send_time2() {
 
-            // // 함수 send_time 실행  -   send_time 함수를 먼저 부르지 않으면 1초간의 딜레이 후 send_time()함수가 불러짐.
-            send_time();
+            // 함수 send_time 실행  -   send_time 함수를 먼저 부르지 않으면 1초간의 딜레이 후 send_time()함수가 불러짐.
+            // send_time();
 
             // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
             // setInterval(func send_time, 1000)    1000 쓰는 이유 : millisecond로 1000 = 1초.
-            setInterval(send_time, 1000);
+            // setInterval(send_time, 1000);
         }
 
         // jQuery.
@@ -126,59 +141,56 @@
 
         /* 보류 
 
-        // 현재 시간을 1초마다 받아와 출력하는 스크립트
-        // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.
-        var clockTarget = document.getElementById("clock");
+            // 현재 시간을 1초마다 받아와 출력하는 스크립트
+            // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.
+            var clockTarget = document.getElementById("clock");
 
-        function clock() {
+            function clock() {
 
-            // 변수 date에 현재 시간을 받아오는 new Date()의 값을 넣었다. ※ 인자값이 없으면
-            var date = new Date();
+                // 변수 date에 현재 시간을 받아오는 new Date()의 값을 넣었다. ※ 인자값이 없으면
+                var date = new Date();
 
-            // date Object를 받아온다.
-            var month = date.getMonth();
+                // date Object를 받아온다.
+                var month = date.getMonth();
 
-            // 달(Month)을 받아온다.
-            var clockDate = date.getDate();
+                // 달(Month)을 받아온다.
+                var clockDate = date.getDate();
 
-            // 일(day)을 받아온다.
-            var day = date.getDay();
+                // 일(day)을 받아온다.
+                var day = date.getDay();
 
-            // 요일을 받아온다.
-            // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만들어야한다.
-            var week = ['일', '월', '화', '수', '목', '금', '토'];
+                // 요일을 받아온다.
+                // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만들어야한다.
+                var week = ['일', '월', '화', '수', '목', '금', '토'];
 
-            // 시간(hours)을 받아온다.
-            var hours = date.getHours();
+                // 시간(hours)을 받아온다.
+                var hours = date.getHours();
 
-            // 분(minutes)을 받아온다.
-            var minutes = date.getMinutes();
+                // 분(minutes)을 받아온다.
+                var minutes = date.getMinutes();
 
-            // 초(seconds)을 받아온다.
-            var seconds = date.getSeconds();
+                // 초(seconds)을 받아온다.
+                var seconds = date.getSeconds();
 
-            // 각 시간을 텍스트화 한다. 문자열을 그대로 리턴한다.
-            // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 진행함.
-            clockTarget.innerText = `현재 시각 : ${month + 1}월 ${clockDate}일 ${week[day]}요일 ` +
-                `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+                // 각 시간을 텍스트화 한다. 문자열을 그대로 리턴한다.
+                // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 진행함.
+                clockTarget.innerText = `현재 시각 : ${month + 1}월 ${clockDate}일 ${week[day]}요일 ` +
+                    `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 
-        }
+            }
 
-        function init() {
-            // 함수 clock() 실행  -   clock() 함수를 먼저 부르지 않으면 1초간의 딜레이 후 clock()함수가 불러지기 때문에
-            clock();
-            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
-            // setInterval(func clock, 1000) 1000 - millisecond로 1000 = 1초.
-            setInterval(clock, 1000);
-        }
+            function init() {
+                // 함수 clock() 실행  -   clock() 함수를 먼저 부르지 않으면 1초간의 딜레이 후 clock()함수가 불러지기 때문에
+                clock();
+                // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
+                // setInterval(func clock, 1000) 1000 - millisecond로 1000 = 1초.
+                setInterval(clock, 1000);
+            }
 
-        // 최초 init() 실행
-        init();
+            // 최초 init() 실행
+            init();
 
         */
-
-        // send_time2 함수 실행
-        send_time2();
     </script>
 </body>
 
