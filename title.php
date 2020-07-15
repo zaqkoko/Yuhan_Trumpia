@@ -50,6 +50,7 @@
     <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
 
+        <!-- 현재 send 기준으로 제작되어 이미지파일이 send에만 활성화 되어있는 걸로 나와있습니다. 흠 이걸 어케하농 -->
         <!-- 상대경로 -->
         <a href="../send/send.php"><img class="icon" src="../img/sms.png" title="sms_click"></a>
         <a href="../board/board.php"><img class="icon" src="../img/hi2.png" title="history"></a>

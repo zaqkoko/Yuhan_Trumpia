@@ -27,11 +27,14 @@
     <form action="send_db.php" method="POST">
         <div>
             <center>
-                <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
-                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
+
+                <!-- 보류
+                    <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
+                -->
+
+                <h4 style="padding-left: 180px;">발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
 
                 <div id="time">
-
                     <!-- 현재, 예약인지 선택. Select Box -->
                     <label for="send_type" style="padding-right: 5px;">발송 : </label>
                     <select name="send_type" id="send_type">
@@ -42,7 +45,7 @@
                     <label style="padding-right: 10px;">날짜 설정</label>
 
                     <!-- 날짜, 시간 불러오기 -->
-                    <input type="datetime-local" id="send_time" name="send_time">
+                    <input type="datetime" id="send_time" name="send_time">
 
                 </div>
 
@@ -63,14 +66,27 @@
     <!-- Java Script -->
     <script>
         // MySql db - DateTime에 넣기 위해 필요한 함수
-        // send_time 함수 실행
+
         function send_time() {
 
             // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.    new Date() 함수는 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
-            document.getElementById('send_time').value = new Date().toISOString().slice(0, -1); //  tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
+            document.getElementById('send_time').value = new Date().toISOString().slice(0, -5); //  tolocaleString() - 사용자의 문화권에 맞는 시간표기법으로 년,월,일,시간을 문자열로 리턴함.
 
-            // T대신 공백값 넣기.
-            replace(/T/, ' ');
+        }
+
+        if ($("#send_type option:selected").val() == '2') {
+            clearInterval(send_time);
+        }
+
+
+        function send_time2() {
+
+            // // 함수 send_time 실행  -   send_time 함수를 먼저 부르지 않으면 1초간의 딜레이 후 send_time()함수가 불러짐.
+            send_time();
+
+            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
+            // setInterval(func send_time, 1000)    1000 쓰는 이유 : millisecond로 1000 = 1초.
+            setInterval(send_time, 1000);
         }
 
         // jQuery.
@@ -107,6 +123,8 @@
                 }
             })
         });
+
+        /* 보류 
 
         // 현재 시간을 1초마다 받아와 출력하는 스크립트
         // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.
@@ -149,13 +167,18 @@
         function init() {
             // 함수 clock() 실행  -   clock() 함수를 먼저 부르지 않으면 1초간의 딜레이 후 clock()함수가 불러지기 때문에
             clock();
-            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용.
-            // (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨.
+            // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
+            // setInterval(func clock, 1000) 1000 - millisecond로 1000 = 1초.
             setInterval(clock, 1000);
         }
 
         // 최초 init() 실행
         init();
+
+        */
+
+        // send_time2 함수 실행
+        send_time2();
     </script>
 </body>
 
