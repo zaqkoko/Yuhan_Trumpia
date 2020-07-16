@@ -45,8 +45,8 @@
                     <label for="send_type" style="padding-right: 5px;">발송 : </label>
                     <select name="send_type" id="send_type">
                         <option value="" selected="selected">선택</option>
-                        <option value="1'">현재</option>
-                        <option value="2'">예약</option>
+                        <option value="1">현재</option>
+                        <option value="2">예약</option>
                     </select>
 
                     <label style="padding-right: 10px;">날짜 설정</label>
@@ -113,7 +113,7 @@
             var state = $('#send_type option:selected').val();
 
             // 만약 선택된 값이 1' 이라면
-            if (state == "1'") {
+            if (state == "1") {
 
                 // id send_time의 readonly를 활성화
                 document.getElementById('send_time').readOnly = true;
@@ -129,7 +129,7 @@
 
 
                 // 만약 선택된 값이 2'라면
-            } else if (state == "2'") {
+            } else if (state == "2") {
 
                 // id send_time의 readonly 비활성화
                 document.getElementById('send_time').readOnly = false;
