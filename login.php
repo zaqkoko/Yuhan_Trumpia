@@ -7,6 +7,7 @@ $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("sql접속ㄴ
 $id = $_POST["id"];
 $pw = $_POST["pw"];
 //입력값을 id와 pw로 가져옴
+//test
 
 $sql = "select * from user where id='$id'";
 //id칼럼의 내용이 $인 모든 데이터를 user테이블에서 호..출?
