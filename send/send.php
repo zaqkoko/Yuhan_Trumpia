@@ -55,7 +55,7 @@
                 <br> <br>
 
                 <!-- 본문 입력 -->
-                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
+                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br> <br>
 
                 <!-- 발송 -->
@@ -171,6 +171,7 @@
                 // $.html = id counter의 요소 안의 내용을 지우고 새로운 내용을 넣음.       ### -> counter의 길이값 + '/150'  // 참고 링크 : https://www.codingfactory.net/10324
                 $('#counter').html(content.length + '/150');
             });
+
             // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
             $('#sms_text').keyup();
         });
@@ -189,6 +190,26 @@
             4. 보이지 않는 요소를 포함 (ex display:none) 
          */
 
+        // $(document).ready(function() {}) 와 동일 구문
+        // subButton id값을 가진 요소를 클릭했을때
+        $(function() {
+            $("#subButton").click(function() {
+
+                // 만약 sms_text의 값이 ""라면
+                if ($("#sms_text").val() == "") {
+
+                    // 알림창 출력
+                    alert("메세지를 입력해주세요");
+
+                    // sms_text에 입력상태 만들어주기
+                    $("#sms_text").focus();
+
+                    // 반환 false
+                    return false;
+                }
+            })
+        })
+
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
         // $(document).ready(function(){ == JS onload와 같은 기능.
@@ -204,11 +225,12 @@
 
                     // receiver id값에 포커스 얻기(입력상태 만들어주기)
                     $("#receiver").focus();
+
+                    // 반환 false
                     return false;
                 }
             })
         });
-
 
         /* 보류(Clock) 
 
