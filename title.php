@@ -21,13 +21,12 @@ if ($_SESSION['name'] == "") {
     <style media="screen">
         /* 우측 상단 로그인/로그아웃 */
         * {
-            background: #fff;
             margin: 0 auto;
         }
 
         #hi {
             position: fixed;
-            top: 10px;
+            top: 15px;
             right: 100px;
             color: #7dabd0;
             font-weight: bold;
@@ -48,7 +47,7 @@ if ($_SESSION['name'] == "") {
         /* Left Menu Bar */
         #menuBar {
             position: fixed;
-            left: 2.5%;
+            left: -150px;
             top: 25%;
         }
 
