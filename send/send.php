@@ -32,7 +32,7 @@
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
                 -->
 
-                <h4 style="padding-left: 180px;">발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
+                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
 
                 <div id="time">
                     <!-- 현재, 예약인지 선택. Select Box -->
@@ -98,7 +98,6 @@
             document.getElementById('send_time').value = timezoneDate.toISOString().slice(0, -5);
 
         }
-
 
         // change() = 함수 요소 값이 바뀔 때 발생함. ※ input, textarea, select 요소로 제한됨 (select, check, radio = 마우스로 선택하면 이벤트 발생, 다른 요소는 포커스에서 벗어나면 발생)
         // send_type id값을 가진 요소의 값이 바뀔 때 실행한다.
@@ -190,7 +189,6 @@
             4. 보이지 않는 요소를 포함 (ex display:none) 
          */
 
-
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
         // $(document).ready(function(){ == JS onload와 같은 기능.
@@ -199,14 +197,13 @@
 
             // subButton id값을 가진 요소를 클릭 했을 때.
             $("#subButton").click(function() {
-                var Check = 0;
 
                 // receiver id값의 ""이면 경고창 띄우기.
                 if ($("#receiver").val() == "") {
                     alert("번호를 입력해주세요")
 
                     // receiver id값에 포커스 얻기(입력상태 만들어주기)
-                    $("receiver").focus();
+                    $("#receiver").focus();
                     return false;
                 }
             })
