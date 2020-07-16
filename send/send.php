@@ -9,12 +9,18 @@
 
     <style media="screen">
         /* 날짜 영역 */
+        #dilv {
+            padding-top: 50px;
+        }
+
         #time {
-            display: flex;
+            /* display: flex;
             justify-content: center;
             align-items: center;
             padding-bottom: 10px;
-            border: 3px;
+            border: 3px; */
+            align-items: center;
+            padding: 10 px;
         }
     </style>
 </head>
@@ -26,7 +32,7 @@
 
     <!-- 메세지 보내기 !-->
     <form action="send_db.php" method="POST">
-        <div>
+        <div id="dilv">
             <center>
                 <!-- 보류
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>

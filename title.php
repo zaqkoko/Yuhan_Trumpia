@@ -15,12 +15,35 @@ if ($_SESSION['name'] == "") {
     $name = $_SESSION['name'];
 }
 ?>
+
 <head>
 
     <style media="screen">
         /* 우측 상단 로그인/로그아웃 */
-        #hi {position:fixed; top:10px; right:100px; color:#7dabd0; font-weight:bold; font-size:15px;}
-        #logout {border: none; background: #7dabd0; color: #fff; font-size: 15px; font-weight: bold; position: fixed; top: 10px; right: 10px;}
+        * {
+            background: #fff;
+            margin: 0 auto;
+        }
+
+        #hi {
+            position: fixed;
+            top: 10px;
+            right: 100px;
+            color: #7dabd0;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        #logout {
+            border: none;
+            background: #7dabd0;
+            color: #fff;
+            font-size: 15px;
+            font-weight: bold;
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
 
         /* Left Menu Bar */
         #menuBar {
@@ -48,7 +71,7 @@ if ($_SESSION['name'] == "") {
     <!-- 로그아웃 !-->
     <p id="hi">안녕하세요 <?php echo $name; ?> 님</p>
     <form action="../logout.php" method="POST">
-            <input type="submit" name="logout" value="LogOut" id="logout">
+        <input type="submit" name="logout" value="LogOut" id="logout">
     </form>
     <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
