@@ -12,7 +12,7 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("dㅇㅇㅁㄴㅁㅇㄴㅇ");
+    alert("ss");
 
 //type값(1 or 2)에 따라 발송완료와 발송예약을 표시
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
@@ -64,8 +64,8 @@
 //전체체크 상태에서 하위 체크박스가 하나라도 false일 때 전체 체크박스 상태를 false로 바꿈
     //하위 체크박스를 클릭했을 때
       $(".checkbox").click(function() {
-        //만약 전체체크박스 상태가 true라면
-        if($("#allCheck").is(":checked")){
+        //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+        if($("#allCheck").is(":checked") && $(this).is(":checked")==false){
           //전체 체크박스 상태를 false로 변경
           $("#allCheck").prop("checked",false);
         }
@@ -91,7 +91,7 @@
             $(".checkbox").parents("tr").remove();
 						//전송내역 건수를 0으로 출력
 						$("span").text("0");
-						//전체 삭제 체크박스 체크해제
+						//전체 체크박스 체크해제
 						 $("#allCheck").prop("checked",false);
           },
           //에러가 생겼을 때 함수를 실행
@@ -191,7 +191,7 @@
       <th width="10%"><p>발송상태</p></th>
 			<tr id="dcell">
         	<!-- 데이터 출력 -->
-            <?php include "select_sms.php"; ?>
+            <?php include "select_sms.php" ?>
 
 
 

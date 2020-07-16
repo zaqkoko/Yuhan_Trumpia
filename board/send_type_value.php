@@ -4,16 +4,10 @@ $id='a';
 
 
 //mysql과 연동
-<<<<<<< HEAD
-$con=mysqli_connect("localhost", "root", "04540121", "toy");
-//연동되었는지 확인용
-  // echo var_dump($con);
-=======
-$con=mysqli_connect("localhost", "root", "5022", "exam");
+$con=mysqli_connect("localhost", "root", "04540121", "send");
         //연동되었는지 확인용
           // echo var_dump($con);
-          
->>>>>>> c86c9cd4461059f6557ccca91c96ecd802457e66
+
 //send_type이 전송된 메시지 타입(1)만 가져온다.
 $q="SELECT * FROM sms WHERE send_type='1'&& user_id='$id'";
 //r에 연결된 데이터베이스에 쿼리문 q를 실행한 값은 r로 가져온다.
