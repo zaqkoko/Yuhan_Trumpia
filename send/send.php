@@ -32,7 +32,7 @@
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
                 -->
 
-                <h4 style="padding-left: 180px;">발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
+                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
 
                 <div id="time">
                     <!-- 현재, 예약인지 선택. Select Box -->
@@ -55,7 +55,7 @@
                 <br> <br>
 
                 <!-- 본문 입력 -->
-                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
+                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br> <br>
 
                 <!-- 발송 -->
@@ -98,7 +98,6 @@
             document.getElementById('send_time').value = timezoneDate.toISOString().slice(0, -5);
 
         }
-
 
         // change() = 함수 요소 값이 바뀔 때 발생함. ※ input, textarea, select 요소로 제한됨 (select, check, radio = 마우스로 선택하면 이벤트 발생, 다른 요소는 포커스에서 벗어나면 발생)
         // send_type id값을 가진 요소의 값이 바뀔 때 실행한다.
@@ -172,6 +171,7 @@
                 // $.html = id counter의 요소 안의 내용을 지우고 새로운 내용을 넣음.       ### -> counter의 길이값 + '/150'  // 참고 링크 : https://www.codingfactory.net/10324
                 $('#counter').html(content.length + '/150');
             });
+
             // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
             $('#sms_text').keyup();
         });
@@ -190,6 +190,25 @@
             4. 보이지 않는 요소를 포함 (ex display:none)
          */
 
+        // $(document).ready(function() {}) 와 동일 구문
+        // subButton id값을 가진 요소를 클릭했을때
+        $(function() {
+            $("#subButton").click(function() {
+
+                // 만약 sms_text의 값이 ""라면
+                if ($("#sms_text").val() == "") {
+
+                    // 알림창 출력
+                    alert("메세지를 입력해주세요");
+
+                    // sms_text에 입력상태 만들어주기
+                    $("#sms_text").focus();
+
+                    // 반환 false
+                    return false;
+                }
+            })
+        })
 
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
@@ -199,21 +218,26 @@
 
             // subButton id값을 가진 요소를 클릭 했을 때.
             $("#subButton").click(function() {
-                var Check = 0;
 
                 // receiver id값의 ""이면 경고창 띄우기.
                 if ($("#receiver").val() == "") {
                     alert("번호를 입력해주세요")
 
                     // receiver id값에 포커스 얻기(입력상태 만들어주기)
-                    $("receiver").focus();
+                    $("#receiver").focus();
+
+                    // 반환 false
                     return false;
                 }
             })
         });
 
+<<<<<<< HEAD
 
         /* 보류(Clock)
+=======
+        /* 보류(Clock) 
+>>>>>>> c86c9cd4461059f6557ccca91c96ecd802457e66
 
             // 현재 시간을 1초마다 받아와 출력하는 스크립트
             // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.

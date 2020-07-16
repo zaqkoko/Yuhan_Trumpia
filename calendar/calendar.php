@@ -231,7 +231,7 @@
       </tr>
     </table>
 
-    <!--모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
+    <!--예약 모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
     <div id="sendModal" class="modal">
       <!--모달 컨텐츠-->
       <div class="modal_content">
@@ -239,11 +239,28 @@
         <span id="send_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
         <ul>
-          <li>2020.07.14 09:00, 01033339573, hi. it's modal test1.</li>
-          <li>2020.07.14 10:00, 01033339573, hi. it's modal test2.</li>
-          <li>2020.07.14 11:00, 01033339573, hi. it's modal test3.</li>
-          <li>2020.07.14 12:00, 01033339573, hi. it's modal test4.</li>
-          <li>2020.07.14 13:00, 01033339573, hi. it's modal test5.</li>
+          <li>2020.07.31 09:00, 01033339573, hi. it's modal test1.</li>
+          <li>2020.07.31 10:00, 01033339573, hi. it's modal test2.</li>
+          <li>2020.07.31 11:00, 01033339573, hi. it's modal test3.</li>
+          <li>2020.07.31 12:00, 01033339573, hi. it's modal test4.</li>
+          <li>2020.07.31 13:00, 01033339573, hi. it's modal test5.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!--발송 모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
+    <div id="sentModal" class="modal">
+      <!--모달 컨텐츠-->
+      <div class="modal_content">
+        <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
+        <span id="sent_modalClose" class="close">&times;</span>
+        <!--테스트용 임시 리스트-->
+        <ul>
+          <li>2020.07.1 09:00, 01033339573, hi. it's modal test1.</li>
+          <li>2020.07.1 10:00, 01033339573, hi. it's modal test2.</li>
+          <li>2020.07.1 11:00, 01033339573, hi. it's modal test3.</li>
+          <li>2020.07.1 12:00, 01033339573, hi. it's modal test4.</li>
+          <li>2020.07.1 13:00, 01033339573, hi. it's modal test5.</li>
         </ul>
       </div>
     </div>

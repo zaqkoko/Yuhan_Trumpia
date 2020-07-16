@@ -1,6 +1,6 @@
 <?php
      //toy 에 연결
-     $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("실패");
+     $con=mysqli_connect("localhost", "root", "04540121", "send") or die("실패");
      //입력받은 id, pw, name, mobile을 각각 변수로 지정
      $id = $_POST["id"];
      $pw = $_POST["pw"];
@@ -35,4 +35,3 @@
                echo "<script>location.href='index.php';</script>";
           }
      }
-?>
