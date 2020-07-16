@@ -12,7 +12,8 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("ss");
+		alert('^^d');
+
 
 //type값(1 or 2)에 따라 발송완료와 발송예약을 표시
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
@@ -162,13 +163,8 @@
 
 </head>
 <body>
-	<div class="userI">
-		<button>Logout</button>
-	<p>안녕하세요 user_name님2</p>
-
-		<hr>
-	</div>
-
+	<!-- 메뉴바,유저정보 -->
+  <?php include '../title.php';?>
 
 <!-- 문제 -->
 	<div class="tt">
@@ -197,15 +193,6 @@
 
 			</tr>
 
-		</table>
-		<!-- 메뉴바 -->
-	<div class="menu">
-		<img src="../img/sms2.png">
-		<img src="../img/cal2.png">
-		<img src="../img/hi.png">
-		<img src="../img/ad2.png">
-	</div>
-	<img id="cht" src="../img/cht.png">
 
 
 </body>
