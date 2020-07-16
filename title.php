@@ -75,11 +75,18 @@ if ($_SESSION['name'] == "") {
     <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
 
+<<<<<<< HEAD
         <!-- 절대 경로 -->
         <a href="http://localhost/Yuhan_Trumpia/send/send.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
         <a href="http://localhost/Yuhan_Trumpia/board/board.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
         <a href="http://localhost/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
         <a href="#"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
+=======
+        <a href="/Yuhan_Trumpia/send/send.php"><img class="icon" src="/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
+        <a href="/Yuhan_Trumpia/board/board.php"><img class="icon" src="/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
+        <a href="/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
+        <a href="#"><img class="icon" src="/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
+>>>>>>> 46f093a1732cb27513618776d3a6070b79719673
     </div>
     <a href="#"><img class="chat" id="chat" src="http://localhost/Yuhan_Trumpia/img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
 
