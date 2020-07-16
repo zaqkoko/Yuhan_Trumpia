@@ -46,16 +46,26 @@ if ($_SESSION['name'] == "") {
 
         /* Left Menu Bar */
         #menuBar {
+          width: 100px;
             position: fixed;
             left: -150px;
             top: 25%;
         }
+        #menubar>a{
+          margin: 0;
+          padding: 0;
+          width: 80px;
+          height: 80px;
+        }
+
 
         /* Left Menu Bar */
         .icon {
-            width: 20%;
+            width: 80px;
+            height: 80px;
             padding: 10px;
             display: block;
+            margin: 0;
         }
 
         /* Chat */
