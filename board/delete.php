@@ -1,6 +1,6 @@
 <?php
 //mysql과 연동
-  $con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
+  $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("실패");
   //연동되었는지 확인용
   // echo var_dump($con);
   //post형식으로 val값을 가져와 t에 넣음(val는 가져온 체크박스 value값임)

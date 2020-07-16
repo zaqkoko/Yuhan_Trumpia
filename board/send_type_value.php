@@ -1,6 +1,6 @@
 <?php
 //mysql과 연동
-$con=mysqli_connect("localhost", "root", "5022", "exam");
+$con=mysqli_connect("localhost", "root", "04540121", "toy");
 //연동되었는지 확인용
   // echo var_dump($con);
 //send_type이 전송된 메시지 타입(1)만 가져온다.

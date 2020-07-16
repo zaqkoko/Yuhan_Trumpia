@@ -41,7 +41,7 @@
   <body>
        <div id="menu">
             <a href="../send/send.php"> <img class="icon" src="../img/main_sms.png" alt=""> </a>
-            <a href="../board/board.html"> <img class="icon" src="../img/main_history.png" alt=""> </a>
+            <a href="../board/test.php"> <img class="icon" src="../img/main_history.png" alt=""> </a>
             <a href="../calendar/calendar.php"> <img class="icon" src="../img/main_calendar.png" alt=""> </a>
             <a href="#"> <img class="icon" src="../img/main_address.png" alt=""></a>
        </div>

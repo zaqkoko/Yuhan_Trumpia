@@ -8,7 +8,7 @@
   //작성한 쿼리문을 연결한 서버에서 쿼리실행
   $r=mysqli_query($con,$q);
   //whlre문으로 삭제된 이후의 테이블 데이터를 가져온다
-  
+
 //수정중
   //
   // while($row=mysqli_fetch_array($r)){

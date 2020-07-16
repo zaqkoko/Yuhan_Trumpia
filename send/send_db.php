@@ -1,6 +1,6 @@
 <?php
 // mysqli_connect = php에서 mysql을 연결해주는 함수 (반대는 mysqli_close)
-$conn = mysqli_connect("localhost", "root", "04540121", "send");
+$conn = mysqli_connect("localhost", "root", "04540121", "toy");
 
 
 
@@ -10,9 +10,9 @@ $sql =
     // sms 테이블의 (컬럼명)의 값을 post로 받아온 값을 컬럼명 순서대로 값을 넣음.
     " INSERT INTO sms (send_time, send_type, send_message, receiver)
     VALUES(
-        
+
         '{$_POST['send_time']}',
-        '{$_POST['send_type']},
+        '{$_POST['send_type']}',
         '{$_POST['sms_text']}',
         '{$_POST['receiver']}'
     )
