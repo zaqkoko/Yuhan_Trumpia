@@ -75,7 +75,6 @@ if ($_SESSION['name'] == "") {
     <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
 
-        <!-- 절대 경로 -->
         <a href="/Yuhan_Trumpia/send/send.php"><img class="icon" src="/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
         <a href="/Yuhan_Trumpia/board/board.php"><img class="icon" src="/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
         <a href="/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
