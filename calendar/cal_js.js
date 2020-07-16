@@ -5,6 +5,7 @@
   그러면 매번 셀을 다시 만들 필요가 없지 않을까?
   6주 row는 on off한다
 */
+
 // 전역 변수들~
 // 현재 모든 시간 today에 저장
 let today = new Date();
@@ -80,7 +81,75 @@ function calendarPrint()
     // 안보여준다
     judge.style.display = 'none';
   }
+
+  /* -----------여기부터는 모달------------- */
+
+  // 예약 모달을 껏다 켯다 해줄거임 변수에 저장
+  let d_modal = document.getElementById('sendModal');
+  // 예약 모달의 닫기 버튼을 저장 // id로 가져오면 왜 오류뜨지?
+  let d_btn = document.getElementsByClassName('close')[0];
+  // 예약 타일을 저장. 요부분 어케해야할지 고쳐보자 // calendarClear 함수에서 했던거 응용해보기? // 고침
+  let d_tiles = document.getElementsByClassName('sendtile');
+  // 예약 타일들을 넣어줄 배열
+  let d_tile = new Array();
+
+  // 발송 모달을 껏다 켯다 해줄거임 변수에 저장
+  let t_modal = document.getElementById('sentModal');
+  // 발송 모달의 닫기 버튼을 저장 // id로 가져오면 왜 오류뜨지?
+  let t_btn = document.getElementsByClassName('close')[1];
+  // 발송 타일을 저장. 요부분 어케해야할지 고쳐보자 // calendarClear 함수에서 했던거 응용해보기? // 고침
+  let t_tiles = document.getElementsByClassName('senttile');
+  // 발송 타일들을 넣어줄 배열
+  let t_tile = new Array();
+
+  // 모든 예약 타일들의 길이만큼 반복
+  for(i = 0; i < d_tiles.length; i++)
+  {
+    // d_tiles의 i번째 요소를 d_tile에 넣고
+    d_tile[i] = d_tiles[i];
+    // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너도 넣고
+    d_tile[i].addEventListener("click", d_tileClick);
+  }
+
+  // 모든 발송 타일들의 길이만큼 반복
+  for(i = 0; i < t_tiles.length; i++)
+  {
+    // t_tiles의 i번째 요소를 t_tile에 넣고
+    t_tile[i] = t_tiles[i];
+    // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너도 넣고
+    t_tile[i].addEventListener("click", t_tileClick);
+  }
+
+  // 예약 모달 나오는 함수
+  function d_tileClick()
+  {
+    // 발송 모달의 display 속성을 block으로 변경. 보인다.
+    d_modal.style.display = "block";
+  }
+
+  // 발송 모달 나오는 함수
+  function t_tileClick()
+  {
+    // 발송 모달의 display 속성을 block으로 변경. 보인다.
+    t_modal.style.display = "block";
+  }
+
+  // 예약 모달의 close 버튼을 클릭하면
+  d_btn.onclick = function()
+  {
+   // 예약 모달의 display 속성을 none으로 변경. 안보이게 된다.
+   d_modal.style.display = "none";
+  }
+
+ // 발송 모달의 close 버튼을 클릭하면
+ t_btn.onclick = function()
+ {
+  // 발송 모달의 display 속성을 none으로 변경. 안보이게 된다.
+  t_modal.style.display = "none";
+ }
+  /* ----------- 모달 끝 ------------- */
 }
+// 달력 출력 끝~
 
 // 달력 클리어해주는 함수     !됏당!
 function calendarClear()
@@ -139,46 +208,3 @@ function rightBtn()
   // 이전 달의 달력 출력 함수
   calendarPrint();
 }
-
-// 여기부터는 모달~
-// 예약 모달을 껏다 켯다 해줄거임 변수에 저장
-let modal = document.getElementById('sendModal');
-// 닫기 버튼을 저장
-let btn = document.getElementsByClassName('close');
-// 예약 타일을 저장. 요부분 어케해야할지 고쳐보자 // calendarClear 함수에서 했던거 응용해보기?
-let d_tiles = document.getElementsByClassName('sendtile');
-let d_tile = new Array();
-// 모든 예약 타일들의 길이만큼 반복
-for(i = 0; i < d_tiles.length; i++)
-{
-  // d_tiles의 i번째 요소를 d_tile에 넣고
-  d_tile[i] = d_tiles[i];
-  d_tile[i].addEventListener("click", d_tileClick());
-  d_tileClick()
-  {
-    modal.style.display = "block";
-  }
-}
-
-// d_tile을 클릭하면
-/*d_tile.onclick = function()
-{
- // 모달의 display 속성을 block으로 변경. 보이게 된다.
- modal.style.display = "block";
-}*/
- // close 버튼을 클릭하면
-btn.onclick = function()
-{
- // 모달의 display 속성을 none으로 변경. 안보이게 된다.
- modal.style.display = "none";
-}
- // 모달의 반투명한 부분을 클릭하면
-window.onclick = function(event)
-{
- if (event.target == modal)
- {
-  // 모달의 display 속성을 none으로 변경. 안보이게 된다.
-  modal.style.display = "none";
- }
-}
-// 모달 끝~
