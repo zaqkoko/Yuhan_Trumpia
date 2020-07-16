@@ -1,4 +1,5 @@
 <?php
+//mysql과 연동
 $con=mysqli_connect("localhost", "root", "04540121", "send") or die("실패");
 $id = $_POST["id"];
 //입력한 id값과 같은 데이터 가져동
