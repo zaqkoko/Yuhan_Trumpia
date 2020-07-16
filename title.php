@@ -1,29 +1,26 @@
+<?php
+
+// session = 웹 사이트의 여러 페이지에 걸쳐 사용되는 사용자 정보를 저장하는 방법을 의미한다. 사용자가 브라우저를 닫아 서버와의 연결을 끝내는 시점까지를 세션이라고 함.
+// session은 키값만을 클라이언트측에 남겨두고 서버측에 데이터를 저장함. 브라우저는 필요할 때마다 키값을 이용하여 저장된 데이터를 사용함. 보안에 취약한 쿠키를 보완해주는 역할을 함.
+
+// 세션 초기화. id가 하나 발급됨.
+session_start();
+
+// 만약 세션의 name의 값이 ""라면
+if ($_SESSION['name'] == "") {
+    // $name의 값은 세션 id값으로 지정
+    $name = $_SESSION['id'];
+} else {
+    // $name의 값이 있다면 name은 세션 name값으로 지정
+    $name = $_SESSION['name'];
+}
+?>
 <head>
-    <!-- id & name 세션으로 받아옴 -->
-    <?php
-
-    // session = 웹 사이트의 여러 페이지에 걸쳐 사용되는 사용자 정보를 저장하는 방법을 의미한다. 사용자가 브라우저를 닫아 서버와의 연결을 끝내는 시점까지를 세션이라고 함.
-    // session은 키값만을 클라이언트측에 남겨두고 서버측에 데이터를 저장함. 브라우저는 필요할 때마다 키값을 이용하여 저장된 데이터를 사용함. 보안에 취약한 쿠키를 보완해주는 역할을 함.
-
-    // 세션 초기화. id가 하나 발급됨.
-    session_start();
-
-    // 만약 세션의 name의 값이 ""라면
-    if ($_SESSION['name'] == "") {
-        // $name의 값은 세션 id값으로 지정
-        $name = $_SESSION['id'];
-    } else {
-        // $name의 값이 있다면 name은 세션 name값으로 지정
-        $name = $_SESSION['name'];
-    }
-    ?>
 
     <style media="screen">
         /* 우측 상단 로그인/로그아웃 */
-        #userLine {
-            border: 1px;
-            float: right;
-        }
+        #hi {position:fixed; top:10px; right:100px; color:#7dabd0; font-weight:bold; font-size:15px;}
+        #logout {border: none; background: #7dabd0; color: #fff; font-size: 15px; font-weight: bold; position: fixed; top: 10px; right: 10px;}
 
         /* Left Menu Bar */
         #menuBar {
@@ -49,11 +46,9 @@
 
 <body>
     <!-- 로그아웃 !-->
-    <form action="../index.php" method="POST">
-        <div id="userLine">
-            안녕하세요 <?php echo $name; ?> 님
-            <input type="submit" name="logout" value="Log Out">
-        </div>
+    <p id="hi">안녕하세요 <?php echo $name; ?> 님</p>
+    <form action="../logout.php" method="POST">
+            <input type="submit" name="logout" value="LogOut" id="logout">
     </form>
     <!-- Left Menu Bar, Chat !-->
     <div id="menuBar">
