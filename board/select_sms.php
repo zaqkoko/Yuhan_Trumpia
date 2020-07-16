@@ -1,18 +1,20 @@
-
-
 <?php
+//$id는 테이블에서 저장된 user_id데이터와 비교할 값
+// $id=$_SESSION['id'];
+
+//임의로 a라 정함
+$id='a';
+
 //mysql과 연동
 $con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
 //연동되었는지 확인용
 // echo var_dump($con);
 
 //user_id 값을 기져온다
-$t=
-// $t='a';
 
 
-//sms 테이블에서 사용자 데이터만 조회하는 쿼리문 작성
-$q="SELECT * FROM sms WHERE user_id='".$t."'";
+//sms 테이블에서 사용자(user_id) 데이터만 조회하는 쿼리문 작성
+$q="SELECT * FROM sms WHERE user_id='$id'";
 //연결한 서버에 작성한 쿼리문 실행
 $r=mysqli_query($con,$q);
 //while문을 통해 조회한 데이터를 가져온다.

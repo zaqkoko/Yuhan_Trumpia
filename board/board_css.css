@@ -60,6 +60,9 @@ padding: 5px;
 	transform: translate(-50%, 0);
 
 }*/
+table{
+  width: 1000px;
+}
 table tr, td{
 	border-bottom: 1px solid #7dabd0;
 }
