@@ -20,8 +20,9 @@
 </head>
 
 <body>
-
-    <?php include '../title.php'; ?>
+    <!-- http://localhost/Yuhan_Trumpia/title.php 작동 되지않음 -->
+    <!-- $_SERVER['DOCUMENT_ROOT'] 작동 되지않음 -->
+    <?php include "../title.php" ?>
 
     <!-- 메세지 보내기 !-->
     <form action="send_db.php" method="POST">
@@ -101,10 +102,10 @@
 
         // change() = 함수 요소 값이 바뀔 때 발생함. ※ input, textarea, select 요소로 제한됨 (select, check, radio = 마우스로 선택하면 이벤트 발생, 다른 요소는 포커스에서 벗어나면 발생)
         // send_type id값을 가진 요소의 값이 바뀔 때 실행한다.
-        jQuery('#send_type').change(function() {
+        $('#send_type').change(function() {
 
             // 변수 state에 id send_type의 선택된 value값을 state에 넣는다.
-            var state = jQuery('#send_type option:selected').val();
+            var state = $('#send_type option:selected').val();
 
             // 만약 선택된 값이 1' 이라면
             if (state == "1'") {
@@ -157,7 +158,7 @@
 
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
-        // 왜 썼는지 주석.
+        // $(function() { }); == $(documet).ready(function() {}); 와 동일한 의미이다. 간편하게 $(function() {}); 로 많이 사용한다.
         $(function() {
 
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
@@ -176,7 +177,21 @@
         });
 
 
-        // JQuery.
+        /* DOM = HTML 문서에 대한 인터페이스. (참고 링크 : https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/%EC%86%8C%EA%B0%9C)
+
+         첫 째. 뷰 포트에 무엇을 렌더링할지 결정하기 위해 사용됨
+         둘 째. 페이지의 콘텐츠 및 구조, 그리고 스타일이 자바스크립트에 의해 수정되기 위해 사용된다.
+               (문서의 구조화된 표현을 제공하여 프로그래밍 언어가 DOM구조에 접근할 수 있는 방법을 제공하여 그들이 문서 구조, 스타일, 내용 등을 변경할 수 있게 돕는다.)
+
+         DOM은 원본 HTML 문서 형태와 비슷하지만 차이점이 있다.
+            1. 항상 유효한 HTML 형식
+            2. 자바스크립트에 수정될 수 있는 동적 모델이여야 함
+            3. 가상 요소를 포함하지않음 (ex ::after)
+            4. 보이지 않는 요소를 포함 (ex display:none) 
+         */
+
+
+        // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
         // $(document).ready(function(){ == JS onload와 같은 기능.
         // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
@@ -198,7 +213,7 @@
         });
 
 
-        /* 보류 
+        /* 보류(Clock) 
 
             // 현재 시간을 1초마다 받아와 출력하는 스크립트
             // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.
