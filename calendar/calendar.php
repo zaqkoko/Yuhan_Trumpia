@@ -256,7 +256,10 @@
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="sent_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
+<<<<<<< HEAD
         <h2>발송 완료 리스트</h2>
+=======
+>>>>>>> c86c9cd4461059f6557ccca91c96ecd802457e66
         <ul>
           <li>2020.07.1 09:00, 01033339573, hi. it's modal test1.</li>
           <li>2020.07.1 10:00, 01033339573, hi. it's modal test2.</li>
