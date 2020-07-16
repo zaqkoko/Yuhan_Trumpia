@@ -20,7 +20,6 @@ if ($_SESSION['name'] == "") {
 
     <style media="screen">
         /* 우측 상단 로그인/로그아웃 */
-<<<<<<< HEAD
         * {
             background: #fff;
             margin: 0 auto;
@@ -45,11 +44,6 @@ if ($_SESSION['name'] == "") {
             top: 10px;
             right: 10px;
         }
-=======
-
-        #hi {position:fixed; top:10px; right:100px; color:#7dabd0; font-weight:bold; font-size:15px;}
-        #logout {border: none; background: #7dabd0; color: #fff; font-size: 15px; font-weight: bold; position: fixed; top: 10px; right: 10px;}
->>>>>>> 97af56516f56c014dc7d48495012c49a7aefc84e
 
         /* Left Menu Bar */
         #menuBar {
@@ -75,7 +69,7 @@ if ($_SESSION['name'] == "") {
 
 <body>
     <!-- 로그아웃 !-->
-    <p id="hi">안녕하세요 <?php echo $name; ?> 님</p>
+    <p id="hi"> <?php echo $name; ?>님 안녕하세요</p>
     <form action="../logout.php" method="POST">
         <input type="submit" name="logout" value="LogOut" id="logout">
     </form>
