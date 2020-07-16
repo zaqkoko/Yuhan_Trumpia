@@ -4,14 +4,13 @@
 	<meta charset="utf-8">
 	<title>board</title>
 
-
   <link rel="stylesheet" href="board/board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript">
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("?");
+    alert("&&?");
 
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
     $(".type").each(function(){
@@ -151,12 +150,6 @@
 
 
 
-
-
-
-
-
-
   });
 
 
@@ -166,39 +159,25 @@
 <body>
 	<div class="userI">
 		<button>Logout</button>
-		<!-- user_id가 'a'일 때 -->
-		<p>안녕하세요 <?php $name="a";echo $name;?> 님</p>
-	<!-- <script type="text/javascript">
-		var name="<?php echo $name;?>";
-		console.log("name:"+name);
-		// $.post("board/select_sms.php",{user: name});
-		$.ajax({
-			type:"POST",
-			url:"board/select_sms.php",
-			data: {user:name},
-			success:function(data){
+	<p>안녕하세요 user_name님2</p>
 
-			},
-			error:function(){
-				//실패 팝업
-				alert("실패");
-			}
-		});
-
-	</script> -->
 		<hr>
 	</div>
 
+
+<!-- 문제 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
 		<div id="dvar">
-      	<!-- span안에 현재 전송된 데이터값을 출력함 -->
-			<p>전송내역 <span></span>건</p>
+			<p>전송내역 <span><?php include "send_type_value.php";?></span>건</p>
 			<hr>
 		</div>
 	</div>
+	<!-- 문제 -->
+
+
   <!-- 테이블 세로 1000픽셀에 셀 패딩이 10% -->
-		<table class="table" width="1000px" cellpadding="10%">
+		<table class="table" cellpadding="10%">
       <!-- 전체 체크박스 -->
 			<th width="5%"><input type="checkbox" id="allCheck"></td>
 			<th width="20%"><p>번호</p></th>
@@ -207,8 +186,7 @@
       <th width="10%"><p>발송상태</p></th>
 			<tr id="dcell">
         	<!-- 데이터 출력 -->
-
-							<?php include "board/select_sms.php" ?>
+            <?php include "board/select_sms.php"; ?>
 
 
 

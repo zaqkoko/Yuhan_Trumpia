@@ -1,4 +1,7 @@
 <?php
+//임의로 a라 정함
+$id='a';
+
 //mysql과 연동
   $con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
   //연동되었는지 확인용

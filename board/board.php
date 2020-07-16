@@ -12,7 +12,7 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("sdaddsadsa");
+    alert("dㅇㅇㅁㄴㅁㅇㄴㅇ");
 
 //type값(1 or 2)에 따라 발송완료와 발송예약을 표시
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
@@ -91,6 +91,8 @@
             $(".checkbox").parents("tr").remove();
 						//전송내역 건수를 0으로 출력
 						$("span").text("0");
+						//전체 삭제 체크박스 체크해제
+						 $("#allCheck").prop("checked",false);
           },
           //에러가 생겼을 때 함수를 실행
           error:function(){
@@ -162,21 +164,25 @@
 <body>
 	<div class="userI">
 		<button>Logout</button>
-	<p>안녕하세요 user_name님</p>
+	<p>안녕하세요 user_name님2</p>
 
 		<hr>
 	</div>
 
+
+<!-- 문제 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
 		<div id="dvar">
-      	<!-- span안에 현재 전송된 데이터값을 출력함 -->
-			<p>전송내역 <span>  <?php include "send_type_value.php"; ?></span>건</p>
+			<p>전송내역 <span><?php include "send_type_value.php";?></span>건</p>
 			<hr>
 		</div>
 	</div>
+	<!-- 문제 -->
+
+
   <!-- 테이블 세로 1000픽셀에 셀 패딩이 10% -->
-		<table class="table" width="1000px" cellpadding="10%">
+		<table class="table" cellpadding="10%">
       <!-- 전체 체크박스 -->
 			<th width="5%"><input type="checkbox" id="allCheck"></td>
 			<th width="20%"><p>번호</p></th>
@@ -185,7 +191,7 @@
       <th width="10%"><p>발송상태</p></th>
 			<tr id="dcell">
         	<!-- 데이터 출력 -->
-            <?php include "select_sms.php" ?>
+            <?php include "select_sms.php"; ?>
 
 
 
