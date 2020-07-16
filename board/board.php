@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -161,7 +162,8 @@
 <body>
 	<div class="userI">
 		<button>Logout</button>
-		<p>User Name 님 환영합니다.</p>
+	<p>안녕하세요 user_name님</p>
+
 		<hr>
 	</div>
 

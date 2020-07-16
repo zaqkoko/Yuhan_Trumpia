@@ -11,7 +11,7 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("초코파zzzzzzzzzzzzz");
+    alert("?");
 
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
     $(".type").each(function(){
@@ -62,12 +62,13 @@
       }
     });
 
-
+//주의
 //전체체크 상태에서 하위 체크박스가 하나라도 false일 때 전체 체크박스 상태를 false로 바꿈
     //하위 체크박스를 클릭했을 때
       $(".checkbox").click(function() {
-        //만약 전체체크박스 상태가 true라면
-        if($("#allCheck").is(":checked")){
+        //만약 전체체크박스 상태가 true이고 체크한 체크박스가 false라면
+        if($("#allCheck").is(":checked") && $(this).is("checked")==false){
+					console.log(this);
           //전체 체크박스 상태를 false로 변경
           $("#allCheck").prop("checked",false);
         }
@@ -151,6 +152,11 @@
 
 
 
+
+
+
+
+
   });
 
 
@@ -160,7 +166,26 @@
 <body>
 	<div class="userI">
 		<button>Logout</button>
-		<p>User Name 님 환영합니다.</p>
+		<!-- user_id가 'a'일 때 -->
+		<p>안녕하세요 <?php $name="a";echo $name;?> 님</p>
+	<!-- <script type="text/javascript">
+		var name="<?php echo $name;?>";
+		console.log("name:"+name);
+		// $.post("board/select_sms.php",{user: name});
+		$.ajax({
+			type:"POST",
+			url:"board/select_sms.php",
+			data: {user:name},
+			success:function(data){
+
+			},
+			error:function(){
+				//실패 팝업
+				alert("실패");
+			}
+		});
+
+	</script> -->
 		<hr>
 	</div>
 
@@ -182,7 +207,8 @@
       <th width="10%"><p>발송상태</p></th>
 			<tr id="dcell">
         	<!-- 데이터 출력 -->
-            <?php include "board/select_sms.php" ?>
+
+							<?php include "board/select_sms.php" ?>
 
 
 
