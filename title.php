@@ -26,7 +26,7 @@ if ($_SESSION['name'] == "") {
 
         #hi {
             position: fixed;
-            top: 10px;
+            top: 15px;
             right: 100px;
             color: #7dabd0;
             font-weight: bold;
@@ -48,7 +48,7 @@ if ($_SESSION['name'] == "") {
         #menuBar {
           width: 100px;
             position: fixed;
-            left: 2.5%;
+            left: -150px;
             top: 25%;
         }
         #menubar>a{
@@ -86,12 +86,12 @@ if ($_SESSION['name'] == "") {
     <div id="menuBar">
 
         <!-- 절대 경로 -->
-        <a href="http://localhost/Yuhan_Trumpia/send/send.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
-        <a href="http://localhost/Yuhan_Trumpia/board/board.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
-        <a href="http://localhost/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
-        <a href="#"><img class="icon" src="http://localhost/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
+        <a href="/Yuhan_Trumpia/send/send.php"><img class="icon" src="/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
+        <a href="/Yuhan_Trumpia/board/board.php"><img class="icon" src="/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
+        <a href="/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
+        <a href="#"><img class="icon" src="/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
     </div>
-    <a href="#"><img class="chat" id="chat" src="http://localhost/Yuhan_Trumpia/img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
+    <a href="#"><img class="chat" id="chat" src="/Yuhan_Trumpia/img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
 
     <script>
         // 변수 filename에 문서 URL(String)의 특정 부분(substring)을 확인하는 메소드. url의 길이에서 반대방향으로부터 찾기시작하여 /을 찾고 +1을 해줌. (현재 파일명 및 확장자 확인 용도)
@@ -100,18 +100,18 @@ if ($_SESSION['name'] == "") {
 
         if (filename == "send.php") {
             // 만약 현재 페이지가 send.php면 id sms의 아이콘 이미지를 sms으로 변경 (sms2 -> sms)
-            document.getElementById("sms").src = "http://localhost/Yuhan_Trumpia/img/sms.png";
+            document.getElementById("sms").src = "/Yuhan_Trumpia/img/sms.png";
 
             // 만약 현재 페이지가 board.php면 id board의 아이콘 이미지를 board으로 변경 (hi2 -> hi)
         } else if (filename == "board.php") {
-            document.getElementById("board").src = "http://localhost/Yuhan_Trumpia/img/hi.png";
+            document.getElementById("board").src = "/Yuhan_Trumpia/img/hi.png";
 
             // 이하 동일
         } else if (filename == "calendar.php") {
-            document.getElementById("calendar").src = "http://localhost/Yuhan_Trumpia/img/cal.png";
+            document.getElementById("calendar").src = "/Yuhan_Trumpia/img/cal.png";
 
         } else if (filename == "#.php") {
-            document.getElementById("address").src = "http://localhost/Yuhan_Trumpia/img/ad.png";
+            document.getElementById("address").src = "/Yuhan_Trumpia/img/ad.png";
         }
     </script>
 </body>
