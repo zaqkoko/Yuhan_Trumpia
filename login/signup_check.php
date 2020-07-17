@@ -29,3 +29,4 @@ if ($ret) {
           //index.php로 이동
           echo "<script>location.href='index.php';</script>";
      }
+}
