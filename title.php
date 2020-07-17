@@ -19,11 +19,11 @@ if ($_SESSION['name'] == "") {
 <head>
 
     <style media="screen">
-        /* 우측 상단 로그인/로그아웃 */
+
         * {
             margin: 0 auto;
         }
-
+        /* 우측 상단 로그인/로그아웃 */
         #hi {
             position: fixed;
             top: 10px;
@@ -53,7 +53,7 @@ if ($_SESSION['name'] == "") {
 
         /* Left Menu Bar */
         .icon {
-            width: 20%;
+            width: 70px;
             padding: 10px;
             display: block;
         }
@@ -62,6 +62,9 @@ if ($_SESSION['name'] == "") {
         .chat {
             width: 70px;
             display: block;
+            position: fixed;
+            right: 2.5%;
+            bottom: 2.5%;
         }
     </style>
 </head>
@@ -80,7 +83,7 @@ if ($_SESSION['name'] == "") {
         <a href="/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
         <a href="#"><img class="icon" src="/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
     </div>
-    <a href="#"><img class="chat" id="chat" src="/Yuhan_Trumpia/img/cht.png" title="chat" style="width: 70 px; right: 2.5%; bottom:2.5%; position:  fixed;"></a>
+    <a href="#"><img class="chat" id="chat" src="/Yuhan_Trumpia/img/cht.png" title="chat"></a>
 
     <script>
         // 변수 filename에 문서 URL(String)의 특정 부분(substring)을 확인하는 메소드. url의 길이에서 반대방향으로부터 찾기시작하여 /을 찾고 +1을 해줌. (현재 파일명 및 확장자 확인 용도)
