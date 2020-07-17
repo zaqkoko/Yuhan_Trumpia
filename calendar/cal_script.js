@@ -112,35 +112,20 @@ function calendarPrint()
   // 발송 타일들을 넣어줄 배열
   let t_tile = new Array();
 
-  // 모든 예약 타일들의 길이만큼 반복
+  // 타일들의 길이만큼 반복
   for(i = 0; i < d_tiles.length; i++)
   {
     // d_tiles의 i번째 요소를 d_tile에 넣고
     d_tile[i] = d_tiles[i];
-    // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너도 넣고
-    d_tile[i].addEventListener("click", d_tileClick);
+    // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너 넣음
+    d_tile[i].addEventListener("click", function tileClick(){d_modal.style.display = "block";});
     // t_tiles의 i번째 요소를 t_tile에 넣고
     t_tile[i] = t_tiles[i];
-    // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너도 넣고
-    t_tile[i].addEventListener("click", t_tileClick);
+    // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너 넣음
+    t_tile[i].addEventListener("click", function tileClick(){t_modal.style.display = "block";});
   }
-
-
-
-  // 예약 모달 나오는 함수
-  function d_tileClick()
-  {
-    // 발송 모달의 display 속성을 block으로 변경. 보인다.
-    d_modal.style.display = "block";
-  }
-
-  // 발송 모달 나오는 함수
-  function t_tileClick()
-  {
-    // 발송 모달의 display 속성을 block으로 변경. 보인다.
-    t_modal.style.display = "block";
-  }
-
+  // 이벤트 리스너 넣을때 인수 1,2 넣어서 1이면 d모달 2면 t모달 열어주려 했으나  안됨.
+  
   // 예약 모달의 close 버튼을 클릭하면
   d_btn.onclick = function()
   {
@@ -148,12 +133,13 @@ function calendarPrint()
    d_modal.style.display = "none";
   }
 
- // 발송 모달의 close 버튼을 클릭하면
- t_btn.onclick = function()
- {
-  // 발송 모달의 display 속성을 none으로 변경. 안보이게 된다.
-  t_modal.style.display = "none";
- }
+  // 발송 모달의 close 버튼을 클릭하면
+  t_btn.onclick = function()
+  {
+   // 발송 모달의 display 속성을 none으로 변경. 안보이게 된다.
+   t_modal.style.display = "none";
+  }
+
   /* ----------- 모달 끝 ------------- */
 }
 // 달력 출력 끝~
@@ -215,3 +201,6 @@ function rightBtn()
   // 이전 달의 달력 출력 함수
   calendarPrint();
 }
+
+let send_time = "<? echo $row[0]; ?>";
+console.log(send_time);

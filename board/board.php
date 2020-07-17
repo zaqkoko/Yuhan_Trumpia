@@ -12,33 +12,12 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-		alert('^^dsffd');
+		alert('1');
 
-
-//type값(1 or 2)에 따라 발송완료와 발송예약을 표시
-    //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
-    $(".type").each(function(){
-      //가져오는 값 확인용
-      console.log($(this).text());
-      //현재 반복문으로 가져온 태그의 값(text)가 1이라면
-      if($(this).text()==1){
-        //가져온 태그에 html추가
-        $(this).html(
-          //발송완료태그로 바꿔줌
-          "<p>발송완료</p>"
-        );
-        //1이 아니라면(값이 2라면)
-      }else{
-        //가져온 태그에 html추가
-        $(this).html(
-          //발송 예약 태그로 바꿔준다
-          "<p>발송예약</p>"
-        );
-      }
-    });
-
-
-
+//발송완료, 발송예약 출력
+		sendtype();
+//전송완료 건수 출력
+		sendtypevalue();
 
 
 //전체 체크
@@ -73,82 +52,38 @@
       });
 
 
-
       //삭제 버튼을 클릭했을 때 함수 실행
-      $("#delete").click(function(){
+    $("#delete").click(function(){
 
 //전체 삭제를 원할 때
         //전체체크박스가 true일 때
         if($("#allCheck").is(":checked")){
-        $.ajax({
-          //post방식으로 전송 (get,post 둘다 상관없음)
-          type:"POST",
-          //AllDelete.php를 호출
-          url:"AllDelete.php",
-          //성공했을 때 함수 실행 //주의
-          success:function(data){
-						//data를 통해 리턴 받아 재출력하려 했으나 아직 수정중
-            //체크박스 상위요소 tr태그를 지움
-            $(".checkbox").parents("tr").remove();
-						//전송내역 건수를 0으로 출력
-						$("span").text("0");
-						//전체 체크박스 체크해제
-						 $("#allCheck").prop("checked",false);
-          },
-          //에러가 생겼을 때 함수를 실행 //주의
-          error:function(){
-            //실패 팝업
-            alert("실패");
-          }
-        });
-        //삭제 팝업
-        alert("삭제되었습니다.");
+	      	//removepost함수
+					removepost("delete.php",$(".checkbox"),null);
+					//삭제되었다는 팝업창 생성
+					alert("삭제되었습니다.");
+					//전체 체크박스 체크해제
+					$("#allCheck").prop("checked",false);
 
 
 //선택 삭제를 원할 때
       //전체체크박스가 false상태 일 때
       }else{
-        //현재 체크된 체크박스 확인용 콘솔
-        console.log("현재 체크된 체크박스: "+$("input:checkbox[class='chekbox']:checked").length);
         //하위체크박스 상태를 확인하기위해 함수를 반복실행
         $(".checkbox").each(function() {
-          //만약 현재 반복되고있는 하위 체크박스가 true라면
-//선택된 체크박스 삭제
+          //만약 현재 하위 체크박스가 true라면
           if($(this).is(":checked")){
-            //t를 반복된 현재 체크박스 값으로 초기화
+            //체크된 체크박스 데이터를 삭제하기 위해(체크박스의 value를 통해 send_id값으로 찾아 삭제)
             var t=$(this).val();
-            //체크된 체크박스 값 확인용
-            console.log(t);
-//주의 func
-            //t를 이용해 delete.php를 호출해서 삭제
-            $.ajax({
-              //post방식으로 전송 (get,post 둘다 상관없음)
-              type:"POST",
-              //delete.php를 호출
-              url:"delete.php",
-              //t값을 가진 val이라는 데이터를 전송
-              data: {val:t},
-              //성공했을 때 함수실행
-              success:function(data){
-   							//data를 통해 리턴 받아 재출력하려 했으나 아직 수정중
-                //t값을 가진 체크박스 상위요소 tr 태그를 지움
-                $("input:checkbox[value="+t+"]").parents("tr").remove();
-
-
-              },
-              //에러가 생겼을 때 함수를 실행
-              error:function(){
-                //실패 팝업
-                alert("실패");
-              }
-            });
-            // if끝
+						//removepost함수
+						removepost("delete.php",$(this),t);
           }
-          // each끝
         });
-        //삭제 팝업
-        alert("삭제되었습니다.");
+				//삭제되었다는 팝업창 생성
+				alert("삭제되었습니다.");
       }
+			//전송완료 건수변경
+			sendtypevalue();
     });
 
 
@@ -156,8 +91,111 @@
 
 
 
-  });
+//검색
+		//search버튼을 클릭했을 때 함수실행
+		$("#search").click(function(){
+			//text에 inputsearch값을 초기화
+			var text=$("#inputsearch").val();
+			//로그로 값을 제대로 초기화했는지 확인
+			console.log("검색어:"+text);
+			//ajax실행
+					$.ajax({
+						//post타입으로 전송
+						type:"POST",
+						//search.php호출
+						url:"search.php",
+						//데이터 전송
+						data:{kword:text},
+						//성공했을 때 함수 실행
+						success:function(data) {
+							//테이블에 html 작성
+							$(".dcell").html(data);
+							//send_type 발송완료/발송예약으로 출력
+							sendtype();
+						},
+						//에러가 생겼을 때 함수 실행
+						error:function(){
+							//실패라는 팝업창 생성
+							alert("실패");
+						}
+					});
+				});
+  	});
 
+
+//삭제
+		//호출할 url,삭제할 data(send_id),삭제할 요소를 인자로 받는다
+		function removepost(u,cr,t) {
+			//삭제한 데이터 확인
+			console.log("삭제하려는 데이터 value:"+t);
+				$.ajax({
+						//post타입으로 전송
+						type:"POST",
+						//url호출
+						url: "delete.php",
+						//삭제할 데이터(send_id),전체삭제일 때는 null
+						data:{val:t},
+						//성공했을 때 함수를 실행
+						success:function(data){
+							//테이블 재출력
+							$(".dcell").html(data);
+							//발송완료/예약 출력
+							sendtype();
+
+						},
+						//에러가 생겼을 때 함수 실행
+						error:function(){
+							//실패라는 팝업창 생성
+							alert("실패");
+					}
+			});
+		}
+
+
+//발생완료,발생예약 출력 함수
+		function sendtype(){
+			//type값(1 or 2)에 따라 발송완료와 발송예약을 표시
+					//type클래스를 가진 태그를 반복해서 가져와 함수를 실행
+					$(".type").each(function(){
+						//현재 반복문으로 가져온 태그의 값(text)가 1이라면
+						if($(this).text()==1){
+							//가져온 태그에 html추가
+							$(this).html(
+								//발송완료태그로 바꿔줌
+								"<p>발송완료</p>"
+							);
+							//1이 아니라면(값이 2라면)
+						}else{
+							//가져온 태그에 html추가
+							$(this).html(
+								//발송 예약 태그로 바꿔준다
+								"<p>발송예약</p>"
+							);
+						}
+					});
+		}
+
+//전송건수 재출력 함수
+		function sendtypevalue(){
+			$.ajax({
+				//post타입으로 전송
+				type:"POST",
+				//url호출
+				url:"send_type_value.php",
+				//성공했을 때 함수 실행
+				success:function(data){
+					//span에 데이터 출력
+					$("#dvar").html(
+					"<p>전송내역 <span>"+data+"</span>건</p><hr>"
+					);
+				},
+				//error시 함수실행
+				error:function() {
+					//실패 팝업창
+					alert("실패");
+				}
+			});
+		}
 
   </script>
 
@@ -165,12 +203,13 @@
 <body>
 	<!-- 메뉴바,유저정보 -->
   <?php include '../title.php';?>
-
 <!-- 문제 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
+		<input type="search" id="inputsearch">
+		<button id="search" type="button" name="button">search</button>
 		<div id="dvar">
-			<p>전송내역 <span><?php include "send_type_value.php";?></span>건</p>
+			<p>전송내역 <span></span>건</p>
 			<hr>
 		</div>
 	</div>
@@ -180,18 +219,22 @@
   <!-- 테이블 세로 1000픽셀에 셀 패딩이 10% -->
 		<table class="table" cellpadding="10%">
       <!-- 전체 체크박스 -->
-			<th width="5%"><input type="checkbox" id="allCheck"></td>
+			<th width="5%"><input type="checkbox" id="allCheck"></th>
 			<th width="20%"><p>번호</p></th>
 			<th width="40%"><p>내용</p></th>
 			<th width="20%"><p>시간</p></th>
       <th width="10%"><p>발송상태</p></th>
-			<tr id="dcell">
-        	<!-- 데이터 출력 -->
-            <?php include "select_sms.php" ?>
+			<table class="dcell">
+
+				<!-- 데이터 출력 -->
+				<?php include "select_sms.php" ?>
+		</table>
+	</table>
 
 
 
-			</tr>
+
+
 
 
 
