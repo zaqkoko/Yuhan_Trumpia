@@ -59,11 +59,13 @@
                 <label style="padding-right: 10px;">날짜 설정</label>
 
                 <!-- 날짜, 시간 불러오기 -->
-                <input type="datetime-local" id="send_time" name="send_time" readonly> <br>
+                <input type="datetime-local" id="send_time" name="send_time" readonly> <br><br>
 
                 <!-- 수신 번호 입력 -->
-                <br> <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;">
-                <br> <br>
+                <input type="text" id="receiver" rows="1" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center; width: 300px; height:20px;"> <br>
+                <p id="count" class="count" style="font-size: 13px;">
+                    <span id="num" class="num">0</span>명 수신예정</p>
+                <br>
 
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
@@ -159,10 +161,12 @@
         });
 
 
+
+
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         // $(function() { }); == $(documet).ready(function() {}); 와 동일한 의미이다. 간편하게 $(function() {}); 로 많이 사용한다.
-        $(function() {
+        $(document).ready(function() {
 
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
             // id sms_text에 keyup 이벤트가 발생했을 때에 대한 정보를 'e' 에 담는다.
@@ -192,9 +196,10 @@
 
                 // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려줌.
 
+                let receive = $("#receiver").val();
 
                 // receiver id값의 ""이면 경고창 띄우기.
-                if ($("#receiver").val() == "") {
+                if (receive.replace(/\s| /gi, "").length == 0) {
                     alert("번호를 입력해주세요")
 
                     // receiver id값에 포커스 얻기(입력상태 만들어주기)
@@ -203,7 +208,6 @@
                     // 반환 false
                     return false;
                 }
-
 
                 // 메세지 입력 칸이 비어있으면 입력하라고 알려줌.
 
@@ -244,6 +248,11 @@
                     // 반환 false
                     return false;
                 }
+
+                let rep = $("#receiver").val();
+                let repl = rep.replace(/\,/g, " ");
+                $("#receiver").val() = repl;
+
             })
         });
 
