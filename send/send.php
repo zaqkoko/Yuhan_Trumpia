@@ -69,8 +69,9 @@
                 <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
 
                 <p id=" count" class="count" style="font-size: 13px;">
-                    <span id="num" class="num">0</span>명 수신예정</p> <!-- 아직 구현중 -->
-                <br>
+                    <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
+                    <br> <span id="num" class="num">0</span>명 수신예정
+                </p>
 
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
