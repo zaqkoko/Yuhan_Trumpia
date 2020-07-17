@@ -7,6 +7,16 @@
 */
 
 // 전역 변수들~
+/*
+  let과 var의 차이점은?
+  var는 변수를 재선언하면 나중걸로 덮어쓴다.
+  let은 재할당은 되도 재선언은 안됨.
+  const는 상수. 재할당도 재선언도 안됨.
+  코드량이 많아졌을때 var는 헷갈릴수도 있응게 사용 자제하자?는 암묵의룰?
+  +
+  var는 function scope. 함수 내부에서 사용하면 다른 변수인것처럼 작동하는듯.  블록 내에서 재선언 해서 쓰면 같은 녀석으로 취급됨.
+  let과 const는 block scope. 블록 내부에서 사용하면 다른 변수인것처럼 작동하는듯.(유효범위가 블록 내부라는 뜻. 다른 언어의 변수랑 비슷한듯)
+*/
 // 현재 모든 시간 today에 저장
 let today = new Date();
 // 캡션에 출력할 오늘의 년도 4자리 저장
@@ -109,16 +119,13 @@ function calendarPrint()
     d_tile[i] = d_tiles[i];
     // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너도 넣고
     d_tile[i].addEventListener("click", d_tileClick);
-  }
-
-  // 모든 발송 타일들의 길이만큼 반복
-  for(i = 0; i < t_tiles.length; i++)
-  {
     // t_tiles의 i번째 요소를 t_tile에 넣고
     t_tile[i] = t_tiles[i];
     // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너도 넣고
     t_tile[i].addEventListener("click", t_tileClick);
   }
+
+
 
   // 예약 모달 나오는 함수
   function d_tileClick()
