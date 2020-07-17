@@ -2,9 +2,9 @@
 <html lang="kr" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <!-- 주석sasasasa -->
 
-    <title>TOY_LOGIN</title>
+
+    <title>웨애러나갑자기</title>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
@@ -40,7 +40,7 @@
                        if(data == "1")
                        {
                             //로그인이 되었다는 alert
-                            alert($('#id').val() + "님 로그인되었씁니다");
+                            alert($('#id').val() + "님 로그인되어씀미다하핳");
                             //main페이지로 이동한다
                             location.href='main.php';
                        }
@@ -65,7 +65,7 @@
   </head>
 
   <body>
-       <center> <h1>T0Y</h1> </center>
+       <center> <h1>TOY</h1> </center>
        <form action="login.php" method="post" name="login">
             <table>
                  <tr>

@@ -21,7 +21,27 @@
     <script type="text/javascript">
     //아이디 중복확인이 되었는지 확인하는 변수
     var lok = 1;
-
+         //OnlyN함수 정의
+         function OnlyN(k)
+         {
+              //키를 올리면 실행하는데
+              $(k).keyup(function()
+              {
+                   //숫자 이외의 값을 입력하면 공백으로 치환
+                   $(this).val($(this).val().replace(/[^\d]/,""));
+              });
+         }
+         //NotS()함수 정의
+         function NotS(k)
+         {
+              //키를 올렸을 때
+              $(k).keyup(function()
+              {
+                   //" "를 입력하면 공백으로 치환
+                   $(this).val($(this).val().replace(" ",""));
+              });
+         }
+         //IdCheck()함수 정의
          function IdCheck()
          {
               var id = document.getElementById("id");
@@ -34,31 +54,33 @@
                    type : 'POST'
                    //요청 성공하면
               }).success(function(data)
-         {
-              if(data == "1")
               {
-                   alert("사용 가능한 아이디 입니다");
-                   //회원가입 유무 상태 지정
-                   lok = 2;
-              }
-              else if(data == "2")
-              {
-                   alert("이미 사용중인 아이디 입니다");
-                   id.value = "";
-                   id.focus();
-                   lok = 1;
-              }
-              else {
-                   alert(data);
-              }
-         })
+                   if(data == "1")
+                   {
+                        alert("사용 가능한 아이디 임미다");
+                        //회원가입 유무 상태 지정
+                        lok = 2;
+                   }
+                   else if(data == "2")
+                   {
+                        alert("이미 사용중인 아이디 임미다");
+                        //id칸을 공백으로
+                        id.value = "";
+                        //초점을 id칸으로
+                        id.focus();
+                        lok = 1;
+                   }
+                   else {
+                        alert(data);
+                   }
+              })
          }
          //checkform 함수 정의
          function CheckForm()
          {
               if(lok==1)
               {
-                   alert("아이디 중복 확인을 해주세요");
+                   alert("아이디 중복 확인을 해주세얍");
               }
 
               else if(lok==2)
@@ -74,8 +96,11 @@
                         //false를 반환하여 submit 하지 않는다
                         return false;
                    }
-                   //pw의 내용에...............
-                   else if(!pw.value.match(/([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-].*[a-zA-Z0-9])/))
+                   //pw의 내용에 모든문자/숫자+특수문자 조합의 문자열이 존재하지 않거나 특수문자+모든문자/숫자의 조합이 존재하지 않을때
+                   else if(!pw.value.match
+                        (
+                             /([/\w\d/][!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-][/\w\d/])/
+                        ))
                    {
                         //특수문자를 혼용하라는 alert
                         alert("비밀번호는 특수문자를 혼용하여 입력해주세양.");
@@ -100,16 +125,17 @@
   </head>
 
   <body>
-       <center> <h1>0301</h1> </center>
+       <center> <h1>TOY</h1> </center>
        <form action="signup_check.php" method="post" name="SignUp">
             <table>
                  <tr>
                       <td align="right">ID</td>
                       <td valign="top">
-                           <!-- 키를 누르거나 올렸을 때 ' '를 ''로 치환-->
-                           <input type="text" name="id" onKeydown="this.value=this.value.replace(' ','');" onKeyup="this.value=this.value.replace(' ','');" maxlength="10" style="height:25px; width:300px;" id="id">
+                           <!-- 키를 누르면 NotS()함수 실행 -->
+                           <input type="text" name="id" onKeydown="NotS(this);" maxlength="10" style="height:25px; width:300px;" id="id">
                       </td>
                       <td valign="bottom">
+                           <!-- 누르면 IdCheck함수 실행 -->
                            <input type="button" id="idcheck" name="idcheck" value="중복확인" style="height:27px;" onclick="IdCheck();">
                       </td>
 
@@ -117,8 +143,8 @@
                  <tr>
                       <td align="right">PW</td>
                       <td  valign="top">
-                           <!-- 키를 누르거나 올렸을 때 ' '를 ''로 치환 -->
-                           <input type="password" onKeydown="this.value=this.value.replace(' ','');" onKeyup="this.value=this.value.replace(' ','');" name="pw" maxlength="20" style="height:25px; width:300px;" id="pw">
+                           <!-- 키를 누르면 NotS()함수 실행 -->
+                           <input type="password" onKeydown="NotS(this);" name="pw" maxlength="20" style="height:25px; width:300px;" id="pw">
                       </td>
                       <td rowspan="3" valign="bottom">
                            <!-- 클릭했을때 CheckForm실행 -->
@@ -134,8 +160,8 @@
                  <tr>
                       <td align="right" valign="bottom">NUMBER</td>
                       <td  valign="top">
-                           <!-- 0-9가 아니면 ''로 대체, ' '도 ''로 치환 -->
-                           <input type="text" onKeydown="this.value=this.value.replace([^0-9],''),(' ','');" onKeyup="this.value=this.value.replace([^0-9],''),(' ','');"  name="mobile" style="height:25px; width:300px;" id="mibile" maxlength="15">
+                           <!-- 누르면 OnlyN()함수와 NotS()함수 실행 -->
+                           <input type="text" onKeydown="OnlyN(this), NotS(this);" name="mobile" style="height:25px; width:300px;" id="mibile" maxlength="15">
                       </td>
                  </tr>
             </table>
