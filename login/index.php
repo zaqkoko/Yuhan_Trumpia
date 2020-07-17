@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
 
-    <title>TOY_LOGIN</title>
+    <title>웨애러나갑자기</title>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 
