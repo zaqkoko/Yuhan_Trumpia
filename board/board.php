@@ -12,7 +12,8 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-    alert("dㅇㅇㅁㄴㅁㅇㄴㅇ");
+		alert('^^dsffd');
+
 
 //type값(1 or 2)에 따라 발송완료와 발송예약을 표시
     //type클래스를 가진 태그를 반복해서 가져와 함수를 실행
@@ -60,12 +61,12 @@
       }
     });
 
-//이게 최선인가? 더 보완하셈
+//주의
 //전체체크 상태에서 하위 체크박스가 하나라도 false일 때 전체 체크박스 상태를 false로 바꿈
     //하위 체크박스를 클릭했을 때
       $(".checkbox").click(function() {
-        //만약 전체체크박스 상태가 true라면
-        if($("#allCheck").is(":checked")){
+        //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+        if($("#allCheck").is(":checked") && $(this).is(":checked")==false){
           //전체 체크박스 상태를 false로 변경
           $("#allCheck").prop("checked",false);
         }
@@ -84,17 +85,17 @@
           type:"POST",
           //AllDelete.php를 호출
           url:"AllDelete.php",
-          //성공했을 때 함수 실행
+          //성공했을 때 함수 실행 //주의
           success:function(data){
 						//data를 통해 리턴 받아 재출력하려 했으나 아직 수정중
             //체크박스 상위요소 tr태그를 지움
             $(".checkbox").parents("tr").remove();
 						//전송내역 건수를 0으로 출력
 						$("span").text("0");
-						//전체 삭제 체크박스 체크해제
+						//전체 체크박스 체크해제
 						 $("#allCheck").prop("checked",false);
           },
-          //에러가 생겼을 때 함수를 실행
+          //에러가 생겼을 때 함수를 실행 //주의
           error:function(){
             //실패 팝업
             alert("실패");
@@ -118,7 +119,7 @@
             var t=$(this).val();
             //체크된 체크박스 값 확인용
             console.log(t);
-
+//주의 func
             //t를 이용해 delete.php를 호출해서 삭제
             $.ajax({
               //post방식으로 전송 (get,post 둘다 상관없음)
@@ -162,13 +163,8 @@
 
 </head>
 <body>
-	<div class="userI">
-		<button>Logout</button>
-	<p>안녕하세요 user_name님2</p>
-
-		<hr>
-	</div>
-
+	<!-- 메뉴바,유저정보 -->
+  <?php include '../title.php';?>
 
 <!-- 문제 -->
 	<div class="tt">
@@ -191,21 +187,12 @@
       <th width="10%"><p>발송상태</p></th>
 			<tr id="dcell">
         	<!-- 데이터 출력 -->
-            <?php include "select_sms.php"; ?>
+            <?php include "select_sms.php" ?>
 
 
 
 			</tr>
 
-		</table>
-		<!-- 메뉴바 -->
-	<div class="menu">
-		<img src="../img/sms2.png">
-		<img src="../img/cal2.png">
-		<img src="../img/hi.png">
-		<img src="../img/ad2.png">
-	</div>
-	<img id="cht" src="../img/cht.png">
 
 
 </body>

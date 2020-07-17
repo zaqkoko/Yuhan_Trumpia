@@ -4,7 +4,7 @@ $id='a';
 
 
 //mysql과 연동
-  $con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
+  $con=mysqli_connect("localhost", "root","5022", "exam") or die("실패");
   //연동되었는지 확인용
   // echo var_dump($con);
   //sms테이블의 유저 데이터를 모두 삭제하는 쿼리문 작성

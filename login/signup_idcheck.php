@@ -1,5 +1,6 @@
 <?php
-$con=mysqli_connect("localhost", "root", "04540121", "toy") or die("실패");
+//mysql과 연동
+$con = mysqli_connect("localhost", "root", "04540121", "toy") or die("실패");
 $id = $_POST["id"];
 //입력한 id값과 같은 데이터 가져동
 $sql = "select * from user where id='$id'";
@@ -9,12 +10,8 @@ $ret = mysqli_query($con, $sql);
 $row = mysqli_fetch_array($ret);
 
 
-if($row >= 1)
-{
+if ($row >= 1) {
      echo "2";
-}
-else
-{
+} else {
      echo "1";
 }
- ?>
