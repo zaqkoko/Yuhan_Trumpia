@@ -11,7 +11,7 @@
         /* 날짜 영역 */
         #div {
             top: 10%;
-            left: 30%;
+            left: 40%;
             position: fixed;
         }
 
@@ -62,8 +62,8 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br><br>
 
                 <!-- 수신 번호 입력 -->
-                <input type="text" id="receiver" rows="1" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center; width: 300px; height:20px;"> <br>
-                <p id="count" class="count" style="font-size: 13px;">
+                <textarea id="receiver" rows="1" name="receiver" placeholder="수신 번호를 입력하세요'> <br>
+                <p id=" count" class="count" style="font-size: 13px;">
                     <span id="num" class="num">0</span>명 수신예정</p>
                 <br>
 
@@ -75,11 +75,7 @@
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>
         </div>
-        <div id="moreReceiver">
-            <center>
-                <p>g2</p>
-            </center>
-        </div>
+
     </form>
 
     <!-- Java Script -->
