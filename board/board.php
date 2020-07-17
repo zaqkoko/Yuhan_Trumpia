@@ -12,7 +12,7 @@
   //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-		alert('1');
+		alert('3');
 
 //발송완료, 발송예약 출력
 		sendtype();
@@ -29,6 +29,7 @@
         $(".checkbox").each(function(){
           //현재 하위체크박스 상태를 true로 변경
           $(this).prop("checked",true);
+																		
         });
         //전체 체크박스가 false 상태라면
       }else{
@@ -40,7 +41,11 @@
       }
     });
 
+
+
 //주의
+//삭제 실행 후 하위체크박스 체크를 했을 때 전체체크박스가 안풀리는 오류가 있음
+
 //전체체크 상태에서 하위 체크박스가 하나라도 false일 때 전체 체크박스 상태를 false로 바꿈
     //하위 체크박스를 클릭했을 때
       $(".checkbox").click(function() {
