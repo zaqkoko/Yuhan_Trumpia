@@ -62,7 +62,7 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br><br>
 
                 <!-- 수신 번호 입력 -->
-                <textarea id="receiver" rows="1" name="receiver" placeholder="수신 번호를 입력하세요'> <br>
+                <input type="tel" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" multiple> </input><br>
                 <p id=" count" class="count" style="font-size: 13px;">
                     <span id="num" class="num">0</span>명 수신예정</p>
                 <br>
