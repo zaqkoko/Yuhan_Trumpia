@@ -41,14 +41,14 @@
   <body>
        <div id="menu">
             <a href="../send/send.php"> <img class="icon" src="../img/main_sms.png" alt=""> </a>
-            <a href="../board/test.php"> <img class="icon" src="../img/main_history.png" alt=""> </a>
+            <a href="../board/board.php"> <img class="icon" src="../img/main_history.png" alt=""> </a>
             <a href="../calendar/calendar.php"> <img class="icon" src="../img/main_calendar.png" alt=""> </a>
             <a href="#"> <img class="icon" src="../img/main_address.png" alt=""></a>
        </div>
        <a href="#"> <img id="chat" src="../img/cht.png" alt=""> </a>
        <!-- php변수 $name을 밑의 형식으로 불러옴 -->
-       <p id="hi">안녕 <?php echo $name; ?>님</p>
-       <form action="logout.php" method="post">
+       <p id="hi">안냥 <?php echo $name; ?>님</p>
+       <form action="../logout.php" method="post">
             <input type="submit" name="logout" value="LOGOUT">
        </form>
 

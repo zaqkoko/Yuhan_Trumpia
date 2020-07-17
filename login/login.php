@@ -2,7 +2,7 @@
      //세션이 시작된다
      session_start();
      //toy 데이터 베이스에 연결
-     $con=mysqli_connect("localhost", "root", "04540121", "send") or die("sql접속ㄴㄴ");
+     $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("sql접속ㄴㄴ");
      //index.php에서 입력받은 id와 pw를 변수로 저장
      $id = $_POST["id"];
      $pw = $_POST["pw"];

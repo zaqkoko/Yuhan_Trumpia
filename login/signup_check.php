@@ -1,13 +1,13 @@
 <?php
      //toy 에 연결
-     $con=mysqli_connect("localhost", "root", "04540121", "send") or die("실패");
+     $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("실패");
      //입력받은 id, pw, name, mobile을 각각 변수로 지정
      $id = $_POST["id"];
      $pw = $_POST["pw"];
      $name = $_POST["name"];
      $mobile = $_POST["mobile"];
 
-     
+
      //$pw를 암호화하여 $s_pw에 지정
      //ohp에서 지원하는 password_hash 함수에서는 변환시킬때 password_derault와 password_bcrypt 두가지의 알고리즘 형태가 있는데 default는 시간이 지나면 길이와 내용이 변한다. bcrypt는 60자로 결과가 고정된다.
      $s_pw = password_hash($pw, PASSWORD_DEFAULT);
