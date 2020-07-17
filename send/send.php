@@ -30,6 +30,10 @@
             left: 60%;
             position: fixed;
         }
+
+        textarea.autosize {
+            min-height: 20px;
+        }
     </style>
 </head>
 
@@ -59,12 +63,13 @@
                 <label style="padding-right: 10px;">날짜 설정</label>
 
                 <!-- 날짜, 시간 불러오기 -->
-                <input type="datetime-local" id="send_time" name="send_time" readonly> <br><br>
+                <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
-                <!-- 수신 번호 입력 -->
-                <input type="tel" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" multiple> </input><br>
+                <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
+                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
+
                 <p id=" count" class="count" style="font-size: 13px;">
-                    <span id="num" class="num">0</span>명 수신예정</p>
+                    <span id="num" class="num">0</span>명 수신예정</p> <!-- 아직 구현중 -->
                 <br>
 
                 <!-- 본문 입력 -->
@@ -80,6 +85,17 @@
 
     <!-- Java Script -->
     <script>
+        // 키보드 이벤트가 발생할 때마다 
+
+        // receiver 의 onkeydown="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
+        function resize(obj) {
+
+            // obj의 스타일 중 높이의 값은 1로 한다. // 없으면 계속 늘어난다.
+            obj.style.height = "1px";
+            // obj의 스타일 중 높이의 값은 12 + 스크롤 높이의 px 값만큼으로 한다.
+            obj.style.height = (12 + obj.scrollHeight) + "px";
+        }
+
         // MySql db - DateTime에 넣기 위해 필요한 함수
         function send_time() { // (참고 : https://c10106.tistory.com/4728 )
 
@@ -155,9 +171,6 @@
 
             }
         });
-
-
-
 
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
@@ -244,10 +257,6 @@
                     // 반환 false
                     return false;
                 }
-
-                let rep = $("#receiver").val();
-                let repl = rep.replace(/\,/g, " ");
-                $("#receiver").val() = repl;
 
             })
         });
