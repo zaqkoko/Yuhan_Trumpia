@@ -73,7 +73,13 @@ input[type="checkbox"]{
   display:block;
   text-align: center;
   transform: scale(1.5);
-
+}
+input[type="search"]{
+  float: left;
+  margin-left: 10px;
+}
+button[type="button"]{
+  float: left;
 }
 th{
 	background: #7dabd0;
