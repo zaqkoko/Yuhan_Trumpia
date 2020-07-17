@@ -18,12 +18,13 @@
       */
     }
   }
+
   // 레코드가 하나도 없으면.
   else
   {
     echo "테이블에 데이터가 없습니다.";
   }
   // $row = mysqli_fetch_array($result)
-  // if문 주석처리하고 그냥 $row에 넣은 배열을  js에서 사용할 수 있는 방법이 없을까... 
+  // if문 주석처리하고 그냥 $row에 넣은 배열을  js에서 사용할 수 있는 방법이 없을까...
   mysqli_close($conn);
 ?>

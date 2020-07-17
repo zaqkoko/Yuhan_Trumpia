@@ -125,7 +125,7 @@ function calendarPrint()
     t_tile[i].addEventListener("click", function tileClick(){t_modal.style.display = "block";});
   }
   // 이벤트 리스너 넣을때 인수 1,2 넣어서 1이면 d모달 2면 t모달 열어주려 했으나  안됨.
-  
+
   // 예약 모달의 close 버튼을 클릭하면
   d_btn.onclick = function()
   {
@@ -202,5 +202,5 @@ function rightBtn()
   calendarPrint();
 }
 
-let send_time = "<? echo $row[0]; ?>";
-console.log(send_time);
+//let send_time = <? echo $row[0]; ?>;
+//console.log(send_time);
