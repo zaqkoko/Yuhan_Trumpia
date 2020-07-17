@@ -83,6 +83,7 @@
         console.log(c.toISOString().slice(0, -5)); /* 출력 값 : 당시 2020-07-15T15:37:13 (ISO는 UTC를 0으로 받아오기 때문에 -9시간하면 현재 시간이 나온다.) */
 
 
+
         // MySql db - DateTime에 넣기 위해 필요한 함수
         function send_time() {
 
@@ -92,17 +93,16 @@
             // new Date() - 시간을 받아오는 함수로 인자값이 없으면 현재 시간을 받아온다.
             // getTimezoneOffset() - UTC(협정세계시)와 시스템이 속해있는 지역의 시간의 차이를 분 단위로 리턴함. (서울은 UTC +9시간이므로 -540으로 자동 리턴함)
             // 밀리초값으로 만들어야 하기 때문에 * 60000 을 해줌으로 시간 차이를 밀리값으로 저장함. (이유 : Date.now()가 밀리초값으로 반환되기 때문)
-            var timezone = new Date().getTimezoneOffset() * 60000; // 60000 = 60초 = 1분
+            let timezone = new Date().getTimezoneOffset() * 60000; // 60000 = 60초 = 1분
 
             // Date.now() - UTC 기준으로 1970년 1월 1일 0시 0분 0초부터 현재까지 경과된 밀리초를 반환
             // 경과된 밀리초에 - timezone을 하고 그 값을 new Date에 인자값으로 넣은 후 timezoneDate에 저장. (-와 -가 만나서 +로 시간 차이만큼 빼지않고 시간을 올림)
-            var timezoneDate = new Date(Date.now() - timezone);
+            let timezoneDate = new Date(Date.now() - timezone);
 
             // 'send_time'id값을 가진 요소를 찾아 value값에 접근하여 값을 넣어줌.
             // toISOString() - ISO형식으로 반환(ISO 8601), 반환값은 YYYY:MM-DDTHH:mm:ss.sssz 임. slice로 뒷 5글자 제거(밀리초 + . 포함)
             // 윗 작업으로 나온 밀리초를 ISOString으로 선언하면 -9시간을 빼고 출력됨.
             document.getElementById('send_time').value = timezoneDate.toISOString().slice(0, -5);
-
         }
 
         // change() = 함수 요소 값이 바뀔 때 발생함. ※ input, textarea, select 요소로 제한됨 (select, check, radio = 마우스로 선택하면 이벤트 발생, 다른 요소는 포커스에서 벗어나면 발생)
@@ -138,8 +138,8 @@
                 clearInterval(timer);
 
                 // 설명 83 ~ 95 참고
-                var timezone = new Date().getTimezoneOffset() * 60000;
-                var timezoneDate = new Date(Date.now() - timezone);
+                let timezone = new Date().getTimezoneOffset() * 60000;
+                let timezoneDate = new Date(Date.now() - timezone);
 
                 // 예약으로 보낼 때는 초까지 선택을 하지 않기 때문에 16 까지 출력함.
                 document.getElementById('send_time').value = timezoneDate.toISOString().slice(0, 16);
@@ -196,10 +196,33 @@
             4. 보이지 않는 요소를 포함 (ex display:none)
          */
 
-        // $(document).ready(function() {}) 와 동일 구문
-        // subButton id값을 가진 요소를 클릭했을때
-        $(function() {
+
+        // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
+        // $(document).ready(function(){ == JS onload와 같은 기능.    $(function() {}) 와 동일구문이다.
+        // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
+        $(document).ready(function() {
+
+            // subButton id값을 가진 요소를 클릭 했을 때.
             $("#subButton").click(function() {
+
+
+                // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려줌.
+
+
+                // receiver id값의 ""이면 경고창 띄우기.
+                if ($("#receiver").val() == "") {
+                    alert("번호를 입력해주세요")
+
+                    // receiver id값에 포커스 얻기(입력상태 만들어주기)
+                    $("#receiver").focus();
+
+                    // 반환 false
+                    return false;
+                }
+
+
+                // 메세지 입력 칸이 비어있으면 입력하라고 알려줌.
+
 
                 // 만약 sms_text의 값이 ""라면
                 if ($("#sms_text").val() == "") {
@@ -213,31 +236,28 @@
                     // 반환 false
                     return false;
                 }
-            })
-        })
 
-        // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
-        // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려주는 함수.
-        // $(document).ready(function(){ == JS onload와 같은 기능.
-        // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
-        $(document).ready(function() {
 
-            // subButton id값을 가진 요소를 클릭 했을 때.
-            $("#subButton").click(function() {
+                // 발송 시간이 현재나 과거면 예약메세지 제한됨.
 
-                // receiver id값의 ""이면 경고창 띄우기.
-                if ($("#receiver").val() == "") {
-                    alert("번호를 입력해주세요")
+                // OTC와 한국시간의 차이를 구하고
+                let nowtimezone = new Date().getTimezoneOffset() * 60000;
+                let nowtimezoneDate = new Date(Date.now() - nowtimezone);
 
-                    // receiver id값에 포커스 얻기(입력상태 만들어주기)
-                    $("#receiver").focus();
+                // send_time id값에 입력된 시간이 현재 시간과 같거나 작으면
+                if ($("#send_time").val() <= nowtimezoneDate.toISOString().slice(0, 16)) {
+
+                    // 알림창 출력
+                    alert("현재나 과거 시간으로 예약메세지를 보낼 수 없습니다!");
+
+                    // send_time에 입력상태로 만들어줌
+                    $("#send_time").focus();
 
                     // 반환 false
                     return false;
                 }
             })
         });
-
 
         /* 보류(Clock)
 
