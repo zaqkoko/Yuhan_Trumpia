@@ -3,151 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title>Calendar</title>
-    <!--CSS-->
-    <style media="screen">
-      #caption
-      {
-        /* 절대 위치. 상하좌우 %를 사용해서 해당 위치에 배치시킨다. */
-        position: fixed;
-        top : 5.5%;
-        left : 42.5%;
-        font-size: 200%;
-      }
-      #YearMonthText
-      {
-        /* 해당 텍스트 굵게 처리. */
-        font-weight: bold;
-      }
-      #calendarTable
-      {
-        position: fixed;
-        top: 12.5%;
-        left: 25%;
-        width: 50%;
-      }
-      table, th, tr ,td
-      {
-        border: 1px
-        solid skyblue;
-        /* 테이블과 셀 사이의 간격을 없앤다. */
-        border-collapse: collapse;
-      }
-      th
-      {
-        width: 70px;
-        height: 30px;
-        /* 테이블 헤더 셀은 코랄계열 색상. */
-        background-color: #ebbcbc;
-      }
-      td
-      {
-        height: 100px;
-        /* 텍스트 좌측 정렬 */
-        text-align: left;
-        /* 수직 정렬 상단 */
-        vertical-align: top;
-      }
-      /* 셀에 마우스를 올렸을때, 하늘색으로 채움. */
-      td:hover
-      {
-        background-color: skyblue;
-      }
-      #sixthWeek
-      {
-        /*6주의 row는 껏다켯다 하기*/
-        display: none;
-      }
-      .sendtile
-      {
-        background-color: #BCF5A9;
-        color: gray;
-        /*visibility: hidden;*/
-      }
-      .senttile
-      {
-        background-color: #F5D0A9;
-        color: gray;
-        /*visibility: hidden;*/
-      }
-      /* 예약 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. 커서를 포인터로.*/
-      .sendtile:hover
-      {
-        color : black;
-        font-size: 125.5%;
-        cursor: pointer;
-      }
-      /* 발송 타일에 마우스 호버 했을때 글씨를 검정색으로. 폰트를 크게. 커서를 포인터로.*/
-      .senttile:hover
-      {
-        color : black;
-        font-size: 125.5%;
-        cursor: pointer;
-      }
-      /* tr,td의 앞에서부터 1번째 요소들은 */
-      tr td:nth-child(1)
-      {
-        /* 빨간색으로 */
-			  color: red;
-		  }
-      /* tr,td의 앞에서부터 7번째 요소들은 */
-      tr td:nth-child(7)
-      {
-        /* 파랑색으로 */
-			  color: blue;
-		  }
-      /* 타일 누르면 나오는 모달 */
-      .modal
-      {
-        /* 모달의 디폴트는 안보이게. 영역도 차지하지 않음. 누르면 보이게. */
-        display: none;
-        /* 모달은 기존 view의 위에 배치한다. */
-        z-index: 1;
-        position: fixed;
-        /* 브라우저 전체를 모달로 덮고 */
-        width: 100%;
-        height: 100%;
-        top : 0;
-        left : 0;
-        /* 내용이 많으면 스크롤은 자동으로 추가 */
-        overflow: auto;
-        /* 배경은 검정에 투명도 0.4 */
-        background-color: rgb(0,0,0);
-        background-color: rgba(0,0,0,0.4);
-      }
-      /* 모달 내부 content */
-      .modal_content
-      {
-        background-color: white;
-        /* 중앙으로 배치 */
-        position: fixed;
-        width: 30%;
-        height: 50%;
-        top: 25%;
-        left: 40%;
-      }
-      /* 모달 닫기 버튼?은 아니고 그냥 x자 */
-      .close
-      {
-        color: gray;
-        /* 맨 우측으로 */
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      /* 마우스가 위로 갔을때, 선택 되었을 때. */
-      .close:hover,
-      .close:focus
-      {
-        color: black;
-        /* text-decoration: none; */
-        /* 커서를 포인터로 바꿔서 버튼을 클릭하는 것 처럼. */
-        cursor: pointer;
-      }
-    </style>
+    <!-- CSS -->
+    <link rel= "stylesheet" type="text/css" href="cal_style.css">
   </head>
   <body>
     <!--메뉴바, 채팅버튼 등 만들어둔 php파일 include-->
-    <?php include '../title.php';?>
+    <?php
+    include '../title.php';
+    include 'cal_db.php';
+    ?>
     <!--HTML-->
     <!--캡션 //달력의 위-->
     <div id="caption">
@@ -268,6 +132,6 @@
     </div>
 
     <!-- JavaScript -->
-    <script type="text/javascript" src="cal_js.js"></script>
+    <script type="text/javascript" src="cal_script.js"></script>
   </body>
 </html>
