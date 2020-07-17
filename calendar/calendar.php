@@ -7,7 +7,7 @@
     <link rel= "stylesheet" type="text/css" href="cal_style.css">
   </head>
   <body>
-    <!--메뉴바, 채팅버튼 등 만들어둔 php파일 include-->
+    <!--메뉴바, 채팅버튼 등 만들어둔 php파일 include, db연동하는 php파일도 include.-->
     <?php
     include '../title.php';
     include 'cal_db.php';
@@ -102,7 +102,7 @@
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="send_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
-        <h2>발송 예약 리스트</h2>
+        <h2>발송 예약 리스트(가짜)</h2>
         <ul>
           <li>2020.07.31 09:00, 01033339573, hi. it's modal test1.</li>
           <li>2020.07.31 10:00, 01033339573, hi. it's modal test2.</li>
@@ -120,7 +120,7 @@
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="sent_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
-        <h2>발송 완료 리스트</h2>
+        <h2>발송 완료 리스트(가짜)</h2>
         <ul>
           <li>2020.07.1 09:00, 01033339573, hi. it's modal test1.</li>
           <li>2020.07.1 10:00, 01033339573, hi. it's modal test2.</li>

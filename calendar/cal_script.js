@@ -201,6 +201,6 @@ function rightBtn()
   // 이전 달의 달력 출력 함수
   calendarPrint();
 }
-
+//왜안돼 
 //let send_time = <? echo $row[0]; ?>;
 //console.log(send_time);
