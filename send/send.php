@@ -9,8 +9,10 @@
 
     <style media="screen">
         /* 날짜 영역 */
-        #dilv {
-            padding-top: 50px;
+        #div {
+            top: 10%;
+            left: 30%;
+            position: fixed;
         }
 
         #time {
@@ -22,6 +24,12 @@
             align-items: center;
             padding: 10 px;
         }
+
+        #moreReceiver {
+            top: 10%;
+            left: 60%;
+            position: fixed;
+        }
     </style>
 </head>
 
@@ -32,32 +40,29 @@
 
     <!-- 메세지 보내기 !-->
     <form action="send_db.php" method="POST">
-        <div id="dilv">
+        <div id="div">
             <center>
                 <!-- 보류
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
                 -->
 
-                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4>
+                <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4> <br>
 
-                <div id="time">
-                    <!-- 현재, 예약인지 선택. Select Box -->
-                    <label for="send_type" style="padding-right: 5px;">발송 : </label>
-                    <select name="send_type" id="send_type">
-                        <option value="" selected="selected">선택</option>
-                        <option value="1">현재</option>
-                        <option value="2">예약</option>
-                    </select>
+                <!-- 현재, 예약인지 선택. Select Box -->
+                <label for="send_type">발송 : </label>
+                <select name="send_type" id="send_type">
+                    <option value="" selected="selected">선택</option>
+                    <option value="1">현재</option>
+                    <option value="2">예약</option>
+                </select>
 
-                    <label style="padding-right: 10px;">날짜 설정</label>
+                <label style="padding-right: 10px;">날짜 설정</label>
 
-                    <!-- 날짜, 시간 불러오기 -->
-                    <input type="datetime-local" id="send_time" name="send_time" readonly>
-
-                </div>
+                <!-- 날짜, 시간 불러오기 -->
+                <input type="datetime-local" id="send_time" name="send_time" readonly> <br>
 
                 <!-- 수신 번호 입력 -->
-                <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;">
+                <br> <input type="text" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" style="text-align: center;">
                 <br> <br>
 
                 <!-- 본문 입력 -->
@@ -68,24 +73,17 @@
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>
         </div>
+        <div id="moreReceiver">
+            <center>
+                <p>g2</p>
+            </center>
+        </div>
     </form>
 
     <!-- Java Script -->
     <script>
-        // 시간 테스트용 (참고 : https://c10106.tistory.com/4728 )
-        var a = new Date(Date.now());
-        var b = new Date().getTimezoneOffset() * 60000;
-        var c = new Date(Date.now() - b);
-        console.log(a); /* 출력 값 : 당시 1594794969278 */
-        console.log(b); /* 출력 값 : 당시 -32400000 */
-        console.log(c); /* 출력 값 : 당시 Thu Jul 16 2020 00:37:13 GMT+0900 (대한민국 표준시) */
-        console.log(a.toISOString().slice(0, -5));
-        console.log(c.toISOString().slice(0, -5)); /* 출력 값 : 당시 2020-07-15T15:37:13 (ISO는 UTC를 0으로 받아오기 때문에 -9시간하면 현재 시간이 나온다.) */
-
-
-
         // MySql db - DateTime에 넣기 위해 필요한 함수
-        function send_time() {
+        function send_time() { // (참고 : https://c10106.tistory.com/4728 )
 
             // toISOString는 UTC +0 으로 받아오기 때문에 현재 시간에 계속 -9시간인 시간이 출력되어 +9 시간을 해주어야 했음.
             // toLocaleString(), toString() 등은 시간이 정상적으로 출력이 되지않았음.
@@ -110,7 +108,7 @@
         $('#send_type').change(function() {
 
             // 변수 state에 id send_type의 선택된 value값을 state에 넣는다.
-            var state = $('#send_type option:selected').val();
+            let state = $('#send_type option:selected').val();
 
             // 만약 선택된 값이 1' 이라면
             if (state == "1") {
@@ -171,7 +169,7 @@
             $('#sms_text').keyup(function(e) {
 
                 // content 라는 변수에 sms text 의 keyup이 발생했을 때에 대한 값을 content에 저장한다. this = 콘솔 로그 찍으니 textarea id=sms_text ~ 구문 나옴.
-                var content = $(this).val();
+                let content = $(this).val();
 
                 // counter 라는 element 요소의 내용을 counter.length + /150 으로 바꾼다.
                 // $.html = id counter의 요소 안의 내용을 지우고 새로운 내용을 넣음.       ### -> counter의 길이값 + '/150'  // 참고 링크 : https://www.codingfactory.net/10324
@@ -183,26 +181,12 @@
         });
 
 
-        /* DOM = HTML 문서에 대한 인터페이스. (참고 링크 : https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/%EC%86%8C%EA%B0%9C)
-
-         첫 째. 뷰 포트에 무엇을 렌더링할지 결정하기 위해 사용됨
-         둘 째. 페이지의 콘텐츠 및 구조, 그리고 스타일이 자바스크립트에 의해 수정되기 위해 사용된다.
-               (문서의 구조화된 표현을 제공하여 프로그래밍 언어가 DOM구조에 접근할 수 있는 방법을 제공하여 그들이 문서 구조, 스타일, 내용 등을 변경할 수 있게 돕는다.)
-
-         DOM은 원본 HTML 문서 형태와 비슷하지만 차이점이 있다.
-            1. 항상 유효한 HTML 형식
-            2. 자바스크립트에 수정될 수 있는 동적 모델이여야 함
-            3. 가상 요소를 포함하지않음 (ex ::after)
-            4. 보이지 않는 요소를 포함 (ex display:none)
-         */
-
-
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // $(document).ready(function(){ == JS onload와 같은 기능.    $(function() {}) 와 동일구문이다.
         // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
         $(document).ready(function() {
 
-            // subButton id값을 가진 요소를 클릭 했을 때.
+            // subButton id값을 가진 요소를 클릭 했을 때. (submit)
             $("#subButton").click(function() {
 
 
@@ -223,9 +207,13 @@
 
                 // 메세지 입력 칸이 비어있으면 입력하라고 알려줌.
 
+                let text = $("#sms_text").val();
 
-                // 만약 sms_text의 값이 ""라면
-                if ($("#sms_text").val() == "") {
+                // 만약 sms_text의 값이 공백이라면
+                // replace(a, b) == 문자열의 a를 b로 바꿈.
+                // 정규표현식: / (정규표현식 시작), \s (공백 or Tab),  | (or),  g (문자열 모든 문자검색), i(대소문자 무시)
+                // 문자열의 모든 문자를 대소문자를 무시하고 검색하고 모든 공백을 ""로 치환했을 때 문자열의 길이가 0이라면
+                if (text.replace(/\s| /gi, "").length == 0) {
 
                     // 알림창 출력
                     alert("메세지를 입력해주세요");
@@ -310,6 +298,34 @@
             // 최초 init() 실행
             init();
 
+        */
+
+        /* 공부
+
+        DOM = HTML 문서에 대한 인터페이스. (참고 링크 : https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/%EC%86%8C%EA%B0%9C)
+
+        첫 째. 뷰 포트에 무엇을 렌더링할지 결정하기 위해 사용됨
+        둘 째. 페이지의 콘텐츠 및 구조, 그리고 스타일이 자바스크립트에 의해 수정되기 위해 사용된다.
+               (문서의 구조화된 표현을 제공하여 프로그래밍 언어가 DOM구조에 접근할 수 있는 방법을 제공하여 그들이 문서 구조, 스타일, 내용 등을 변경할 수 있게 돕는다.)
+
+        DOM은 원본 HTML 문서 형태와 비슷하지만 차이점이 있다.
+           1. 항상 유효한 HTML 형식
+            2. 자바스크립트에 수정될 수 있는 동적 모델이여야 함
+            3. 가상 요소를 포함하지않음 (ex ::after)
+            4. 보이지 않는 요소를 포함 (ex display:none)
+
+        
+        var, let, const 차이점 (참고 : https://velog.io/@bathingape/JavaScript-var-let-const-%EC%B0%A8%EC%9D%B4%EC%A0%90)
+
+        var : 유연한 변수 선언. 변수를 중복 선언해도 에러가 나오지 않고 각기 다른 값이 출력된다.
+        let : 변수 재선언 했을 경우 이미 해당 변수명이 선언되었다고 에러 메세지가 출력된다. 하지만 재할당은 가능하다. let name = "111";  name="222";
+        const : let과 같지만 재할당 또한 불가능하다.
+
+        변수를 사용할 때 웬만하면 const를 사용하고 재할당이 필요한 경우에 한해서 let을 사용하자.
+        
+        호이스팅 : var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성.
+                  자바스크립트는 var, let, const 등을 포함한 function 등 모든 선언을 호이스팅한다.
+                  하지만 var로 선언된 변수와는 달리 let 으로 선언된 변수를 선언문 이전에 참조하면 에러가 발생한다. ex) console.log(name), let name="111"; = ERROR
         */
     </script>
 </body>
