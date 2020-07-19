@@ -68,9 +68,9 @@
                 <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
                 <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
 
-                <p id=" count" class="count" style="font-size: 13px;">
+                <p id="count" class="count" style="font-size: 13px;">
                     <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
-                    <br> <span id="num" class="num">0</span>명 수신예정
+                    <span id="num" class="num">0</span>명 수신예정 <br><br>
                 </p>
 
                 <!-- 본문 입력 -->
@@ -86,8 +86,7 @@
 
     <!-- Java Script -->
     <script>
-        // 키보드 이벤트가 발생할 때마다 
-
+        // 키보드 이벤트가 발생할 때마다 확인
         // receiver 의 onkeydown="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
         function resize(obj) {
 
@@ -192,6 +191,24 @@
 
             // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
             $('#sms_text').keyup();
+        });
+
+
+        // 수신자 몇명인지 체크
+        $(document).ready(function(){
+            // receiver id값의 키버튼이 눌리면
+            $("#receiver").keyup(function(e){
+
+                // 변수 receiver에 해당 id값을 넣고
+                let receiver = $("#receiver").val();
+
+                // 변수 receivers에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
+                let receivers = (receiver.split(",").length + receiver.split("\n").length)-1; // || 이 먹히질 않음. 왜그러지
+
+                // num id값에 receivers의 값으로 변경
+                $("#num").html(receivers);
+
+            });
         });
 
 
