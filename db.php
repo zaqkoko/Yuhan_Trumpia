@@ -1,15 +1,3 @@
 <?php
-
-<<<<<<< HEAD
-    $con=mysqli_connect("localhost", "root", "04540121", "toy") or die("sql접속ㄴㄴ");
-
+    $conn = mysqli_connect("localhost", "root", "04540121", "toy") or die("sql접속ㄴㄴ");
 ?>
-=======
-session_start();
-
-$name = $_SESSION['id'];
-
-
-// mysqli_connect = php에서 mysql을 연결해주는 함수 (반대는 mysqli_close)
-$conn = mysqli_connect("localhost", "root", "04540121", "toy");
->>>>>>> 5d0945e0a1944a22a9cfe003f5051cca5799cd30
