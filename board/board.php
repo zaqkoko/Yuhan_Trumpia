@@ -7,7 +7,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>board</title>
-
+ <!-- 화이팅 -->
 
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
