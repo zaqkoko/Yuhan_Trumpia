@@ -1,7 +1,4 @@
 <?php
-//session으로 아이디값을 가져옮
-session_start();
-$id = $_SESSION['id'];
 
 include "../db.php";
 // //mysql과 연동
@@ -14,7 +11,7 @@ if ($_POST['kword'] != null) {
   //kword를 가져온 데이터로 초기화
   $kword = $_POST['kword'];
   //kword가 포함되고 유저아이디와 동일한 테이터를 조회
-  $q = "SELECT * FROM sms WHERE send_message LIKE '%$kword%' AND user_id='$id'";
+  $q = "SELECT * FROM sms WHERE send_message LIKE '%$kword%' AND user_id='$name'";
   //쿼리문 실행
   $r = mysqli_query($con, $q);
 

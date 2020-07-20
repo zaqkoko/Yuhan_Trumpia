@@ -1,7 +1,4 @@
 <?php
-//session으로 아이디값을 가져옮
-session_start();
-$id = $_SESSION['id'];
 
 
 include "../db.php";
@@ -17,7 +14,7 @@ $t = $_POST['val'];
 if ($_POST['val'] == null) {
 
   //sms테이블의 유저 데이터를 모두 삭제하는 쿼리문 작성
-  $q = "DELETE FROM sms WHERE user_id='" . $id . "'";
+  $q = "DELETE FROM sms WHERE user_id='" . $name . "'";
   //작성한 쿼리문을 연결한 서버에서 쿼리실행
   $r = mysqli_query($con, $q);
   //post로 받은 값이 null이 아닐때(null !=선택삭제)
@@ -29,7 +26,7 @@ if ($_POST['val'] == null) {
 }
 
 //sms 테이블에서 사용자(user_id) 데이터만 조회하는 쿼리문 작성
-$q = "SELECT * FROM sms WHERE user_id='$id'";
+$q = "SELECT * FROM sms WHERE user_id='$name'";
 //연결한 서버에 작성한 쿼리문 실행
 $r = mysqli_query($con, $q);
 
