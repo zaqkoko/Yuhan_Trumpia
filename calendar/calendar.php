@@ -102,9 +102,15 @@
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="send_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
-        <h2>발송 예약 리스트(가짜)</h2>
-        <div id="dModal_list">
-        </div>
+        <h2>발송 예약 리스트</h2>
+        <!--php 끼워넣기-->
+        <?php
+        while($row = mysqli_fetch_array($d_result)) {
+        ?>
+          <?php echo "받을 사람: " . $row[0]. " 보낼 메세지: " . $row[1]. " 보낼 시간: " . $row[2] . "<br>" ?>
+        <?php
+        }
+        ?>
       </div>
     </div>
 
@@ -115,14 +121,15 @@
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="sent_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
-        <h2>발송 완료 리스트(가짜)</h2>
-        <ul>
-          <li>2020.07.1 09:00, 01033339573, hi. it's modal test1.</li>
-          <li>2020.07.1 10:00, 01033339573, hi. it's modal test2.</li>
-          <li>2020.07.1 11:00, 01033339573, hi. it's modal test3.</li>
-          <li>2020.07.1 12:00, 01033339573, hi. it's modal test4.</li>
-          <li>2020.07.1 13:00, 01033339573, hi. it's modal test5.</li>
-        </ul>
+        <h2>발송 완료 리스트</h2>
+        <!--php 끼워넣기-->
+        <?php
+        while($row = mysqli_fetch_array($t_result)) {
+        ?>
+          <?php echo "받은 사람: " . $row[0]. " 보낸 메세지: " . $row[1]. " 보낸 시간: " . $row[2] . "<br>" ?>
+        <?php
+        }
+        ?>
       </div>
     </div>
 
