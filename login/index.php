@@ -58,7 +58,7 @@
         </script>
     </head>
     <body>
-        <center> <h1>0220</h1> </center>
+        <center> <h1>0300</h1> </center>
         <form action="login.php" method="post" name="login">
             <table>
                 <tr>
