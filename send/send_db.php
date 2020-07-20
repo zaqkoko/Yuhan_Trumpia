@@ -1,20 +1,19 @@
 <?php
-// mysqli_connect = php에서 mysql을 연결해주는 함수 (반대는 mysqli_close)
-$conn = mysqli_connect("localhost", "root", "04540121", "toy");
 
-
+include "../db.php";
 
 // INSERT = 테이블에 레코드를 삽입하기 위해 사용하는 구문.
 $sql =
 
     // sms 테이블의 (컬럼명)의 값을 post로 받아온 값을 컬럼명 순서대로 값을 넣음.
-    " INSERT INTO sms (send_time, send_type, send_message, receiver)
+    " INSERT INTO sms (send_time, send_type, send_message, receiver, user_id)
     VALUES(
 
         '{$_POST['send_time']}',
         '{$_POST['send_type']}',
         '{$_POST['sms_text']}',
-        '{$_POST['receiver']}'
+        '{$_POST['receiver']}',
+        '$name'
     )
 ";
 
