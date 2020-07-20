@@ -12,19 +12,19 @@ if ($_POST['val'] == null) {
   //sms테이블의 유저 데이터를 모두 삭제하는 쿼리문 작성
   $q = "DELETE FROM sms WHERE user_id='" . $name . "'";
   //작성한 쿼리문을 연결한 서버에서 쿼리실행
-  $r = mysqli_query($con, $q);
+  $r = mysqli_query($conn, $q);
   //post로 받은 값이 null이 아닐때(null !=선택삭제)
 } else {
   //t를 통해 원하는 데이터를 삭제하는 쿼리문 작성
   $q = "DELETE FROM sms WHERE send_id=" . $t;
   //가져온 쿼리문을 연결한 데이터베이스에서 실행
-  $r = mysqli_query($con, $q);
+  $r = mysqli_query($conn, $q);
 }
 
 //sms 테이블에서 사용자(user_id) 데이터만 조회하는 쿼리문 작성
 $q = "SELECT * FROM sms WHERE user_id='$name'";
 //연결한 서버에 작성한 쿼리문 실행
-$r = mysqli_query($con, $q);
+$r = mysqli_query($conn, $q);
 
 
 //while문을 통해 조회한 데이터를 가져온다.
