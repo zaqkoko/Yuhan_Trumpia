@@ -1,7 +1,6 @@
 <?php
-// mysqli_connect = php에서 mysql을 연결해주는 함수 (반대는 mysqli_close)
-$conn = mysqli_connect("localhost", "root", "04540121", "toy");
 
+include "../db.php";
 
 
 // INSERT = 테이블에 레코드를 삽입하기 위해 사용하는 구문.
