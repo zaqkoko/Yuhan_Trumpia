@@ -9,10 +9,9 @@
   <link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
   <script type="text/javascript">
-  //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
   $(document).ready(function(){
     //새로고침 확인
-		alert('3');
+		alert('1');
 
 //발송완료, 발송예약 출력
 		sendtype();
@@ -29,7 +28,7 @@
         $(".checkbox").each(function(){
           //현재 하위체크박스 상태를 true로 변경
           $(this).prop("checked",true);
-																		
+
         });
         //전체 체크박스가 false 상태라면
       }else{
@@ -117,6 +116,8 @@
 							$(".dcell").html(data);
 							//send_type 발송완료/발송예약으로 출력
 							sendtype();
+							//발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
+							$("#dvar").html("<p>검색건수 <sapn>"+$(".dcell>tbody").children('tr').length+"</span></p><hr>");
 						},
 						//에러가 생겼을 때 함수 실행
 						error:function(){
@@ -125,6 +126,9 @@
 						}
 					});
 				});
+
+
+
   	});
 
 
@@ -237,6 +241,12 @@
 	</table>
 
 
+	<!-- //가장 마지막에 실행 (위에서부터 아래로 html 태그들이 실행된 후 document.ready()를 실행)
+	//$(function(){}); 약어로도 사용가능
+	//-제이쿼리-$(window).load(function(){} -자바스크립트-window.onload = function(){};
+	// DOM생성 후 이미지같은 리소스 요소들 랜더링 후 실행
+	//-제이쿼리-$(document).ready(function(){}
+	//DOM생성 후 실행 -->
 
 
 

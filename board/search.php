@@ -6,7 +6,7 @@
 $id='a';
 
 //mysql과 연동
-$con=mysqli_connect("localhost", "root", "5022", "exam") or die("실패");
+$con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
       //연동되었는지 확인용
       // echo var_dump($con);
 //$_POST로 가져온 데아터가 null이 아닐때 (선택삭제일 때)

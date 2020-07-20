@@ -1,10 +1,14 @@
 <?php
+//session으로 아이디값을 가져올 예정
+// session_start();
+// $id=$_SESSION['id'];
+
 //임의로 a라 정함
 $id='a';
 
 
 //mysql과 연동
-$con=mysqli_connect("localhost", "root", "5022", "exam");
+$con=mysqli_connect("localhost", "root", "5022", "toy");
         //연동되었는지 확인용
         // echo var_dump($con);
 
