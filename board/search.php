@@ -10,7 +10,7 @@ if ($_POST['kword'] != null) {
   //kword가 포함되고 유저아이디와 동일한 테이터를 조회
   $q = "SELECT * FROM sms WHERE send_message LIKE '%$kword%' AND user_id='$name'";
   //쿼리문 실행
-  $r = mysqli_query($con, $q);
+  $r = mysqli_query($conn, $q);
 
   //while문을 통해 조회한 데이터를 가져온다.
   while ($row = mysqli_fetch_array($r)) {
