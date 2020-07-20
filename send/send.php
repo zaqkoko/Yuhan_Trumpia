@@ -195,19 +195,27 @@
 
 
         // 수신자 몇명인지 체크
-        $(document).ready(function(){
+        $(document).ready(function() {
             // receiver id값의 키버튼이 눌리면
-            $("#receiver").keyup(function(e){
+            $("#receiver").keyup(function(e) {
 
                 // 변수 receiver에 해당 id값을 넣고
                 let receiver = $("#receiver").val();
 
-                // 변수 receivers에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
-                let receivers = (receiver.split(",").length + receiver.split("\n").length)-1; // || 이 먹히질 않음. 왜그러지
+                // receiver의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면
+                if (receiver.replace(/\s|/gi, "").length == 0) {
+                    // num id값에 0 출력
+                    $("#num").html(0);
 
-                // num id값에 receivers의 값으로 변경
-                $("#num").html(receivers);
+                } else {
 
+                    // split(특정 문자열로 구분하여 배열로 바꾸어 줌)
+                    // 변수 receivers에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
+                    let receivers = (receiver.split(",").length + receiver.split("\n").length) - 1; // || 이 먹히질 않음. 왜그러지
+
+                    // num id값에 receivers의 값으로 변경
+                    $("#num").html(receivers);
+                }
             });
         });
 
@@ -225,7 +233,7 @@
 
                 let receive = $("#receiver").val();
 
-                // receiver id값의 ""이면 경고창 띄우기.
+                // receiver id값이 ""이면 경고창 띄우기.
                 if (receive.replace(/\s| /gi, "").length == 0) {
                     alert("번호를 입력해주세요")
 
