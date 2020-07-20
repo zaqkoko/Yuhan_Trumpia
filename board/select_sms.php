@@ -2,13 +2,6 @@
 
 include "../db.php";
 
-// //mysql과 연동
-$con = mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
-// //연동되었는지 확인용
-// // echo var_dump($con);
-
-//user_id 값을 기져온다
-
 
 //sms 테이블에서 사용자(user_id) 데이터만 조회하는 쿼리문 작성
 $q = "SELECT * FROM sms WHERE user_id='$name'";
