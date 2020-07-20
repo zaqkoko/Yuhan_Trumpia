@@ -9,7 +9,7 @@
     //id칼럼에 $id와 같은 값이 있는 데이터 전체를 가져온다
     $sql = "select * from user where id='$id'";
     //$sql 쿼리 실행
-    $ret = mysqli_query($con, $sql);
+    $ret = mysqli_query($conn, $sql);
     //받은 결과값을 $row에 array로 저장
     $row = mysqli_fetch_array($ret);
     //$row의 pw를 $s_pw로 지정

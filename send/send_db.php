@@ -14,6 +14,7 @@ $sql =
         '{$_POST['sms_text']}',
         '{$_POST['receiver']}',
         '$name'
+
     )
 ";
 

@@ -12,7 +12,7 @@
     //$id, $s_pw, $name, $mobile을 user table의 id, pw, name, mobile 칼럼에 저장
     $sql ="INSERT INTO user (id, pw, name, mobile) VALUES ('".$id."', '".$s_pw."', '".$name."', '".$mobile."')";
     //$sql쿼리를 실행
-    $ret = mysqli_query($con, $sql);
+    $ret = mysqli_query($conn, $sql);
     //ret이 실행되었을 때
     if($ret)
     {

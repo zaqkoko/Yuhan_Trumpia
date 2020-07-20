@@ -6,7 +6,7 @@
     //입력한 id값과 같은 데이터 가져옴
     $sql = "select * from user where id='$id'";
     //쿼리실행
-    $ret = mysqli_query($con, $sql);
+    $ret = mysqli_query($conn, $sql);
     //받은 결과값을 $row에 array로 저장
     $row = mysqli_fetch_array($ret);
     //$row의 값이 null일때 (결과가 없을 때)
