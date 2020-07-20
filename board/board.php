@@ -13,8 +13,8 @@
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			//새로고침 확인
-			alert('1');
+
+
 
 			//발송완료, 발송예약 출력
 			sendtype();
