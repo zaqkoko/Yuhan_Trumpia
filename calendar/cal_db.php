@@ -10,13 +10,14 @@
   if (mysqli_num_rows($result) > 0)
   {
     // mysqli_fetch = result에 저장된 질의 결과를 배열로 반환함. fetch뒤에 붙이는 row는 배열 번호, assoc은 필드명, array는 둘 모두로  요소를 호출할 수 있다.
-    while($row = mysqli_fetch_array($result))
-    {
-      echo "보낸 시간: " . $row[0]. " 보낸 사람:" . $row[1]. "<br>";
+    //while($row = mysqli_fetch_array($result))
+    //{
+      //echo "보낸 시간: " . $row[0]. " 보낸 사람:" . $row[1]. "<br>";
       /*
         echo "보낸 시간: " . $row["send_time"]. " 보낸 사람:" . $row[user_id]. "<br>";
       */
-    }
+    //}
+    $row = mysqli_fetch_array($result);
   }
   // 레코드가 하나도 없으면.
   else

@@ -103,13 +103,8 @@
         <span id="send_modalClose" class="close">&times;</span>
         <!--테스트용 임시 리스트-->
         <h2>발송 예약 리스트(가짜)</h2>
-        <ul>
-          <li>2020.07.31 09:00, 01033339573, hi. it's modal test1.</li>
-          <li>2020.07.31 10:00, 01033339573, hi. it's modal test2.</li>
-          <li>2020.07.31 11:00, 01033339573, hi. it's modal test3.</li>
-          <li>2020.07.31 12:00, 01033339573, hi. it's modal test4.</li>
-          <li>2020.07.31 13:00, 01033339573, hi. it's modal test5.</li>
-        </ul>
+        <div id="dModal_list">
+        </div>
       </div>
     </div>
 
