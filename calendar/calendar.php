@@ -105,6 +105,7 @@
         <h2>발송 예약 리스트</h2>
         <!--php 끼워넣기-->
         <?php
+        // mysqli_fetch = result에 저장된 질의 결과를 배열로 반환함. fetch뒤에 붙이는 row는 배열 번호, assoc은 필드명, array는 둘 모두로  요소를 호출할 수 있다.
         while($row = mysqli_fetch_array($d_result)) {
         ?>
           <?php echo "받을 사람: " . $row[0]. " 보낼 메세지: " . $row[1]. " 보낼 시간: " . $row[2] . "<br>" ?>
