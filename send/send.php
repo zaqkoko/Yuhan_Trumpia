@@ -6,11 +6,10 @@
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>ToySend</title>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-
     <style media="screen">
         /* 날짜 영역 */
         #div {
-            top: 10%;
+            top: 5%;
             left: 40%;
             position: fixed;
         }
@@ -31,6 +30,47 @@
             position: fixed;
         }
 
+        #phonebook {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #phonebook h4 {
+            margin: 0;
+        }
+
+        #phonebook button {
+            display: inline-block;
+            width: 50px;
+            margin-left: calc(100% - 100px - 10px);
+        }
+
+        #phonebook .phonebookcontents {
+            text-align: center;
+            width: 500px;
+            margin: 100px auto;
+            padding: 20px 10px;
+            background: #fff;
+            border: 2px solid #666;
+        }
+
+        #phonebook .phonebooklayer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        #name {
+            width: 50px;
+        }
+
         textarea.autosize {
             min-height: 20px;
         }
@@ -42,6 +82,55 @@
     <!-- $_SERVER['DOCUMENT_ROOT'] 작동 되지않음 -->
     <?php include "../title.php" ?>
 
+    <!-- 주소록 -->
+    <div id="phonebook">
+
+        <!-- 주소록 내용 -->
+        <div class="phonebookcontents">
+            <legend>주소록 목록</legend><br>
+
+            <span><a href="#" onclick="selectAddress();">번호선택</a></span>
+            <span><a href="#" onclick="insertAddress();">번호추가</a></span>
+            <span><a href="#" onclick="deleteAddress();">번호삭제</a></span> <br> <br>
+
+            <table>
+                <colgroup>
+                    <col width="10%">
+                    <col width="30%">
+                    <col width="*">
+                </colgroup>
+
+                <thead>
+                    <tr>
+                        <th class="check">
+                            <input type="checkbox" name="allcheck" id="allcheck" value="all">
+                        </th>
+                        <th class="name">이름</th>
+                        <th class="tel">번호</th>
+                    </tr>
+                </thead>
+
+                <tbody id="add">
+                    <tr>
+                        <td class="check">
+                            <input type="checkbox">
+                        </td>
+                        <td class="name">
+                            <input type="text" id="insname" class="ins" tabindex="1">
+                        </td>
+                        <td class="tel">
+                            <input type="text" id="instel" class="ins" tabindex="2">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" id="phonebookclose">닫기</button>
+        </div>
+
+        <!-- 주소록 배경 -->
+        <div class="phonebooklayer"></div>
+    </div>
+
     <!-- 메세지 보내기 !-->
     <form action="send_db.php" method="POST">
         <div id="div">
@@ -49,6 +138,8 @@
                 <!-- 보류
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
                 -->
+
+                <button type="button" id="phonebookopen">주소록 열기</button><br><br>
 
                 <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4> <br>
 
@@ -86,7 +177,7 @@
 
     <!-- Java Script -->
     <script>
-        // 키보드 이벤트가 발생할 때마다 확인
+        // 키보드 이벤트가 발생할 때마다 확인 (textarea 스크롤 말고 박스 크기 자체 늘리기)
         // receiver 의 onkeydown="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
         function resize(obj) {
 
@@ -173,8 +264,8 @@
         });
 
         // jQuery.
-        // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         // $(function() { }); == $(documet).ready(function() {}); 와 동일한 의미이다. 간편하게 $(function() {}); 로 많이 사용한다.
+        // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         $(document).ready(function() {
 
             // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
@@ -223,6 +314,8 @@
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // $(document).ready(function(){ == JS onload와 같은 기능.    $(function() {}) 와 동일구문이다.
         // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
+
+        // 번호/본문 공백이면 입력하라고 알려줌 + 과거시간이면 발송 불가
         $(document).ready(function() {
 
             // subButton id값을 가진 요소를 클릭 했을 때. (submit)
@@ -286,6 +379,35 @@
 
             })
         });
+
+
+        // 주소록 모달형식
+
+        // phonebookopen id값을 가진 버튼을 클릭했을 때 phonebook fadein효과 (jQeury)
+        $("#phonebookopen").click(function() {
+            $("#phonebook").fadeIn();
+        });
+
+        // phonebookclose id값을 가진 버튼을 클릭했을 때 phonebook fadeout효과 (jQuery)
+        $("#phonebookclose").click(function() {
+            $("#phonebook").fadeOut();
+        });
+
+        // 번호 추가하기
+        function insertAddress() {
+            // 이름과 번호의 value를 가져옴.
+            let name = $("#insname").val();
+            let tel = $("#instel").val();
+
+            // 만약 이름이나 번호가 공백이면
+            if (name == null || name == "" || tel == null || tel == "") {
+
+                // 알림창 띄우고 이름입력칸에 포커싱 잡아주기
+                alert("이름과 번호를 확인해주세요");
+                $("#insname").focus();
+                return;
+            }
+        }
 
         /* 보류(Clock)
 
