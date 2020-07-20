@@ -113,10 +113,10 @@ tr td:nth-child(7)
   background-color: white;
   /* 중앙으로 배치 */
   position: fixed;
-  width: 30%;
-  height: 50%;
+  width: 50%;
+  height: 40%;
   top: 25%;
-  left: 40%;
+  left: 25%;
 }
 /* 모달 닫기 버튼?은 아니고 그냥 x자 */
 .close

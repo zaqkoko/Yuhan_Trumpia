@@ -205,4 +205,9 @@ function rightBtn()
 //let send_time = <? echo $row[0]; ?>;
 //console.log(send_time);
 
-document.getElementById('dModal_list').innerHTML = "<? echo $row; ?>";
+//안됨2
+//document.getElementById('dModal_list').innerHTML = "<? '$row[0];' ?>"; // <!--? $row[0]; ?-->
+
+//안됨3
+//var value = '';
+//value = $("#dModal_list").val();
