@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>ToySend</title>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
@@ -29,6 +29,10 @@
             top: 10%;
             left: 60%;
             position: fixed;
+        }
+
+        textarea.autosize {
+            min-height: 20px;
         }
     </style>
 </head>
@@ -59,13 +63,15 @@
                 <label style="padding-right: 10px;">날짜 설정</label>
 
                 <!-- 날짜, 시간 불러오기 -->
-                <input type="datetime-local" id="send_time" name="send_time" readonly> <br><br>
+                <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
-                <!-- 수신 번호 입력 -->
-                <input type="tel" id="receiver" name="receiver" placeholder="수신 번호를 입력하세요" multiple> </input><br>
-                <p id=" count" class="count" style="font-size: 13px;">
-                    <span id="num" class="num">0</span>명 수신예정</p>
-                <br>
+                <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
+                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
+
+                <p id="count" class="count" style="font-size: 13px;">
+                    <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
+                    <span id="num" class="num">0</span>명 수신예정 <br><br>
+                </p>
 
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
@@ -80,6 +86,16 @@
 
     <!-- Java Script -->
     <script>
+        // 키보드 이벤트가 발생할 때마다 확인
+        // receiver 의 onkeydown="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
+        function resize(obj) {
+
+            // obj의 스타일 중 높이의 값은 1로 한다. // 없으면 계속 늘어난다.
+            obj.style.height = "1px";
+            // obj의 스타일 중 높이의 값은 12 + 스크롤 높이의 px 값만큼으로 한다.
+            obj.style.height = (12 + obj.scrollHeight) + "px";
+        }
+
         // MySql db - DateTime에 넣기 위해 필요한 함수
         function send_time() { // (참고 : https://c10106.tistory.com/4728 )
 
@@ -156,9 +172,6 @@
             }
         });
 
-
-
-
         // jQuery.
         // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
         // $(function() { }); == $(documet).ready(function() {}); 와 동일한 의미이다. 간편하게 $(function() {}); 로 많이 사용한다.
@@ -181,6 +194,32 @@
         });
 
 
+        // 수신자 몇명인지 체크
+        $(document).ready(function() {
+            // receiver id값의 키버튼이 눌리면
+            $("#receiver").keyup(function(e) {
+
+                // 변수 receiver에 해당 id값을 넣고
+                let receiver = $("#receiver").val();
+
+                // receiver의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면
+                if (receiver.replace(/\s|/gi, "").length == 0) {
+                    // num id값에 0 출력
+                    $("#num").html(0);
+
+                } else {
+
+                    // split(특정 문자열로 구분하여 배열로 바꾸어 줌)
+                    // 변수 receivers에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
+                    let receivers = (receiver.split(",").length + receiver.split("\n").length) - 1; // || 이 먹히질 않음. 왜그러지
+
+                    // num id값에 receivers의 값으로 변경
+                    $("#num").html(receivers);
+                }
+            });
+        });
+
+
         // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
         // $(document).ready(function(){ == JS onload와 같은 기능.    $(function() {}) 와 동일구문이다.
         // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
@@ -194,7 +233,7 @@
 
                 let receive = $("#receiver").val();
 
-                // receiver id값의 ""이면 경고창 띄우기.
+                // receiver id값이 ""이면 경고창 띄우기.
                 if (receive.replace(/\s| /gi, "").length == 0) {
                     alert("번호를 입력해주세요")
 
@@ -244,10 +283,6 @@
                     // 반환 false
                     return false;
                 }
-
-                let rep = $("#receiver").val();
-                let repl = rep.replace(/\,/g, " ");
-                $("#receiver").val() = repl;
 
             })
         });

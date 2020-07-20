@@ -1,11 +1,9 @@
 <?php
-//session으로 아이디값을 가져올 예정
-// session_start();
-// $id=$_SESSION['id'];
+//session으로 아이디값을 가져옮
+session_start();
+$id=$_SESSION['id'];
 
 
-//임의로 a라 정함
-$id='a';
 
 //mysql과 연동
   $con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");

@@ -1,4 +1,6 @@
-
+<!-- body에 include를 하니 title의 session부분이 가장 먼저 실행이 안되어 오류가 생겼던 것으로 추측
+그래서 가장 상단으로 옮겨놓음 -->
+<?php include "../title.php";?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -211,7 +213,7 @@
 </head>
 <body>
 	<!-- 메뉴바,유저정보 -->
-  <?php include '../title.php';?>
+
 <!-- 문제 -->
 	<div class="tt">
 		<button id="delete">삭제</button>

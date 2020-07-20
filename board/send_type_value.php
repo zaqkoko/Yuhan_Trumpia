@@ -1,10 +1,7 @@
 <?php
-//session으로 아이디값을 가져올 예정
-// session_start();
-// $id=$_SESSION['id'];
-
-//임의로 a라 정함
-$id='a';
+//session으로 아이디값을 가져옮
+session_start();
+$id=$_SESSION['id'];
 
 
 //mysql과 연동
