@@ -4,10 +4,11 @@ session_start();
 $id=$_SESSION['id'];
 
 
-//mysql과 연동
-$con=mysqli_connect("localhost", "root", "5022", "toy");
-        //연동되었는지 확인용
-        // echo var_dump($con);
+include "../db.php";
+// //mysql과 연동
+// $con=mysqli_connect("localhost", "root", "5022", "toy");
+//         //연동되었는지 확인용
+//         // echo var_dump($con);
 
 //유저아이디와 동일하고 send_type이 전송된 메시지 타입(1)만 가져온다.
 $q="SELECT * FROM sms WHERE send_type='1' AND user_id='$id'";

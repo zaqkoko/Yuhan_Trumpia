@@ -4,11 +4,11 @@ session_start();
 $id=$_SESSION['id'];
 
 
-
-//mysql과 연동
-  $con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
-  //연동되었는지 확인용
-  // echo var_dump($con);
+include "../db.php";
+// //mysql과 연동
+//   $con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
+//   //연동되었는지 확인용
+//   // echo var_dump($con);
 
   //post형식으로 val값을 가져와 t에 초기화(val는 가져온 체크박스 value or null)
   $t=$_POST['val'];

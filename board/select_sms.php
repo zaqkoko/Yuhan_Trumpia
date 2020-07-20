@@ -3,10 +3,11 @@
 session_start();
 $id=$_SESSION['id'];
 
-//mysql과 연동
-$con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
-//연동되었는지 확인용
-// echo var_dump($con);
+include "../db.php";
+// //mysql과 연동
+// $con=mysqli_connect("localhost", "root", "5022", "toy") or die("실패");
+// //연동되었는지 확인용
+// // echo var_dump($con);
 
 //user_id 값을 기져온다
 
