@@ -381,6 +381,20 @@
         });
 
 
+        const API = {
+            CREATE: "add.json",
+            READ: "list.json",
+            UPDATE: "update.json",
+            DELETE: "delete.json"
+        };
+
+        const ACTION_METHODS = {
+            CREATE: "GET",
+            READ: "GET",
+            UPDATE: "GET",
+            DELETE: "GET"
+        };
+
         // 주소록 모달형식
 
         // phonebookopen id값을 가진 버튼을 클릭했을 때 phonebook fadein효과 (jQeury)
@@ -408,31 +422,16 @@
                 return;
             }
 
-            $.ajax({
-                url: "Yuhan_Trumpia/send/send.php",
-                type: "POST",
-                async: false,
+            /*$.ajax({
+                url: API.CREATE,
+                method: ACTION_METHODS.create;
                 data: {
                     name: name,
                     tel: tel
-                },
-                dataType: "json",
-                success: function(json, textstatus) {
-                    alert(json.msg);
-                    $("#insname").val("");
-                    $("#instel").val("");
-
-                    if (json.result == "success") {
-                        buildAddress(json.list);
-                    } else if (json.result == 'fail') {
-
-                    }
-                },
-
-                error: function(x, e, textStatus, errorThrown, XMLHttpRequest) {
-
                 }
-            });
+            }).done(function(response) {
+
+            })*/
         }
 
         /* 보류(Clock)

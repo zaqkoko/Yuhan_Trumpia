@@ -101,7 +101,7 @@
       <div class="modal_content">
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="send_modalClose" class="close">&times;</span>
-        <!--테스트용 임시 리스트-->
+        <!--테스트중-->
         <h2>발송 예약 리스트</h2>
         <!--php 끼워넣기-->
         <?php
@@ -120,7 +120,7 @@
       <div class="modal_content">
         <!--모달 닫기. x는 엔티티때문에 저렇게 써야함-->
         <span id="sent_modalClose" class="close">&times;</span>
-        <!--테스트용 임시 리스트-->
+        <!--테스트중-->
         <h2>발송 완료 리스트</h2>
         <!--php 끼워넣기-->
         <?php

@@ -46,16 +46,25 @@
 
 //주의
 //삭제 실행 후 하위체크박스 체크를 했을 때 전체체크박스가 안풀리는 오류가 있음
+//=>body 안에 데이터를 출력하는 테이블 밑에 스크립트를 만들어 옮겼더니 실행됨.
+//새로만들어진 데이터 테이블들이 함수를 못찾음(ajax실행 후에 만들어지는 태그들이라 그런것으로 추측)
+
 
 //전체체크 상태에서 하위 체크박스가 하나라도 false일 때 전체 체크박스 상태를 false로 바꿈
+//또한 하위 체크박스를 모두 클릭했을 때 전체 체크박스를 체크
     //하위 체크박스를 클릭했을 때
-      $(".checkbox").click(function() {
-        //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
-        if($("#allCheck").is(":checked") && $(this).is(":checked")==false){
-          //전체 체크박스 상태를 false로 변경
-          $("#allCheck").prop("checked",false);
-        }
-      });
+			 // function check()
+			//  $(".checkbox").click(function(){
+      //   //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+      //   if($("#allCheck").is(":checked") && $(this).is(":checked")==false){
+      //     //전체 체크박스 상태를 false로 변경
+      //     $("#allCheck").prop("checked",false);
+			// 		//체크된 체크박스 수와 전체 하위 체크박스 수가 같다면
+      //   }else if($("input[type=checkbox]:checked").length == $(".checkbox").length){
+			// 		//전체 체크박스 상태를 true로 변경
+			//  		$("#allCheck").prop("checked",true);
+			// 	}
+      // });
 
 
       //삭제 버튼을 클릭했을 때 함수 실행
@@ -96,14 +105,13 @@
 
 
 
-
 //검색
 		//search버튼을 클릭했을 때 함수실행
-		$("#search").click(function(){
+		$("#search").click(function search(){
 			//text에 inputsearch값을 초기화
 			var text=$("#inputsearch").val();
 			//로그로 값을 제대로 초기화했는지 확인
-			console.log("검색어:"+text);
+			// console.log("검색어:"+text);
 			//ajax실행
 					$.ajax({
 						//post타입으로 전송
@@ -114,7 +122,7 @@
 						data:{kword:text},
 						//성공했을 때 함수 실행
 						success:function(data) {
-							//테이블에 html 작성
+							//테이블에 html 작성(검색결과를 테이블에 재출력)
 							$(".dcell").html(data);
 							//send_type 발송완료/발송예약으로 출력
 							sendtype();
@@ -138,17 +146,17 @@
 		//호출할 url,삭제할 data(send_id),삭제할 요소를 인자로 받는다
 		function removepost(u,cr,t) {
 			//삭제한 데이터 확인
-			console.log("삭제하려는 데이터 value:"+t);
+			// console.log("삭제하려는 데이터 value:"+t);
 				$.ajax({
 						//post타입으로 전송
 						type:"POST",
 						//url호출
 						url: "delete.php",
-						//삭제할 데이터(send_id),전체삭제일 때는 null
+						//삭제할 데이터(send_id),전체삭제일 때는 null을 보냄
 						data:{val:t},
 						//성공했을 때 함수를 실행
 						success:function(data){
-							//테이블 재출력
+							//테이블에 html 작성(삭제 후 테이블에 재출력)
 							$(".dcell").html(data);
 							//발송완료/예약 출력
 							sendtype();
@@ -238,8 +246,21 @@
 			<table class="dcell">
 
 				<!-- 데이터 출력 -->
-				<?php include "select_sms.php" ?>
+				<?php include "select_sms.php"; ?>
 		</table>
+		<script>
+		function check(){
+		 //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+		 if($("#allCheck").is(":checked") && $(this).is(":checked")==false){
+			 //전체 체크박스 상태를 false로 변경
+			 $("#allCheck").prop("checked",false);
+			 //체크된 체크박스 수와 전체 하위 체크박스 수가 같다면
+		 }else if($("input[type=checkbox]:checked").length == $(".checkbox").length){
+			 //전체 체크박스 상태를 true로 변경
+			 $("#allCheck").prop("checked",true);
+		 }
+	 }
+</script>
 	</table>
 
 
