@@ -407,6 +407,32 @@
                 $("#insname").focus();
                 return;
             }
+
+            $.ajax({
+                url: "Yuhan_Trumpia/send/send.php",
+                type: "POST",
+                async: false,
+                data: {
+                    name: name,
+                    tel: tel
+                },
+                dataType: "json",
+                success: function(json, textstatus) {
+                    alert(json.msg);
+                    $("#insname").val("");
+                    $("#instel").val("");
+
+                    if (json.result == "success") {
+                        buildAddress(json.list);
+                    } else if (json.result == 'fail') {
+
+                    }
+                },
+
+                error: function(x, e, textStatus, errorThrown, XMLHttpRequest) {
+
+                }
+            });
         }
 
         /* 보류(Clock)
