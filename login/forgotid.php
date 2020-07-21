@@ -52,7 +52,7 @@
             </tr>
 
             <tr>
-                <td align=" right">EMAIL</td>
+                <td align="right">EMAIL</td>
                 <td valign="top">
                     <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
                 </td>
