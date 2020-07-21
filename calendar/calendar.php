@@ -120,8 +120,6 @@
             </tr>
         </table>
 
-<<<<<<< HEAD
-=======
     <!--예약 모달 //평소에는 숨어있음 //타일을 클릭하면 그 옆에 뿅 나옴-->
     <div id="sendModal" class="modal">
       <!--모달 컨텐츠-->
@@ -141,8 +139,6 @@
         ?>
       </div>
     </div>
->>>>>>> 0918e7a58fb4fa693dc4e6b4a1af1b8f6a6cea9b
-
 
         <div id="sendModal" class="modal">
             <div class="modal_content">
