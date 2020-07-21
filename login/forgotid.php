@@ -41,9 +41,9 @@
     <form action="forgot_check.php" method="post" name="forgot">
         <table>
             <tr>
-                <td align="right">ID</td>
+                <td align="right">NAME</td>
                 <td valign="top">
-                    <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" placeholder=" 가입했던 아이디를 입력해주세요">
+                    <input type="text" name="NAME" style="height:25px; width:300px; font-size: 15px;" id="id" placeholder=" 가입했던 이름을 입력해주세요">
                 </td>
 
                 <td rowspan="2" valign="bottom">

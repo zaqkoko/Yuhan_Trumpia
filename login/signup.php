@@ -105,10 +105,11 @@
                 var id = document.getElementById("id");
                 var pw = document.getElementById("pw");
                 var email = document.getElementById("email");
+                var name = document.getElementById("name");
                 //id의 내용이 공백이거나 pw & email 내용이 공백이라면
-                if (id.value == "" || pw.value == "" || email.value == "") {
+                if (id.value == "" || pw.value == "" || email.value == "" || name.value == "") {
                     //아이디와 비밀번호와 이메일을입력하라는 alert
-                    alert("아이디/비밀번호/이메일을 입력하세요");
+                    alert("입력란을 확인하세요");
                     //false를 반환하여 submit 하지 않는다
                     return false;
                 }
@@ -185,7 +186,7 @@
 
             <tr>
                 <!-- NAME -->
-                <td align="right">NAME</td>
+                <td align="right">★ NAME</td>
                 <td valign="top">
                     <input type="text" name="name" style="height:25px; width:300px;" id="name" maxlength="20">
                 </td>

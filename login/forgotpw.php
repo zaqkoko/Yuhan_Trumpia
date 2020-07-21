@@ -38,7 +38,7 @@
     <center>
         <h1>TOY</h1>
     </center>
-    <form action="forgot_check.php" method="post" name="forgot">
+    <form action="forgotpw_check.php" method="post" name="forgot">
         <table>
             <tr>
                 <td align="right">ID</td>
