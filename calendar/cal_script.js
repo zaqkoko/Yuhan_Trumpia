@@ -1,22 +1,3 @@
-/*
-  나만의 달력을 만들어 보자
-  이번에는 테이블 셀을 모두 만들어놓고
-  그 셀에 내용들을 채운다
-  그러면 매번 셀을 다시 만들 필요가 없지 않을까?
-  6주 row는 on off한다
-*/
-
-// 전역 변수들~
-/*
-  let과 var의 차이점은?
-  var는 변수를 재선언하면 나중걸로 덮어쓴다.
-  let은 재할당은 되도 재선언은 안됨.
-  const는 상수. 재할당도 재선언도 안됨.
-  코드량이 많아졌을때 var는 헷갈릴수도 있응게 사용 자제하자?는 암묵의룰?
-  +
-  var는 function scope. 함수 내부에서 사용하면 다른 변수인것처럼 작동하는듯.  블록 내에서 재선언 해서 쓰면 같은 녀석으로 취급됨.
-  let과 const는 block scope. 블록 내부에서 사용하면 다른 변수인것처럼 작동하는듯.(유효범위가 블록 내부라는 뜻. 다른 언어의 변수랑 비슷한듯)
-*/
 // 현재 모든 시간 today에 저장
 let today = new Date();
 // 캡션에 출력할 오늘의 년도 4자리 저장
@@ -72,7 +53,7 @@ function calendarPrint()
       // 이전달, 다음달 영역에 해당되는 셀은
       let goneDay = document.getElementById(i);
       // 회색으로 칠해준다
-      goneDay.style.background = '#D8D8D8';
+      goneDay.style.background = '#fff';
     }
   }
   // 1일이 토요일이고 막일이 30일 이상이거나, 1일이 금요일이고 막일이 31일이면
@@ -180,6 +161,7 @@ function leftBtn()
   today = new Date(year,month);
   // 이전 달의 달력 출력 함수
   calendarPrint();
+  console.log(today);
 }
 
 // 다음 달 버튼 클릭시 다음 달의 달력을 출력하는 함수
@@ -200,14 +182,5 @@ function rightBtn()
   today = new Date(year,month);
   // 이전 달의 달력 출력 함수
   calendarPrint();
+  console.log(today);
 }
-//왜안돼
-//let send_time = <? echo $row[0]; ?>;
-//console.log(send_time);
-
-//안됨2
-//document.getElementById('dModal_list').innerHTML = "<? '$row[0];' ?>"; // <!--? $row[0]; ?-->
-
-//안됨3
-//var value = '';
-//value = $("#dModal_list").val();
