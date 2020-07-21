@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript">
+
 		$(document).ready(function() {
 
 
@@ -111,8 +112,19 @@
 			$("#search").click(function search() {
 				//text에 inputsearch값을 초기화
 				var text = $("#inputsearch").val();
+				//combo에 콤보박스중 선택된 값을 넣어줌
+				var combo = $("#combo option:selected").val();
+
+				// 체크박스인 inputsearch
+				if($("#inputsearch").is(":checked") == true){
+					$("#inputsearch").prop("value", "2");
+				}else if($("#inputsearch").is(":checked") == false){
+					$("#inputsearch").prop("value", "1");
+				}else {
+					$("#inputsearch").prop("value", "");
+				}
 				//로그로 값을 제대로 초기화했는지 확인
-				// console.log("검색어:"+text);
+				//console.log("검색어:"+combo);
 				//ajax실행
 				$.ajax({
 					//post타입으로 전송
@@ -121,7 +133,8 @@
 					url: "search.php",
 					//데이터 전송
 					data: {
-						kword: text
+						kword: text,
+						slct: combo
 					},
 					//성공했을 때 함수 실행
 					success: function(data) {
@@ -139,6 +152,37 @@
 					}
 				});
 			});
+
+			// 콤보박스 선택한거에 따라 inputsearch의 타입 등을 변경해주기
+			$("#combo").change(function(){
+				// 콤보박스가 바뀌면 콤보박스 옵션의 값을 변수에 넣어서 if문으로 검사
+				let sel = $(this).val();
+				// 시간으로 필터링하면
+				if(sel == "send_time"){
+					// 검색바의 input type을 date로 변경
+					$("#inputsearch").prop("type", "date");
+					// 값과 type hidden인 텍스트를 공백으로 초기화
+					$("#inputsearch").prop("value", "");
+					$("#box_text").html('');
+				}
+				// 발송 상태로 필터링하면
+				else if (sel == "send_type"){
+					// 검색바의 input type을 checkbox로 변경
+					$("#inputsearch").prop("type", "checkbox");
+					// 값을 2로 변경
+					$("#inputsearch").prop("value", "2");
+					// hidden 텍스트에 설명을 넣음
+					$("#box_text").html('예약 = 체크, 완료 = 미체크');
+				}
+				// 번호, 내용으로 필터링 할때는
+				else{
+					// 검색바의 input type을 search로 변경
+					$("#inputsearch").prop("type", "search");
+					// 값과 type hidden인 텍스트를 공백으로 초기화
+					$("#inputsearch").prop("value", "");
+					$("#box_text").html('');
+				}
+			})
 
 
 
@@ -186,14 +230,14 @@
 					//가져온 태그에 html추가
 					$(this).html(
 						//발송완료태그로 바꿔줌
-						"<p>발송완료</p>"
+						"<p>완료</p>"
 					);
 					//1이 아니라면(값이 2라면)
 				} else {
 					//가져온 태그에 html추가
 					$(this).html(
 						//발송 예약 태그로 바꿔준다
-						"<p>발송예약</p>"
+						"<p>예약</p>"
 					);
 				}
 			});
@@ -230,6 +274,14 @@
 	<!-- 문제 -->
 	<div class="tt">
 		<button id="delete">삭제</button>
+		<select id="combo" name="select">
+			<option value="" selected disabled>검색</option>
+			<option value="receiver">번호</option>
+			<option value="send_message">내용</option>
+			<option value="send_time">시간</option>
+			<option value="send_type">발송상태</option>
+		</select>
+		<label for="inputsearch" id="box_text"></label>
 		<input type="search" id="inputsearch">
 		<button id="search" type="button" name="button">search</button>
 		<div id="dvar">
