@@ -99,7 +99,7 @@
             </tr>
             <tr>
                 <td></td>
-                <td></td>
+                <td style="font-size: 12px;"><a href="forgot.php">비밀번호를 잊어버리셨나요?</a></td>
                 <td><a href="signup.php">SIGN UP</a></td>
             </tr>
         </table>
