@@ -1,15 +1,82 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>ToySend</title>
-    <link rel="stylesheet" href="send_css.css">
-    <script type="text/javascript">
-    alert('aaaaa?');
 
-    </script>
+    <style media="screen">
+        /* 날짜 영역 */
+        #div {
+            top: 5%;
+            left: 40%;
+            position: fixed;
+        }
+
+        #time {
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 10px;
+            border: 3px; */
+            align-items: center;
+            padding: 10 px;
+        }
+
+        #moreReceiver {
+            top: 10%;
+            left: 60%;
+            position: fixed;
+        }
+
+        #phonebook {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        #phonebook h4 {
+            margin: 0;
+        }
+
+        #phonebook button {
+            display: inline-block;
+            width: 50px;
+            margin-left: calc(100% - 100px - 10px);
+        }
+
+        #phonebook .phonebookcontents {
+            text-align: center;
+            width: 500px;
+            margin: 100px auto;
+            padding: 20px 10px;
+            background: #fff;
+            border: 2px solid #666;
+        }
+
+        #phonebook .phonebooklayer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        #name {
+            width: 50px;
+        }
+
+        textarea.autosize {
+            min-height: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <!-- http://localhost/Yuhan_Trumpia/title.php 작동 되지않음 -->
     <!-- $_SERVER['DOCUMENT_ROOT'] 작동 되지않음 -->
@@ -22,9 +89,9 @@
         <div class="phonebookcontents">
             <legend>주소록 목록</legend><br>
 
-            <!-- <span><a href="#" onclick="selectAddress();">번호선택</a></span>
+            <span><a href="#" onclick="selectAddress();">번호선택</a></span>
             <span><a href="#" onclick="insertAddress();">번호추가</a></span>
-            <span><a href="#" onclick="deleteAddress();">번호삭제</a></span> <br> <br> -->
+            <span><a href="#" onclick="deleteAddress();">번호삭제</a></span> <br> <br>
 
             <table>
                 <colgroup>
@@ -90,7 +157,7 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
                 <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
-                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요"   style="text-align: center;" onkeyup="resize(this)"></textarea><br>
+                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
 
                 <p id="count" class="count" style="font-size: 13px;">
                     <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
@@ -98,10 +165,9 @@
                 </p>
 
                 <!-- 본문 입력 -->
-                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text"  maxlength="150" style="text-align:left; width:400px; height:300px; resize:none;"></textarea> <br>
-                <span id="counter">###</span> <br>
+                <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
+                <span id="counter">###</span> <br> <br>
 
-                <input type="file" name="upload_file" multiple><br><br>
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>

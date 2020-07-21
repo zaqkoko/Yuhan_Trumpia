@@ -105,22 +105,35 @@
                 var id = document.getElementById("id");
                 var pw = document.getElementById("pw");
                 var email = document.getElementById("email");
+                var name = document.getElementById("name");
                 //id의 내용이 공백이거나 pw & email 내용이 공백이라면
-                if (id.value == "" || pw.value == "" || emaik.value == "") {
+                if (id.value == "" || pw.value == "" || email.value == "" || name.value == "") {
                     //아이디와 비밀번호와 이메일을입력하라는 alert
-                    alert("아이디/비밀번호/이메일을 입력하세요");
+                    alert("입력란을 확인하세요");
                     //false를 반환하여 submit 하지 않는다
                     return false;
                 }
                 //pw의 내용에 모든문자/숫자+특수문자 조합의 문자열이 존재하지 않거나 특수문자+모든문자/숫자의 조합이 존재하지 않을때
                 else if (!pw.value.match(/([/\w\d/][!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-][/\w\d/])/)) {
                     //특수문자를 혼용하라는 alert
-                    alert("비밀번호는 특수문자를 혼용하여 입력해주세요.");
+                    alert("비밀번호는 특수문자를 혼용하여 입력해주세요");
                     //pw의 내용을 공백으로 만든다
                     pw.value = "";
                     //pw로 초점을 맞춘다
                     pw.focus();
                     //false를 반환하여 submit 하지 않는다
+                    return false;
+                }
+                // email의 정규표현식                   / = 정규표현식 시작
+                // ^[0-9a-zA-Z]                         = 첫 글자는 숫자 또는 대소문자
+                // [-_.]?[0-9a-zA-Z])*@                 = @ 앞에는 - _ . 이 0~1번, 그 뒤의 숫자 또는 대소문자는 한번 또는 여러번
+                // @ 뒤에는 숫자 또는 대소문자
+                // [-_.]?[0-9a-zA-Z])*.                 = . 앞에는 - _ . 이 0~1번, 그 뒤의 숫자 또는 대소문자는 한번 또는 여러번
+                // [a-zA-Z]{2,3}$/i                     = . 뒤 마지막 문자열은 영문자 2~3개
+                else if (!email.value.match(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)) {
+                    alert("알맞은 이메일 형식으로 작성해 주세요");
+                    email.value = "";
+                    email.focus();
                     return false;
                 }
                 //그 외의 경우
@@ -173,7 +186,7 @@
 
             <tr>
                 <!-- NAME -->
-                <td align="right">NAME</td>
+                <td align="right">★ NAME</td>
                 <td valign="top">
                     <input type="text" name="name" style="height:25px; width:300px;" id="name" maxlength="20">
                 </td>
@@ -188,11 +201,18 @@
                 </td>
 
                 <!-- Signup -->
-                <td rowspan="3" valign="bottom">
+                <td valign="bottom">
                     <!-- 클릭했을때 CheckForm실행 -->
                     <input id="bt" type="button" onclick="CheckForm();" name="signup" value="SIGN UP" style="height:27px;">
                 </td>
+
             </tr>
+
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="index.php">돌아가기</a></td>
+            </tr>
+
         </table>
     </form>
 </body>
