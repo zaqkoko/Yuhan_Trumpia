@@ -3,7 +3,7 @@
 include "../db.php";
 
 if ($_POST["id"] == "" || $_POST["email"] == "") {
-    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgot.php">뒤로가기</a>';
+    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgotpw.php">뒤로가기</a>';
 } else {
     $id = $_POST["id"];
     $email = $_POST["email"];
@@ -33,5 +33,5 @@ if ($row["id"] == $id) { // mail(): Failed to connect to mailserver at "localhos
         echo $errorMessage;
     }
 } else {
-    echo '<script> alert("없는 계정입니다"); </script> <a href="forgot.php">다시 입력하기</a>';
+    echo '<script> alert("없는 계정입니다"); </script> <a href="forgotpw.php">다시 입력하기</a>';
 }
