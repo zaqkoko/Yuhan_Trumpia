@@ -21,7 +21,7 @@ $res = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($res);
 
 
-if ($row["name2"] == $name) {
+if ($row["name"] == $name) {
     echo '<script> alert("당신의 아이디는 $row["id"] 입니다"); </script> <a href="index.php">로그인 페이지 가기</a>';
 } else {
     echo '<script> alert("없는 계정입니다"); </script> <a href="forgotid.php">다시 입력하기</a>';
