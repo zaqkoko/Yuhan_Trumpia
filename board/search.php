@@ -3,14 +3,12 @@
 include "../db.php";
 
 
-//$_POST로 가져온 데이터가 null이 아닐때
+//$_POST로 가져온 데아터가 null이 아닐때 (선택삭제일 때)
 if ($_POST['kword'] != null) {
   //kword를 가져온 데이터로 초기화
   $kword = $_POST['kword'];
-  //slct를 포스트받은거로 넣어줌
-  $slct = $_POST['slct'];
-  //kword가 포함되고 유저아이디와 동일한 테이터를 조회. // 셀렉트박스로 선택한 필터에 해당하는 컬럼에서만 검색
-  $q = "SELECT * FROM sms WHERE $slct LIKE '%$kword%' AND user_id='$name'";
+  //kword가 포함되고 유저아이디와 동일한 테이터를 조회
+  $q = "SELECT * FROM sms WHERE send_message LIKE '%$kword%' AND user_id='$name'";
   //쿼리문 실행
   $r = mysqli_query($conn, $q);
 

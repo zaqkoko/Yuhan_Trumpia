@@ -1,5 +1,5 @@
 // 키보드 이벤트가 발생할 때마다 확인 (textarea 스크롤 말고 박스 크기 자체 늘리기)
-// receiver 의 onkeydown="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
+// receiver 의 onkeyup="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
 function resize(obj) {
   // obj의 스타일 중 높이의 값은 1로 한다. // 없으면 계속 늘어난다.
   obj.style.height = "1px";
@@ -85,6 +85,11 @@ $("#send_type").change(function () {
 // $(function() { }); == $(documet).ready(function() {}); 와 동일한 의미이다. 간편하게 $(function() {}); 로 많이 사용한다.
 // TextArea 글자 수 제한 함수 + 실시간 타이핑 함수
 $(document).ready(function () {
+
+
+
+
+
   // keyup(function(e)) -> e 쓰는 이유 : keyup 발생 시 'e'라는 keyup handler를 쓰는 callback 함수를 만들기 위해 사용
   // id sms_text에 keyup 이벤트가 발생했을 때에 대한 정보를 'e' 에 담는다.
   $("#sms_text").keyup(function (e) {
@@ -98,6 +103,7 @@ $(document).ready(function () {
 
   // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
   $("#sms_text").keyup();
+
 });
 
 // 수신자 몇명인지 체크
@@ -185,19 +191,6 @@ $(document).ready(function () {
   });
 });
 
-const API = {
-  CREATE: "add.json",
-  READ: "list.json",
-  UPDATE: "update.json",
-  DELETE: "delete.json",
-};
-
-const ACTION_METHODS = {
-  CREATE: "GET",
-  READ: "GET",
-  UPDATE: "GET",
-  DELETE: "GET",
-};
 
 // 주소록 모달형식
 
@@ -211,19 +204,7 @@ $("#phonebookclose").click(function () {
   $("#phonebook").fadeOut();
 });
 
-// 번호 추가하기
-function insertAddress() {
-  // 이름과 번호의 value를 가져옴.
-  let name = $("#insname").val();
-  let tel = $("#instel").val();
 
-  // 만약 이름이나 번호가 공백이면
-  if (name == null || name == "" || tel == null || tel == "") {
-    // 알림창 띄우고 이름입력칸에 포커싱 잡아주기
-    alert("이름과 번호를 확인해주세요");
-    $("#insname").focus();
-    return;
-  }
 
   /*$.ajax({
                 url: API.CREATE,
@@ -304,7 +285,7 @@ function insertAddress() {
             3. 가상 요소를 포함하지않음 (ex ::after)
             4. 보이지 않는 요소를 포함 (ex display:none)
 
-        
+
         var, let, const 차이점 (참고 : https://velog.io/@bathingape/JavaScript-var-let-const-%EC%B0%A8%EC%9D%B4%EC%A0%90)
 
         var : 유연한 변수 선언. 변수를 중복 선언해도 에러가 나오지 않고 각기 다른 값이 출력된다.
@@ -312,7 +293,7 @@ function insertAddress() {
         const : let과 같지만 재할당 또한 불가능하다.
 
         변수를 사용할 때 웬만하면 const를 사용하고 재할당이 필요한 경우에 한해서 let을 사용하자.
-        
+
         호이스팅 : var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성.
                   자바스크립트는 var, let, const 등을 포함한 function 등 모든 선언을 호이스팅한다.
                   하지만 var로 선언된 변수와는 달리 let 으로 선언된 변수를 선언문 이전에 참조하면 에러가 발생한다. ex) console.log(name), let name="111"; = ERROR
