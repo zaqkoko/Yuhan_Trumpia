@@ -26,8 +26,8 @@ if ($_SESSION['name'] == "") {
         /* 우측 상단 로그인/로그아웃 */
         #hi {
             position: fixed;
-            top: 10px;
-            right: 90px;
+            top: 15px;
+            right: 100px;
             color: #7dabd0;
             font-weight: bold;
             font-size: 15px;
