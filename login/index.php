@@ -99,8 +99,12 @@
             </tr>
             <tr>
                 <td></td>
-                <td style="font-size: 12px;"><a href="forgot.php">비밀번호를 잊어버리셨나요?</a></td>
+                <td style="font-size: 12px;"><a href="forgotid.php">아이디를 잊어버리셨나요?</a></td>
                 <td><a href="signup.php">SIGN UP</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="forgotpw.php">비밀번호를 잊어버리셨나요?</a></td>
             </tr>
         </table>
     </form>
