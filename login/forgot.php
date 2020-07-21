@@ -45,15 +45,22 @@
                 <td valign="top">
                     <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" placeholder=" 가입했던 아이디를 입력해주세요">
                 </td>
+
+                <td rowspan="2" valign="bottom">
+                    <input type="submit" value="찾기" id="subButton" style="height:61px;">
                 </td>
             </tr>
 
             <tr>
-
-                <td align="right">EMAIL</td>
+                <td align=" right">EMAIL</td>
                 <td valign="top">
                     <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
                 </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="index.php">돌아가기</a></td>
             </tr>
 
         </table>

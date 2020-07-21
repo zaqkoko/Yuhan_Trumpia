@@ -123,7 +123,12 @@
                     //false를 반환하여 submit 하지 않는다
                     return false;
                 }
-                // email의 
+                // email의 정규표현식                   / = 정규표현식 시작
+                // ^[0-9a-zA-Z]                         = 첫 글자는 숫자 또는 대소문자
+                // [-_.]?[0-9a-zA-Z])*@                 = @ 앞에는 - _ . 이 0~1번, 그 뒤의 숫자 또는 대소문자는 한번 또는 여러번
+                // @ 뒤에는 숫자 또는 대소문자
+                // [-_.]?[0-9a-zA-Z])*.                 = . 앞에는 - _ . 이 0~1번, 그 뒤의 숫자 또는 대소문자는 한번 또는 여러번
+                // [a-zA-Z]{2,3}$/i                     = . 뒤 마지막 문자열은 영문자 2~3개
                 else if (!email.value.match(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i)) {
                     alert("알맞은 이메일 형식으로 작성해 주세요");
                     email.value = "";
@@ -195,11 +200,18 @@
                 </td>
 
                 <!-- Signup -->
-                <td rowspan="3" valign="bottom">
+                <td valign="bottom">
                     <!-- 클릭했을때 CheckForm실행 -->
                     <input id="bt" type="button" onclick="CheckForm();" name="signup" value="SIGN UP" style="height:27px;">
                 </td>
+
             </tr>
+
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="index.php">돌아가기</a></td>
+            </tr>
+
         </table>
     </form>
 </body>
