@@ -27,7 +27,7 @@ $s_pw = $row['pw'];
 if ($row["id"] == $id) { // mail(): Failed to connect to mailserver at "localhost" port 25, verify your "SMTP" and "smtp_port" setting in php.ini or use ini_set() 뜬다.
     // 해결법은 메일발송서버를 깔아야 한다고 함.
     // $log = mail("zaqkoko@naver.com", $subject, $contents, $headers);
-    echo "<script> alert('당신의 비밀번호는  {$row['pw']} 입니다');</script> <a href='index.php'>로그인 페이지 가기</a>'";
+    echo "<script> alert('당신의 비밀번호는  {$row['pw']} 입니다');</script> <a href='index.php'>로그인 페이지 가기</a>";
     // echo '<script> alert("메일로 비밀번호 재설정 URL이 발송되었습니다.");</script> <a href="index.php">로그인 페이지 가기</a>';
     /*if (!$log) {
         $errorMessage = error_get_last()['message'];
