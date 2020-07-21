@@ -21,7 +21,7 @@
             padding-bottom: 10px;
             border: 3px; */
             align-items: center;
-            padding: 10 px;
+            padding: 10px;
         }
 
         #moreReceiver {
@@ -72,7 +72,10 @@
         }
 
         textarea.autosize {
+            width:200px;
             min-height: 20px;
+            max-height: 500px;
+            resize: none;
         }
     </style>
 </head>
@@ -90,8 +93,6 @@
             <legend>주소록 목록</legend><br>
 
             <span><a href="#" onclick="selectAddress();">번호선택</a></span>
-            <span><a href="#" onclick="insertAddress();">번호추가</a></span>
-            <span><a href="#" onclick="deleteAddress();">번호삭제</a></span> <br> <br>
 
             <table>
                 <colgroup>
