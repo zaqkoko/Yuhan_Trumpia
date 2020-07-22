@@ -53,16 +53,26 @@
                 <input type="button" name="login" value="LOGIN" style="height:60px;" id="bt" onclick="LogIn();">
             </td>
         </tr>
+
         <tr>
             <td align="right">PW</td>
             <td valign="top">
                 <input type="password" name="pw" style="height:25px; width:300px;" id="pw">
             </td>
         </tr>
+
         <tr>
             <td></td>
-            <td style="font-size: 12px;"><a href="forgotid.php">아이디를 잊어버리셨나요?</a></td>
-            <td><a href="signup.php">SIGN UP</a></td>
+            <td valign="top" style="font-size: 15px;">
+                <input type="checkbox" id="idSaveCheck"> 아이디 기억하기
+            </td>
+            <td><a href="signup.php">회원가입</a></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td style="font-size: 12px; padding-top: 10px;"><a href="forgotid.php">아이디를 잊어버리셨나요?</a></td>
+
         </tr>
         <tr>
             <td></td>
