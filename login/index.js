@@ -56,21 +56,45 @@ $(document).ready(function () {
   });
 });
 
-//
-function setCookie(cookieName, value, exdays) {
-  var exdate = new Date();
-  exdate.setDate(exdate.getDate() + exdays);
+// 쿠키란? 브라우저에 저장되는 작은 크기의 문자열이다. 쿠키는 주로 웹서버에서 만들어짐. 서버가 SetCookie에 내용을 넣어 전달하면 브라우저는 이 내용을 자체적으로 브라우저에 저장한다.
+// 쿠키 저장 (쿠키이름, 값, 일)
+function setCookie(cookieName, value, days) {
+  // nowdate 변수에 현재 시간 저장
+  var nowDate = new Date();
+
+  // nowdate에 저장된 일(date)을 반환하고(getDate()) +days(14)만큼 더한 후 날짜를 설정(setDate)
+  nowDate.setDate(nowDate.getDate() + days);
+
+  // id값을 escape에 넣고 + days가 null이면 "" 넣고 아니면 ; expires=" + nowdate.toGMTString()"으로 만들고 지정해준다.
+  // escape(id); expires=nowdate.toGMTString();
+
+  // escape - URL로 데이터를 전달하기 위해서 문자열을 인코딩 (웹을 통해서 데이터를 전송할 때 특정 문자들은 escape을 통해 전송해주어야한다. ex) 한글이나 & 같은 문자열(& => %로 변환해서 전송))
+  // escape - 한글 때문에 사용
+  // expires = 만료기간설정. nowdate에 셋팅한 값을 GMTString으로 변환 후 값을 넣어준다.
+  // 만약 days == null이여서 ""으로 저장되면 브라우저가 종료될 때 삭제된다.
   var cookieValue =
-    escape(value) + (exdays == null ? "" : "; expires=" + exdate.toGMTString());
+    escape(value) + (days == null ? "" : "; expires=" + nowDate.toGMTString());
+
+  // console.log(cookieValue);   =>  ; expires=Wed, 05 Aug 2020 07:17:43 GMT
+
+  // document.cookie = 브라우저에서 쿠키로 접근이 가능함.
+  // UserID=escape(value); expires=nowdate.toGMTString();
   document.cookie = cookieName + "=" + cookieValue;
 }
 
+// 쿠키 삭제(쿠키이름)
 function deleteCookie(cookieName) {
+  // expireDate 변수에 현재시각 저장
   var expireDate = new Date();
+
+  // expireDate에 저장된 일(date)을 반환하고(getDate -1을 해준 후 날짜를 설정한다(setDate), -1 하는이유 : 보존기간을 과거로 하기 위해서
   expireDate.setDate(expireDate.getDate() - 1);
+
+  // document.cookie = userID=escape(value); expires=expireDate.toGMTString();
   document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
 }
 
+// 쿠키 가져옴
 function getCookie(cookieName) {
   cookieName = cookieName + "=";
   var cookieData = document.cookie;

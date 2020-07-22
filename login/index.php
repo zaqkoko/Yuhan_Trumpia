@@ -67,7 +67,7 @@
             <td valign="top" style="font-size: 15px;">
                 <input type="checkbox" id="saveid" name="saveid"> 아이디 기억하기
             </td>
-            <td><a href="signup.php">회원가입</a></td>
+            <td><a href="signup.php" style="font-size: 15px;">회원가입</a></td>
         </tr>
 
         <tr>
