@@ -11,6 +11,10 @@
 
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 55281d93f6d7427014e5936abbd36d2387b0fed1
 	<script type="text/javascript">
 
 		$(document).ready(function() {
@@ -278,6 +282,12 @@
 			});
 		}
 	</script>
+<<<<<<< HEAD
+=======
+=======
+	<script type="text/javascript" src="board_js.js"></script>
+>>>>>>> 2bd65654d89b71b54e58b66bd8221b6bee13acb9
+>>>>>>> 55281d93f6d7427014e5936abbd36d2387b0fed1
 
 </head>
 
