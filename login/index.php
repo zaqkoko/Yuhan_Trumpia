@@ -47,7 +47,7 @@
         <tr>
             <td align="right">ID</td>
             <td valign="top">
-                <input type="text" name="id" style="height:25px; width:300px;" id="id">
+                <input type="text" name="id" style="height:25px; width:300px;" id="id" autocomplete="off">
             </td>
             <td rowspan="2" valign="bottom">
                 <input type="button" name="login" value="LOGIN" style="height:60px;" id="bt" onclick="LogIn();">
@@ -57,14 +57,15 @@
         <tr>
             <td align="right">PW</td>
             <td valign="top">
-                <input type="password" name="pw" style="height:25px; width:300px;" id="pw">
+                <!-- 엔터 keydown이 먹히지않는다. 왜일까 -->
+                <input type="password" name="pw" style="height:25px; width:300px;" id="pw" autocomplete="off" onkeydown="if(event.keycode==13)LogIn()">
             </td>
         </tr>
 
         <tr>
             <td></td>
             <td valign="top" style="font-size: 15px;">
-                <input type="checkbox" id="idSaveCheck"> 아이디 기억하기
+                <input type="checkbox" id="saveid" name="saveid"> 아이디 기억하기
             </td>
             <td><a href="signup.php">회원가입</a></td>
         </tr>

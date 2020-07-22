@@ -47,7 +47,7 @@
             <tr>
                 <td align="right">ID</td>
                 <td valign="top">
-                    <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" placeholder=" 가입했던 아이디를 입력해주세요">
+                    <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" autocomplete="off" placeholder=" 가입했던 아이디를 입력해주세요">
                 </td>
 
                 <td rowspan="2" valign="bottom">
@@ -58,7 +58,7 @@
             <tr>
                 <td align="right">EMAIL</td>
                 <td valign="top">
-                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
+                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" autocomplete="off" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
                 </td>
             </tr>
 

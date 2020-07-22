@@ -33,3 +33,7 @@ function LogIn() {
     }
   });
 }
+
+$(document).ready(function () {
+  let userID = getCookie("");
+});

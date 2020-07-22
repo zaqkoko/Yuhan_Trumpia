@@ -41,6 +41,10 @@ if (isset($_SESSION['uid'])) {
             font-weight: bold;
             font-size: 20px;
         }
+
+        a {
+            color: #7dabd0;
+        }
     </style>
 </head>
 
