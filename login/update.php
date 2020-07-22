@@ -54,14 +54,20 @@ if (isset($_SESSION['uid'])) {
             <tr>
                 <td align="right">PW</td>
                 <td valign="top">
-                    <input type="password" name="pw" id="pw" onKeydown="NotS(this);" style="height:25px; width:300px; font-size: 15px;" placeholder=" 비밀번호를 입력해주세요">
+                    <input type="password" name="pw" id="pw" onKeydown="NotS(this);" style="height:25px; width:300px; font-size: 15px;" placeholder=" 원하시는 비밀번호를 입력해주세요">
                 </td>
 
-                <td valign="bottom">
-                    <input type="button" value="변경" id="subButton" onclick="Check();" style="height:25px;">
+                <td rowspan="2" valign="bottom">
+                    <input type="button" value="변경" id="subButton" onclick="Check();" style="height:60px;">
                 </td>
             </tr>
 
+            <tr>
+                <td></td>
+                <td valign="top">
+                    <input type="password" name="pw2" id="pw2" style="height:25px; width:300px; font-size: 15px;" placeholder=" 한번 더 입력해주세요">
+                </td>
+            </tr>
             <tr>
                 <td></td>
                 <td style="font-size: 12px;"><a href="index.php">돌아가기</a></td>
@@ -71,28 +77,43 @@ if (isset($_SESSION['uid'])) {
     </form>
     <script>
         function NotS(k) {
+
             //키 올라갈때
             $(k).keyup(function() {
-                //" "를 입력하면 공백으로 치환
+
+                // 공백 입력시, 지우기
                 $(this).val($(this).val().replace(" ", ""));
             });
         }
 
         function Check() {
+            // pw, pw2의 id값을 받아와 변수에 저장
             let pwcheck = document.getElementById("pw");
+            let pw2check = document.getElementById("pw2");
+
             if (!pwcheck.value.match(
                     /([/\w\d/][!,@,#,$,%,^,&,*,?,_,~,-])|([!,@,#,$,%,^,&,*,?,_,~,-][/\w\d/])/
                 )) {
-                //특수문자를 혼용하라는 alert
+                //특수문자 혼용 alert
                 alert("비밀번호는 특수문자를 혼용하여 입력해주세요");
+
                 //pw의 내용을 공백으로 만든다
                 pw.value = "";
-                //pw로 초점을 맞춘다
+
+                //pw 칸을 입력상태로 만들어 줌
                 pw.focus();
-                //false를 반환하여 submit 하지 않는다
+
+                // 반환 false
                 return false;
-            } else {
+
+                // 비밀번호가 서로 같으면
+            } else if (pwcheck.value == pw2check.value) {
+                // updater form submit
                 document.updater.submit();
+
+            } else {
+                // 비밀번호가 서로 같지않으면 알림
+                alert("비밀번호가 서로 일치하지 않습니다");
             }
         }
     </script>
