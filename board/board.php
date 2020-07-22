@@ -115,13 +115,17 @@
 				//combo에 콤보박스중 선택된 값을 넣어줌
 				var combo = $("#combo option:selected").val();
 
-				// 체크박스인 inputsearch
-				if($("#inputsearch").is(":checked") == true){
-					$("#inputsearch").prop("value", "2");
-				}else if($("#inputsearch").is(":checked") == false){
-					$("#inputsearch").prop("value", "1");
-				}else {
-					$("#inputsearch").prop("value", "");
+				// input 체크의 값이 on이면,
+				if($("#inputcheck").val() == 'on'){
+					// input 체크박스가 체크 되었을때,
+					if($("#inputcheck").is(":checked") == true){
+						// text는 2로 바꿔줌
+						text = 2;
+						// input 체크박스가 미체크 되었을때,
+					}else if($("#inputcheck").is(":checked") == false){
+						// text는 1로 바꿔줌
+						text = 1
+					}
 				}
 				//로그로 값을 제대로 초기화했는지 확인
 				//console.log("검색어:"+combo);
@@ -159,25 +163,34 @@
 				let sel = $(this).val();
 				// 시간으로 필터링하면
 				if(sel == "send_time"){
-					// 검색바의 input type을 date로 변경
+					// input 검색바의 type을 date로 변경
 					$("#inputsearch").prop("type", "date");
-					// 값과 type hidden인 텍스트를 공백으로 초기화
+					// input 체크는 작동 안할것임 초기화
+					$("#inputcheck").prop("type", "hidden");
+					$("#inputcheck").prop("value", "off");
+					// 검색바의 값과 type hidden인 텍스트를 공백으로 초기화
 					$("#inputsearch").prop("value", "");
 					$("#box_text").html('');
 				}
 				// 발송 상태로 필터링하면
 				else if (sel == "send_type"){
-					// 검색바의 input type을 checkbox로 변경
-					$("#inputsearch").prop("type", "checkbox");
-					// 값을 2로 변경
-					$("#inputsearch").prop("value", "2");
+					// 검색바의 input type을 hidden으로 변경
+					$("#inputsearch").prop("type", "hidden");
+					// input 체크가 작동할것임 type을 체크박스로 바꾸고 값을 on으로.
+					$("#inputcheck").prop("type", "checkbox");
+					$("#inputcheck").prop("value", "on");
+					// 검색바의 값 공백으로 초기화
+					$("#inputsearch").prop("value", "");
 					// hidden 텍스트에 설명을 넣음
 					$("#box_text").html('예약 = 체크, 완료 = 미체크');
 				}
 				// 번호, 내용으로 필터링 할때는
 				else{
-					// 검색바의 input type을 search로 변경
+					// input 검색바의 type을 search로 변경
 					$("#inputsearch").prop("type", "search");
+					// input 체크는 작동 안할것임 초기화
+					$("#inputcheck").prop("type", "hidden");
+					$("#inputcheck").prop("value", "off");
 					// 값과 type hidden인 텍스트를 공백으로 초기화
 					$("#inputsearch").prop("value", "");
 					$("#box_text").html('');
@@ -275,14 +288,15 @@
 	<div class="tt">
 		<button id="delete">삭제</button>
 		<select id="combo" name="select">
-			<option value="" selected disabled>검색</option>
-			<option value="receiver">번호</option>
+			<!-- <option value="" selected disabled>필터</option> -->
+			<option value="receiver" selected>번호</option>
 			<option value="send_message">내용</option>
 			<option value="send_time">시간</option>
 			<option value="send_type">발송상태</option>
 		</select>
 		<label for="inputsearch" id="box_text"></label>
 		<input type="search" id="inputsearch">
+		<input type="hidden" id="inputcheck">
 		<button id="search" type="button" name="button">search</button>
 		<div id="dvar">
 			<p>전송내역 <span></span>건</p>

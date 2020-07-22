@@ -114,6 +114,9 @@ th{
 #inputsearch{
   float: left;
 }
+#inputcheck{
+  float: left;
+}
 #box_text{
   float: left;
 }
