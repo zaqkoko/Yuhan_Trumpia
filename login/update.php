@@ -1,5 +1,8 @@
 <?php
+// 비밀번호 재변경
+
 include "../db.php";
+
 if (isset($_SESSION['uid'])) {
     echo "{$_SESSION['uid']} 비밀번호 변경";
 } else {
@@ -74,7 +77,7 @@ if (isset($_SESSION['uid'])) {
             </tr>
             <tr>
                 <td></td>
-                <td style="font-size: 12px;"><a href="index.php">돌아가기</a></td>
+                <td style="font-size: 12px;"><a href="index.html">돌아가기</a></td>
             </tr>
 
         </table>

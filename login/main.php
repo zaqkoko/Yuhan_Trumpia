@@ -1,4 +1,7 @@
 <?php
+//메인 홈페이지
+
+// 세션 시작
 session_start();
 //$_session[name]이 공백일 때
 if ($_SESSION['name'] == "") {

@@ -1,3 +1,5 @@
+// index.html에 필요한 js
+
 //LOGIN()함수 정의
 function LogIn() {
   $.ajax({
@@ -23,8 +25,8 @@ function LogIn() {
     else if (data == "2") {
       //다시 입력하라는 alert
       alert("아이디/비밀번호를 다시 입력해주세요");
-      //index.php로 이동한다
-      location.href = "index.php";
+      //index.html로 이동한다
+      location.href = "index.html";
     }
     //받은 데이터의 값이 1,2가 아닐 때
     else {

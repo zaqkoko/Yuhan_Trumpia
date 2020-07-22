@@ -1,4 +1,5 @@
 <?php
+// 아이디 찾기 db 체크
 
 include "../db.php";
 
@@ -6,7 +7,7 @@ include "../db.php";
 if ($_POST["name"] == "" || $_POST["email"] == "") {
 
     // alert로 알림창 띄우고 홈페이지 즉시 이동(location.href = "주소")
-    echo '<script> alert("항목을 입력해주세요"); location.href = "forgotid.php"; </script>';
+    echo '<script> alert("항목을 입력해주세요"); location.href = "forgotid.html"; </script>';
 } else {
     // 변수 name에는 입력받은 name값, email에는 입력받은 email값 넣기
     $name = $_POST["name"];
@@ -26,8 +27,8 @@ $row = mysqli_fetch_array($res);
 if ($row["name"] == $name) {
 
     // 해당 name의 id값을 알림창으로 알려주고 홈페이지 즉시이동
-    echo "<script> alert('당신의 아이디는  {$row["id"]} 입니다'); location.href = 'index.php'; </script>";
+    echo "<script> alert('당신의 아이디는  {$row["id"]} 입니다'); location.href = 'index.html'; </script>";
 } else {
     // 입력 다시하라는 알람창 이후 홈페이지 즉시이동
-    echo '<script> alert("입력을 다시 확인해주세요"); location.href = "forgotid.php"; </script>';
+    echo '<script> alert("입력을 다시 확인해주세요"); location.href = "forgotid.html"; </script>';
 }

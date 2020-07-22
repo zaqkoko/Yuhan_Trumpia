@@ -1,4 +1,5 @@
 <?php
+// 비밀번호 재변경 db
 
 include "../db.php";
 
@@ -15,5 +16,5 @@ mysqli_query($conn, $sql);
 // 세션 삭제
 session_destroy();
 
-// 변경 완료 알림 후 index.php로 즉시 이동
-echo "<script> alert('비밀번호가 변경되었습니다'); location.href='index.php'; </script>";
+// 변경 완료 알림 후 index.html로 즉시 이동
+echo "<script> alert('비밀번호가 변경되었습니다'); location.href='index.html; </script>";

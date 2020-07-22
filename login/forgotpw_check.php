@@ -1,10 +1,11 @@
 <?php
+// 비밀번호 찾기 db 체크
 
 include "../db.php";
 
 // 입력받은 id와 email의 값이 둘 중 하나라도 공백이면
 if ($_POST["id"] == "" || $_POST["email"] == "") {
-    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgotpw.php">뒤로가기</a>';
+    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgotpw.html">뒤로가기</a>';
 } else {
     // 변수 id에는 입력받은 id값, email에는 입력받은 email값 넣기
     $id = $_POST["id"];
@@ -59,6 +60,6 @@ if ($row["id"] == $id) {
 
 } else {
 
-    // 입력 다시하라는 알람창 이후 홈페이지 즉시이동
-    echo '<script> alert("입력을 다시 확인해주세요"); location.href = "forgotpw.php"; </script>';
+    // 입력 다시하라는 알람창 이후 forgotpw.html 즉시이동
+    echo '<script> alert("입력을 다시 확인해주세요"); location.href = "forgotpw.html"; </script>';
 }
