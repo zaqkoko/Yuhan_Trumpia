@@ -35,5 +35,52 @@ function LogIn() {
 }
 
 $(document).ready(function () {
-  let userID = getCookie("");
+  // userID에 저장된 쿠키값을 가져와서 id값에 넣어준다.
+  let userID = getCookie("userID");
+  $("#id").val(userID);
+
+  if ($("#id").val() != "") {
+    // 그 전에 ID를 저장해서 첫 페이지 로딩 시 ID 입력 칸에 저장된 ID가 입력된 상태라면
+    $("#saveid").attr("checked", true); // 아이디 기억하기를 체크표시로 유지하기. (attr = 속성을 가져오거나 추가함)
+  }
+
+  // saveid 값 (체크박스)에 변화가 생기면 함수 실행
+  $("#saveid").change(function () {
+    // 아이디 기억하기를 클릭했을 때
+    if ($("#saveid").is(":checked")) {
+      // id값의 값을 userID라는 이름으로 쿠키를 14일간 저장
+      setCookie("userID", $("#id").val(), 14);
+    } else {
+      deleteCookie("userID"); // userID 쿠키삭제
+    }
+  });
 });
+
+//
+function setCookie(cookieName, value, exdays) {
+  var exdate = new Date();
+  exdate.setDate(exdate.getDate() + exdays);
+  var cookieValue =
+    escape(value) + (exdays == null ? "" : "; expires=" + exdate.toGMTString());
+  document.cookie = cookieName + "=" + cookieValue;
+}
+
+function deleteCookie(cookieName) {
+  var expireDate = new Date();
+  expireDate.setDate(expireDate.getDate() - 1);
+  document.cookie = cookieName + "= " + "; expires=" + expireDate.toGMTString();
+}
+
+function getCookie(cookieName) {
+  cookieName = cookieName + "=";
+  var cookieData = document.cookie;
+  var start = cookieData.indexOf(cookieName);
+  var cookieValue = "";
+  if (start != -1) {
+    start += cookieName.length;
+    var end = cookieData.indexOf(";", start);
+    if (end == -1) end = cookieData.length;
+    cookieValue = cookieData.substring(start, end);
+  }
+  return unescape(cookieValue);
+}
