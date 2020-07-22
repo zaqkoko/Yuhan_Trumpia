@@ -37,7 +37,7 @@
       </tr>
     </table>
     <table class="dcell" cellpadding="10%">
-      <tr>
+      <tr class="">
         <p>수정하기</p>
       </tr>
       <?php include 'select_addressbook.php'; ?>
