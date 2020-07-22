@@ -7,16 +7,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>board</title>
- <!-- 화이팅 -->
+	<!-- 화이팅 -->
 
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 55281d93f6d7427014e5936abbd36d2387b0fed1
 	<script type="text/javascript">
-
 		$(document).ready(function() {
 
 
@@ -120,13 +115,13 @@
 				var combo = $("#combo option:selected").val();
 
 				// input 체크의 값이 on이면,
-				if($("#inputcheck").val() == 'on'){
+				if ($("#inputcheck").val() == 'on') {
 					// input 체크박스가 체크 되었을때,
-					if($("#inputcheck").is(":checked") == true){
+					if ($("#inputcheck").is(":checked") == true) {
 						// text는 2로 바꿔줌
 						text = 2;
 						// input 체크박스가 미체크 되었을때,
-					}else if($("#inputcheck").is(":checked") == false){
+					} else if ($("#inputcheck").is(":checked") == false) {
 						// text는 1로 바꿔줌
 						text = 1
 					}
@@ -162,11 +157,11 @@
 			});
 
 			// 콤보박스 선택한거에 따라 inputsearch의 타입 등을 변경해주기
-			$("#combo").change(function(){
+			$("#combo").change(function() {
 				// 콤보박스가 바뀌면 콤보박스 옵션의 값을 변수에 넣어서 if문으로 검사
 				let sel = $(this).val();
 				// 시간으로 필터링하면
-				if(sel == "send_time"){
+				if (sel == "send_time") {
 					// input 검색바의 type을 date로 변경
 					$("#inputsearch").prop("type", "date");
 					// input 체크는 작동 안할것임 초기화
@@ -177,7 +172,7 @@
 					$("#box_text").html('');
 				}
 				// 발송 상태로 필터링하면
-				else if (sel == "send_type"){
+				else if (sel == "send_type") {
 					// 검색바의 input type을 hidden으로 변경
 					$("#inputsearch").prop("type", "hidden");
 					// input 체크가 작동할것임 type을 체크박스로 바꾸고 값을 on으로.
@@ -189,7 +184,7 @@
 					$("#box_text").html('예약 = 체크 / 완료 = 미체크');
 				}
 				// 번호, 내용으로 필터링 할때는
-				else{
+				else {
 					// input 검색바의 type을 search로 변경
 					$("#inputsearch").prop("type", "search");
 					// input 체크는 작동 안할것임 초기화
@@ -282,12 +277,6 @@
 			});
 		}
 	</script>
-<<<<<<< HEAD
-=======
-=======
-	<script type="text/javascript" src="board_js.js"></script>
->>>>>>> 2bd65654d89b71b54e58b66bd8221b6bee13acb9
->>>>>>> 55281d93f6d7427014e5936abbd36d2387b0fed1
 
 </head>
 
