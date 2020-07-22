@@ -2,8 +2,11 @@
 
 include "../db.php";
 
+// 입력받은 name id와 email의 값이 둘 중 하나라도 공백이면
 if ($_POST["name"] == "" || $_POST["email"] == "") {
-    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgotid.php">뒤로가기</a>';
+
+    // alert로 알림창 띄우고 홈페이지 즉시 이동(location.href = "주소")
+    echo '<script> alert("항목을 입력해주세요"); location.href = "forgotid.php"; </script>';
 } else {
     $name = $_POST["name"];
     $email = $_POST["email"];
