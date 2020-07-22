@@ -13,3 +13,4 @@ mysqli_query($conn, $sql);
 session_destroy();
 
 echo "<script> alert('비밀번호가 변경되었습니다'); location.href='index.php'; </script>";
+echo "";
