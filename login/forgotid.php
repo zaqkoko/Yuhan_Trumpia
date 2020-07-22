@@ -38,7 +38,7 @@
     <center>
         <h1>TOY</h1>
     </center>
-    <form action="forgotid_check.php" method="post" name="forgot">
+    <form action="forgotid_check.php" method="post" name="forgotid">
         <table>
             <tr>
                 <td align="right">NAME</td>
