@@ -31,6 +31,10 @@
             font-weight: bold;
             font-size: 20px;
         }
+
+        a {
+            color: #7dabd0;
+        }
     </style>
 </head>
 
@@ -38,12 +42,12 @@
     <center>
         <h1>TOY</h1>
     </center>
-    <form action="forgotpw_check.php" method="post" name="forgot">
+    <form action="forgotpw_check.php" method="post" name="forgotpw">
         <table>
             <tr>
                 <td align="right">ID</td>
                 <td valign="top">
-                    <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" placeholder=" 가입했던 아이디를 입력해주세요">
+                    <input type="text" name="id" style="height:25px; width:300px; font-size: 15px;" id="id" autocomplete="off" placeholder=" 가입했던 아이디를 입력해주세요">
                 </td>
 
                 <td rowspan="2" valign="bottom">
@@ -52,9 +56,9 @@
             </tr>
 
             <tr>
-                <td align=" right">EMAIL</td>
+                <td align="right">EMAIL</td>
                 <td valign="top">
-                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
+                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" autocomplete="off" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
                 </td>
             </tr>
 

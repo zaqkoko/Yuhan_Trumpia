@@ -31,6 +31,10 @@
             font-weight: bold;
             font-size: 20px;
         }
+
+        a {
+            color: #7dabd0;
+        }
     </style>
 </head>
 
@@ -38,12 +42,12 @@
     <center>
         <h1>TOY</h1>
     </center>
-    <form action="forgotid_check.php" method="post" name="forgot">
+    <form action="forgotid_check.php" method="post" name="forgotid">
         <table>
             <tr>
                 <td align="right">NAME</td>
                 <td valign="top">
-                    <input type="text" name="name" style="height:25px; width:300px; font-size: 15px;" id="name" placeholder=" 가입했던 이름을 입력해주세요">
+                    <input type="text" name="name" style="height:25px; width:300px; font-size: 15px;" id="name" autocomplete="off" placeholder=" 가입했던 이름을 입력해주세요">
                 </td>
 
                 <td rowspan="2" valign="bottom">
@@ -54,7 +58,7 @@
             <tr>
                 <td align="right">EMAIL</td>
                 <td valign="top">
-                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" placeholder=" 가입했던 이메일을 입력해주세요">
+                    <input type="text" name="email" style="height: 25px; width:300px; font-size:15px;" id="email" autocomplete="off" placeholder=" 가입했던 이메일을 입력해주세요">
                 </td>
             </tr>
 
