@@ -37,51 +37,79 @@
             color: #fff;
         }
     </style>
-    <script type="text/javascript" src="index.js"></script>
-</head>
-<center>
-    <h1>TOY</h1>
-</center>
-<form action="login.php" method="post" name="login">
-    <table>
-        <tr>
-            <td align="right">ID</td>
-            <td valign="top">
-                <input type="text" name="id" style="height:25px; width:300px;" id="id" autocomplete="off">
-            </td>
-            <td rowspan="2" valign="bottom">
-                <input type="button" name="login" value="LOGIN" style="height:60px;" id="bt" onclick="LogIn();">
-            </td>
-        </tr>
-
-        <tr>
-            <td align="right">PW</td>
-            <td valign="top">
-                <!-- 엔터 keydown이 먹히지않는다. 왜일까 -->
-                <input type="password" name="pw" style="height:25px; width:300px;" id="pw" autocomplete="off" onkeydown="if(event.keycode==13)LogIn()">
-            </td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td valign="top" style="font-size: 15px;">
-                <input type="checkbox" id="saveid" name="saveid"> 아이디 기억하기
-            </td>
-            <td><a href="signup.php">회원가입</a></td>
-        </tr>
-
-        <tr>
-            <td></td>
-            <td style="font-size: 12px; padding-top: 10px;"><a href="forgotid.php">아이디를 잊어버리셨나요?</a></td>
-
-        </tr>
-        <tr>
-            <td></td>
-            <td style="font-size: 12px;"><a href="forgotpw.php">비밀번호를 잊어버리셨나요?</a></td>
-        </tr>
-    </table>
-</form>
-
+    <script type="text/javascript">
+        //LOGIN()함수 정의
+        function LogIn() {
+            $.ajax({
+                // login.php에 연결
+                url: "login.php",
+                //id가 id인 값과 id 가 pw인 값이 data
+                data: {
+                    id: $('#id').val(),
+                    pw: $('#pw').val(),
+                },
+                //post메소드를 이용하여 url에 요청
+                type: 'POST',
+                //ajax요청이 완료되면
+                }).success(function(data)
+                {
+                    //받은 데이터의 값이 1일 때
+                    if(data == "1")
+                    {
+                        //로그인이 되었다는 alert
+                        alert($('#id').val() + "님 로그인되어씀미다하핳");
+                        //main.php로 이동한다
+                        location.href='main.php';
+                    }
+                    //받은 데이터의 값이 2일 때
+                    else if (data == "2")
+                    {
+                        //다시 입력하라는 alert
+                        alert("아이디/비밀번호를 다시 입력해주세야");
+                        //index.php로 이동한다
+                        location.href='index.php';
+                    }
+                    //받은 데이터의 값이 1,2가 아닐 때
+                    else
+                    {
+                        //받은 데이터의 값이 무엇인지 alert
+                        alert(data);
+                    }
+                })
+            }
+        </script>
+    </head>
+    <center>
+        <h1>TOY</h1>
+    </center>
+    <form action="login.php" method="post" name="login">
+        <table>
+            <tr>
+                <td align="right">ID</td>
+                <td valign="top">
+                    <input type="text" name="id" style="height:25px; width:300px;" id="id">
+                </td>
+                <td rowspan="2" valign="bottom">
+                    <input type="button" name="login" value="LOGIN" style="height:60px;" id="bt" onclick="LogIn();">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">PW</td>
+                <td valign="top">
+                    <input type="password" name="pw" style="height:25px; width:300px;" id="pw">
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="forgotid.php">아이디를 잊어버리셨나요?</a></td>
+                <td><a href="signup.php">SIGN UP</a></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td style="font-size: 12px;"><a href="forgotpw.php">비밀번호를 잊어버리셨나요?</a></td>
+            </tr>
+        </table>
+    </form>
 </body>
 
 </html>
