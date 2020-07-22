@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+<<<<<<< HEAD
 	<script type="text/javascript">
 
 		$(document).ready(function() {
@@ -278,6 +279,9 @@
 			});
 		}
 	</script>
+=======
+	<script type="text/javascript" src="board_js.js"></script>
+>>>>>>> 2bd65654d89b71b54e58b66bd8221b6bee13acb9
 
 </head>
 
@@ -308,7 +312,6 @@
 
 	<!-- 테이블 세로 1000픽셀에 셀 패딩이 10% -->
 	<table class="table" cellpadding="10%">
-		<br>
 		<!-- 전체 체크박스 -->
 		<th width="5%"><input type="checkbox" id="allCheck"></th>
 		<th width="20%">

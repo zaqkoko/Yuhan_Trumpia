@@ -113,18 +113,12 @@ th{
 }
 #inputsearch{
   float: left;
-  /* 여기 margin 안주면 형태 흐트러짐  */
-  margin-left: 10px;
-  margin-right: 10px;
 }
 #inputcheck{
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
 }
 #box_text{
   float: left;
-  margin-left: 10px;
 }
 
 
