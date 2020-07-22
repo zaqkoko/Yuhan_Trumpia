@@ -1,0 +1,21 @@
+.table, .dcell, .tt, #dvar{
+  width: 700px;
+}
+td{
+  /* 이거변경하면 테이블 선 안맞음 */
+  padding: 10px 15px;
+}
+.dcell tr:hover{
+  background: #ebf7ff;
+
+}
+.dcell, .table{
+  border: 20px solid #7dabd0;;
+
+}
+.table{
+  border-bottom: 5px solid #7dabd0;;
+}
+.dcell{
+  border-top:0;
+}

@@ -81,7 +81,7 @@ if ($_SESSION['name'] == "") {
         <a href="/Yuhan_Trumpia/send/send.php"><img class="icon" src="/Yuhan_Trumpia/img/sms2.png" title="sms_click" id="sms"></a>
         <a href="/Yuhan_Trumpia/board/board.php"><img class="icon" src="/Yuhan_Trumpia/img/hi2.png" title="board" id="board"></a>
         <a href="/Yuhan_Trumpia/calendar/calendar.php"><img class="icon" src="/Yuhan_Trumpia/img/cal2.png" title="calendar" id="calendar"></a>
-        <a href="#"><img class="icon" src="/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
+        <a href="/Yuhan_Trumpia/addressbook/addressbook.php"><img class="icon" src="/Yuhan_Trumpia/img/ad2.png" title="addressbook" id="address"></a>
     </div>
     <a href="#"><img class="chat" id="chat" src="/Yuhan_Trumpia/img/cht.png" title="chat"></a>
 
