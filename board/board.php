@@ -308,6 +308,7 @@
 
 	<!-- 테이블 세로 1000픽셀에 셀 패딩이 10% -->
 	<table class="table" cellpadding="10%">
+		<br>
 		<!-- 전체 체크박스 -->
 		<th width="5%"><input type="checkbox" id="allCheck"></th>
 		<th width="20%">
