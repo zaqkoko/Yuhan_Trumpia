@@ -11,6 +11,7 @@
 
 	<link rel="stylesheet" href="board_css.css">
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<script type="text/javascript" src="board_js.js"></script>
 	<script type="text/javascript">
 
 		$(document).ready(function() {

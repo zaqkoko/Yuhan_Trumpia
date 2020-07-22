@@ -7,12 +7,8 @@
     <title>ToySend</title>
 
     <style media="screen">
+    *{margin: 0 auto;}
         /* 날짜 영역 */
-        #div {
-            top: 5%;
-            left: 40%;
-            position: fixed;
-        }
 
         #time {
             /* display: flex;
@@ -75,7 +71,16 @@
             width:200px;
             min-height: 20px;
             max-height: 500px;
-            resize: none;
+            resize: vertical;
+        }
+        .sms_text{
+          resize: none;
+        }
+        center{
+          width: 700px;
+          height: 900px;
+          background-color: #7dabd0;
+          color: white;
         }
     </style>
 </head>
@@ -167,8 +172,9 @@
 
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
-                <span id="counter">###</span> <br> <br>
+                <span id="counter">###</span> <br>
 
+                <input type="file" name="file" ><br>
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>
