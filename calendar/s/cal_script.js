@@ -11,7 +11,8 @@ let calendar = document.getElementById("calendarTable");
 calendarPrint();
 
 // 달력 출력 함수
-function calendarPrint() {
+function calendarPrint()
+{
   // 캡션에 출력할 year month를 yyyymm에 넣음. (month는 0부터 시작이라 1 더해줌)
   let yyyymm = year + "년 " + (month + 1) + "월";
   // 캡션에 년월 출력
@@ -28,23 +29,66 @@ function calendarPrint() {
   // 마지막 날의 일자 반환. dayCount가 lastDay를 넘어가면 이번달이 끝난것이니 다음 셀부터는 회색 칠해주자
   let lastDay = lastDate.getDate();
   // 발송건수 영역 디폴트는 안보이게(영역은 차지) 누르면 sendModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
-  let sendTile = "<div class='sendtile'>send</div>";
+  let sendTile = "<div class='sendtile' onclick='sendTT();'>send</div>";
   // 예약건수 영억 디폴트는 안보이게(영역은 차지) 누르면 sentModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
-  let sentTile = "<div class='senttile'>sent</div>";
+  let sentTile = "<div class='senttile' onclick='sentTT();'>sent</div>";
   // td내의 여백
   let spaceTile = "<div class='spacetile'><br></div>";
 
+  let dayday = "<div class='dayId'></div>";
+
+
   // 달력의 모든 셀을 하나씩 카운트
-  for (i = 1; i < 43; i++) {
+  for (i = 1; i < 43; i++)
+  {
     // 해당 셀이 첫번째 날 이후에 해당되고, 일 변수가 마지막 날까지 카운트될때
-    if (i >= firstDay && dayCount <= lastDay) {
+    if (i >= firstDay && dayCount <= lastDay)
+    {
       // i번째 셀 선택
       let thisDay = document.getElementById(i);
+
+      if(dayCount >= 10)
+      {
+          if(month>= 9)
+          {
+              let ymd = year + "-" + (month+1) + "-" + dayCount;
+              console.log(ymd);
+              thisDay.innerHTML = dayCount + spaceTile + sendTile + sentTile + dayday;
+              // 일을 1 늘림
+              dayCount++;
+          }
+          else
+          {
+              let ymd = year + "-0" + (month+1) + "-" + dayCount;
+              console.log(ymd);
+              thisDay.innerHTML = dayCount + spaceTile + sendTile + sentTile + dayday;
+              // 일을 1 늘림
+              dayCount++;
+          }
+      }
+      else
+      {
+          if(month>= 9)
+          {
+              let ymd = year + "-" + (month+1) + "-0" + dayCount;
+              console.log(ymd);
+              thisDay.innerHTML = dayCount + spaceTile + sendTile + sentTile + dayday;
+              // 일을 1 늘림
+              dayCount++;
+          }
+          else
+          {
+              let ymd = year + "-0" + (month+1) + "-0" + dayCount;
+              console.log(ymd);
+              thisDay.innerHTML = dayCount + spaceTile + sendTile + sentTile + dayday;
+              // 일을 1 늘림
+              dayCount++;
+          }
+      }
       // i번째 셀에 일과 타일을 삽입
-      thisDay.innerHTML = dayCount + spaceTile + sendTile + sentTile;
-      // 일을 1 늘림
-      dayCount++;
-    } else {
+    }
+    else
+    {
       // 이전달, 다음달 영역에 해당되는 셀은
       let goneDay = document.getElementById(i);
       // 회색으로 칠해준다
@@ -117,6 +161,18 @@ function calendarPrint() {
 
   /* ----------- 모달 끝 ------------- */
 }
+
+
+
+function sendTT()
+{
+    console.log(ymd);
+}
+function sentTT()
+{
+    console.log("hello");
+}
+
 // 달력 출력 끝~
 
 // 달력 클리어해주는 함수     !됏당!
