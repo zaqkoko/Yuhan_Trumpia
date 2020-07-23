@@ -6,13 +6,13 @@
 	<head>
 		<meta charset="utf-8">
 		<title>board</title>
-		<link rel="stylesheet" href="board_style.css">
+		<link rel="stylesheet" href="board_css.css">
 	</head>
 	<body>
 		<div class="tt">
 			<button id="delete">삭제</button>
 			<select id="combo" name="select">
-				<option value="receiver_number" selected>번호</option>
+				<option value="receiver" selected>번호</option>
 				<option value="send_message">내용</option>
 				<option value="send_time">시간</option>
 				<option value="send_type">발송상태</option>
@@ -49,6 +49,6 @@
 			</table>
 		</table>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="board_script.js"></script>
+		<script type="text/javascript" src="board_js.js"></script>
 	</body>
 </html>

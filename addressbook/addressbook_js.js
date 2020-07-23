@@ -1,5 +1,5 @@
 $(function(){
-  alert("ㅁ");
+  
 
   //주소록 인원(명)수 출력
   adselectvalue();
@@ -25,6 +25,18 @@ $(function(){
         });
       }
     });
+
+    function check() {
+      //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+      if ($("#allCheck").is(":checked") && $(this).is(":checked") == false) {
+        //전체 체크박스 상태를 false로 변경
+        $("#allCheck").prop("checked", false);
+        //체크된 체크박스 수와 전체 하위 체크박스 수가 같다면
+      } else if ($("input[type=checkbox]:checked").length == $(".checkbox").length) {
+        //전체 체크박스 상태를 true로 변경
+        $("#allCheck").prop("checked", true);
+      }
+    }
 
 
       //삭제 버튼을 클릭했을 때 함수 실행

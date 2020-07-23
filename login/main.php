@@ -76,7 +76,7 @@ if ($_SESSION['name'] == "") {
         <a href="../send/send.php"> <img src="../img/main_sms.png"> </a>
         <a href="../board/board.php"> <img src="../img/main_history.png"> </a>
         <a href="../calendar/calendar.php"> <img src="../img/main_calendar.png"> </a>
-        <a href="#"> <img src="../img/main_address.png"></a>
+        <a href="../addressbook/addressbook.php"> <img src="../img/main_address.png"></a>
     </div>
     <a href="#"> <img id="chat" src="../img/cht.png"> </a>
     <!-- php변수 $name을 밑의 형식으로 불러옴 -->

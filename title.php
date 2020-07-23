@@ -107,7 +107,7 @@ if ($_SESSION['name'] == "") {
         } else if (filename == "calendar.php") {
             document.getElementById("calendar").src = "/Yuhan_Trumpia/img/cal.png";
 
-        } else if (filename == "addressbook.php") {
+        } else if (filename == "#.php") {
             document.getElementById("address").src = "/Yuhan_Trumpia/img/ad.png";
         }
     </script>

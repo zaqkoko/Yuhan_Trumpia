@@ -80,12 +80,12 @@
         .sms_text {
             resize: none;
         }
+        center{
+          width: 700px;
+          height: 700px;
+          background-color: #7dabd0;
+          color: white;
 
-        center {
-            width: 700px;
-            height: 900px;
-            background-color: #7dabd0;
-            color: white;
         }
         table{
           border: 1px solid  #7dabd0;
@@ -129,7 +129,7 @@
     </div>
 
     <!-- 메세지 보내기 !-->
-    <form action="send_db.php" method="POST" enctype="multipart/form-data">
+    <form action="send_db.php" method="POST">
         <div id="div">
             <center>
                 <!-- 보류
@@ -154,10 +154,15 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
                 <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
-                <textarea name="receiver_number" id="receiver_number" class="autosize" placeholder="수신 번호를 입력하세요" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
+                <textarea name="receiver_number" id="receiver_number" class="autosize" placeholder="수신 번호를 입력하세요"  rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
+                <p id="count" class="count" style="font-size: 13px;">
+                    <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
+                    <span id="num" class="num">0</span>명 수신예정 <br><br>
+                </p>
+                <!-- 수신 이메일 입력 -->
                 <textarea name="receiver_email" id="receiver_email" rows="1" class="autosize" placeholder="이메일을 입력하세요" style="text-align: center ;"></textarea>
                 <p id="count" class="count" style="font-size: 13px;">
-
+                    <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
                     <span id="num" class="num">0</span>명 수신예정 <br><br>
                 </p>
                 <!-- 본문 입력 -->

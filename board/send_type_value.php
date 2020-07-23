@@ -1,4 +1,4 @@
-<!-- board_script 파일의 sendtypevalue함수가 실행될때, 현재 리스트에서 전송완료인 건수만 표시해주는 php파일 -->
+<!-- board_js 파일의 sendtypevalue함수가 실행될때, 현재 리스트에서 전송완료인 건수만 표시해주는 php파일 -->
 <?php
 
 include "../db.php";
