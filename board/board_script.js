@@ -1,3 +1,4 @@
+// DOM(문서객체모델) 생성 이후 바로 실행 
 $(document).ready(function() {
 
   //발송완료, 발송예약 출력
@@ -102,7 +103,7 @@ $(document).ready(function() {
         // text가 2일때는 발송 예약, 1일때는 발송완료인 데이터만 가져오겠다는 의미.
         text = 2;
         // input 체크박스가 미체크 되었을때,
-      }else if($("#inputcheck").is(":checked") == false){
+      } else if($("#inputcheck").is(":checked") == false){
         // text는 1로 바꿔줌
         text = 1
       }
@@ -125,7 +126,7 @@ $(document).ready(function() {
         //send_type 발송완료/발송예약으로 출력
         sendtype();
         //발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
-        $("#dvar").html("<p>검색 명세 <sapn>" + $(".dcell>tbody").children('tr').length + "</span>건</p><hr>");
+        $("#dvar").html("<p>검색 결과 <span>" + $(".dcell").children('tr').length + "</span>건</p><hr>");
       },
       //에러가 생겼을 때 함수 실행
       error: function() {
@@ -244,7 +245,7 @@ function sendtypevalue() {
     success: function(data) {
       //span에 데이터 출력
       $("#dvar").html(
-        "<p>전송 명세 <span>" + data + "</span>건</p><hr>"
+        "<p>발송 완료 <span>" + data + "</span>건</p><hr>"
       );
     },
     //error시 함수실행

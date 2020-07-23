@@ -2,10 +2,11 @@
 // 비밀번호 찾기 db 체크
 
 include "../db.php";
+include "mail.php";
 
 // 입력받은 id와 email의 값이 둘 중 하나라도 공백이면
 if ($_POST["id"] == "" || $_POST["email"] == "") {
-    echo '<script> alert("항목을 입력해주세요");</script> <a href="forgotpw.html">뒤로가기</a>';
+    echo '<script> alert("항목을 입력해주세요"); location.href="forgotpw.html"; </script>';
 } else {
     // 변수 id에는 입력받은 id값, email에는 입력받은 email값 넣기
     $id = $_POST["id"];
@@ -28,7 +29,7 @@ $header .= "X-Mailer: PHP"; */
 // $log = mail("zaqkoko@naver.com", $subject, $contents, $headers);
 
 
-// echo '<script> alert("메일로 비밀번호 재설정 URL이 발송되었습니다.");</script> <a href="index.php">로그인 페이지 가기</a>';
+
 /*
 if (!$log) {
         $errorMessage = error_get_last()['message'];
@@ -53,9 +54,12 @@ if ($row["id"] == $id) {
     // 세션['uid']에 해당 id값 저장
     $_SESSION['uid'] = $row['id'];
 
-    // 알림창 이후 update.php로 즉시이동
-    echo "<script> alert('비밀번호를 재설정합니다'); location.href = 'update.php'; </script>";
+    echo '<script> alert("메일로 비밀번호 재설정 URL이 발송되었습니다."); </script>';
+    mailer("$email", "yuhantrum@naver.com", "TOY", "TOY 비밀번호 변경 URL을 알려드립니다", "http://localhost/Yuhan_Trumpia/login/update.php");
+    echo '<script> location.href="index.php"; </script>';
 
+    // 알림창 이후 update.php로 즉시이동
+    // echo "<script> alert('비밀번호를 재설정합니다'); location.href = 'update.php'; </script>";
     // echo "<script> alert('당신의 비밀번호는  {$row['pw']} 입니다');  location.href = 'index.php'; </script>";
 
 } else {
