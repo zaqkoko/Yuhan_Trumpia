@@ -2,9 +2,10 @@
 include '../db.php';
 
 
-$q = "SELECT * FROM addressbook WHERE user_id='$name'";
-
-// $q = "SELECT * FROM addressbook";
+//회원가입이 안되서 로그인을 못하는 관계로 전체 데이터 출력
+//회원가입 돌아가면 다시 수정할 예정
+// $a = "SELECT * FROM addressbook WHERE user_id='$name'";
+$q = "SELECT * FROM addressbook";
 // addressbook 테이블의 전체 데이터를 조회
 $r = mysqli_query($conn, $q);
 //while문을 통해 조회한 데이터를 가져온다.

@@ -1,53 +1,10 @@
-*{
-  margin: 0 auto;
-  /* padding: 0; */
-  font-size: 13px;
-}
-table tr, td{
-  border-bottom: 1px solid #7dabd0;
-}
-table{
+.table, .dcell, .tt, #dvar{
   width: 700px;
 }
 td{
-  padding: 5px;
+  /* 이거변경하면 테이블 선 안맞음 */
+  padding: 10px 15px;
 }
-input[type="checkbox"]{
-  display:block;
-  text-align: center;
-  transform: scale(1.5);
-}
-button[type="button"]{
-  float: left;
-}
-th{
-  background: #7dabd0;
-  color: white;
-  padding: 15px;
-}
-.tt{
-  width: 700px;
-  height: 23px; /*주의*/
-  text-align: right;
-  padding-top: 100px;
-}
-#delete{
-  float: left;
-  width: 70px;
-  height: 20px;
-  background-color: #f58970;
-  border: 1px solid #f52600;
-}
-#delete:active{
-  background:#f52600;
-  color: white;
-}
-#dvar>hr{
-  width: 100px;
-  float: right;
-}
-
-
 .dcell tr:hover{
   background: #ebf7ff;
 
@@ -57,19 +14,8 @@ th{
 
 }
 .table{
-
   border-bottom: 5px solid #7dabd0;;
 }
 .dcell{
   border-top:0;
-}
-#edittext {
-text-align: center;
-  width: 700px;
-  background-color: green;
-}
-.edit{
-  width: 700px;
-  height: 20px;
-  background-color: pink;
 }
