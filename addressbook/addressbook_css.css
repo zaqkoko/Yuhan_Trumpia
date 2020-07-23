@@ -19,3 +19,13 @@ td{
 .dcell{
   border-top:0;
 }
+#edittext {
+text-align: center;
+  width: 700px;
+  background-color: green;
+}
+.edit{
+  width: 700px;
+  height: 20px;
+  background-color: pink;
+}

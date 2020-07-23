@@ -37,9 +37,15 @@
       </tr>
     </table>
     <table class="dcell" cellpadding="10%">
+<<<<<<< HEAD
+      <!-- <tr class="edit">
+        <p id='edittext'>수정하기</p>
+      </tr> -->
+=======
       <tr class="">
         <p>수정하기</p>
       </tr>
+>>>>>>> b310790d51c7978a40ceae040df7316b4630a81a
       <?php include 'select_addressbook.php'; ?>
       <!-- 데이터 출력 -->
     </table>
