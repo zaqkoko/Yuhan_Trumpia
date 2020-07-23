@@ -17,4 +17,4 @@ mysqli_query($conn, $sql);
 session_destroy();
 
 // 변경 완료 알림 후 index.html로 즉시 이동
-echo "<script> alert('비밀번호가 변경되었습니다'); location.href='index.html; </script>";
+echo "<script> alert('비밀번호가 변경되었습니다'); location.href='index.html'; </script>";

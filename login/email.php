@@ -1,7 +1,6 @@
 <?php
 require "PHPMailer/PHPMailerAutoload.php";
 
-
 function mailer($to, $from, $from_name, $subject, $body)
 {
     $mail = new PHPMailer();
@@ -12,10 +11,7 @@ function mailer($to, $from, $from_name, $subject, $body)
     $mail->Host = 'smtp.naver.com';
     $mail->Port = 587;
     $mail->Username = 'yuhantrum';
-    $mail->Password = 'xmfjavldk123';
-
-    //   $path = 'reseller.pdf';
-    //   $mail->AddAttachment($path);
+    $mail->Password = 'xmfjavldk123'; // 트럼피아123
 
     $mail->IsHTML(true);
     $mail->CharSet = 'UTF-8';
