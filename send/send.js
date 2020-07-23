@@ -115,6 +115,8 @@ $(document).ready(function () {
   $("#receiver").keyup(function (e) {
     // 변수 receiver에 해당 id값을 넣고
     let receiver = $("#receiver").val();
+
+  //숫자와 ','빼고 입력금지
     //만약 수신자텍스트에 숫자 이외의 문자가 들어가게된다면
     if(receiver.match(/[^0-9,.,]/)){
       //숫자만 입력해달라는 팝업생성
@@ -126,6 +128,7 @@ $(document).ready(function () {
 
 
     }
+ //수신자 명수 출력
     // receiver의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면
     if (receiver.replace(/\s|/gi, "").length == 0) {
       // num id값에 0 출력
@@ -146,17 +149,21 @@ $(document).ready(function () {
 // $(document).ready(function(){ == JS onload와 같은 기능.    $(function() {}) 와 동일구문이다.
 // 문서객체모델이라고 하는 DOM이 모두 로딩된 다음 $(document).ready()을 실행하게끔 해주는 구문이다.
 
-// 번호/본문 공백이면 입력하라고 알려줌 + 과거시간이면 발송 불가
+// 번호나 이메일 둘중 하나가 비어있고 본문 공백이면 입력하라고 알려줌 + 과거시간이면 발송 불가
 $(document).ready(function () {
   // subButton id값을 가진 요소를 클릭 했을 때. (submit)
   $("#subButton").click(function () {
     // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려줌.
 
+    //번호
     let receive = $("#receiver").val();
-
-    // receiver id값이 ""이면 경고창 띄우기.
-    if (receive.replace(/\s| /gi, "").length == 0) {
-      alert("번호를 입력해주세요");
+    //메일
+    let receive_e=$("#receiver_e").val();
+    console.log(receive_e.length);
+    // 번호란의 문자길이가 0이거나 메일란의 문자길이가 0이라면
+    //위에 숫자외문자입력시 문자 삭제만 작동하면 replace안쓰고 그냥 length만 써도됌
+    if (!(receive_e.length > 0) ) {
+      alert("수신자를 입력해주세요");
 
       // receiver id값에 포커스 얻기(입력상태 만들어주기)
       $("#receiver").focus();
