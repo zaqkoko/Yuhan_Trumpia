@@ -46,6 +46,18 @@ $(document).ready(function () {
     $("#saveid").attr("checked", true); // 아이디 기억하기를 체크표시로 유지하기. (attr = 속성을 가져오거나 추가함)
   }
 
+  // id 값에 변화가 있으면 실행
+  $("#id").change(function () {
+    // 만약 아이디 저장하기 체크박스가 체크되어있으면
+    if ($("#saveid").val("checked", true)) {
+      // id값의 값을 userID라는 이름으로 쿠키를 14일간 저장
+      setCookie("userID", $("#id").val(), 14);
+    } else {
+      // 외 삭제
+      deleteCookie("userID");
+    }
+  });
+
   // saveid 값 (체크박스)에 변화가 생기면 함수 실행
   $("#saveid").change(function () {
     // 아이디 기억하기를 클릭했을 때
