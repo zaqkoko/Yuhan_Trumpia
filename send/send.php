@@ -7,7 +7,10 @@
     <title>ToySend</title>
 
     <style media="screen">
-    *{margin: 0 auto;}
+        * {
+            margin: 0 auto;
+        }
+
         /* 날짜 영역 */
 
         #time {
@@ -68,19 +71,21 @@
         }
 
         textarea.autosize {
-            width:200px;
+            width: 200px;
             min-height: 20px;
             max-height: 500px;
             resize: vertical;
         }
-        .sms_text{
-          resize: none;
+
+        .sms_text {
+            resize: none;
         }
-        center{
-          width: 700px;
-          height: 900px;
-          background-color: #7dabd0;
-          color: white;
+
+        center {
+            width: 700px;
+            height: 900px;
+            background-color: #7dabd0;
+            color: white;
         }
     </style>
 </head>
@@ -89,6 +94,7 @@
     <!-- http://localhost/Yuhan_Trumpia/title.php 작동 되지않음 -->
     <!-- $_SERVER['DOCUMENT_ROOT'] 작동 되지않음 -->
     <?php include "../title.php" ?>
+    <?php include "../db.php" ?>
 
     <!-- 주소록 -->
     <div id="phonebook">
@@ -174,7 +180,7 @@
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br>
 
-                <input type="file" name="file" ><br>
+                <input type="file" name="file"><br>
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>

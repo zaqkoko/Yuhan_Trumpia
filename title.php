@@ -6,6 +6,11 @@
 // 세션 초기화.
 session_start();
 
+if (!isset($_SESSION['id'])) {
+    echo "<script> alert('잘못된 접근입니다. 로그인 페이지로 이동합니다.'); location.href='/Yuhan_Trumpia/login/index.html'; </script>";
+} else {
+}
+
 // 만약 세션의 name의 값이 ""라면
 if ($_SESSION['name'] == "") {
     // $name의 값은 세션 id값으로 지정
@@ -19,10 +24,10 @@ if ($_SESSION['name'] == "") {
 <head>
 
     <style media="screen">
-
         * {
             margin: 0 auto;
         }
+
         /* 우측 상단 로그인/로그아웃 */
         #hi {
             position: fixed;

@@ -98,15 +98,33 @@ function deleteCookie(cookieName) {
 
 // 쿠키 가져옴
 function getCookie(cookieName) {
+  // 입력받은 cookiename에 = 붙여주기
   cookieName = cookieName + "=";
+
+  // 변수 cookieData 에 document.cookie 저장 (document.cookie = 브라우저에서 쿠키로 접근이 가능하게 해줌)
   var cookieData = document.cookie;
+
+  // cookieData(document.cookie)에 cookiename 문자열이 있으면 문자열의 위치값을 리턴해 변수 start에 저장 (문자열이 존재하지 않으면 -1을 반환함)
   var start = cookieData.indexOf(cookieName);
+
   var cookieValue = "";
+
+  // 만약 start 변수값이 -1이 아니라면(문자열이 존재한다면)
   if (start != -1) {
+    // start 값에 cookieName의 길이만큼 더해준다.
     start += cookieName.length;
+
+    // cookieData(document.cookie)에 start값부터 시작했을때 ; 가 있는 위치값을 end에 저장
     var end = cookieData.indexOf(";", start);
-    if (end == -1) end = cookieData.length;
+
+    // 만약 위치값이 없다면
+    if (end == -1) {
+      // end는 cookieData(document.cookie)의 길이로 저장
+      end = cookieData.length;
+    }
+    // cookieData의 start부터 end 전까지의 문자열을 반환
     cookieValue = cookieData.substring(start, end);
   }
+  // escape를 통해서 만들어진 URI 이스케이핑을 디코드
   return unescape(cookieValue);
 }
