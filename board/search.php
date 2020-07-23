@@ -1,4 +1,4 @@
-<!-- board_js 파일의 search 버튼을 클릭했을때, 요청받은 조건의 검색결과를 가져올 php파일 -->
+<!-- board_script 파일의 search 버튼을 클릭했을때, 요청받은 조건의 검색결과를 가져올 php파일 -->
 <?php
 
 include "../db.php";

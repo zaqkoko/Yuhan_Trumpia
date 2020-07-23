@@ -1,4 +1,4 @@
-<!-- board_js 파일의 removepost 함수가 실행될때, 요청받은 요소를 삭제하고 명세를 제출력하는 php파일 -->
+<!-- board_script 파일의 removepost 함수가 실행될때, 요청받은 요소를 삭제하고 명세를 제출력하는 php파일 -->
 <?php
 
 include "../db.php";
