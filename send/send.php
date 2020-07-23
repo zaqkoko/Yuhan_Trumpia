@@ -22,19 +22,19 @@
             align-items: center;
             padding: 10px;
         }
-
+/* 어딨냐
         #moreReceiver {
             top: 10%;
             left: 60%;
             position: fixed;
-        }
+        } */
 
         #phonebook {
-            display: none;
-            position: relative;
+            /* display: none; */
+            /* position: relative; */
             width: 100%;
             height: 100%;
-            z-index: 1;
+            /* z-index: 1; */
         }
 
         #phonebook h4 {
@@ -52,18 +52,18 @@
             width: 500px;
             margin: 100px auto;
             padding: 20px 10px;
-            background: #fff;
-            border: 2px solid #666;
+            /* background: #fff; */
+            border: 2px solid #7dabd0;
         }
 
         #phonebook .phonebooklayer {
-            position: fixed;
+            /* position: fixed; */
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
-            z-index: -1;
+            /* z-index: -1; */
         }
 
         #name {
@@ -87,6 +87,10 @@
           color: white;
 
         }
+        table{
+          border: 1px solid  #7dabd0;
+          width: 400px;
+        }
     </style>
 </head>
 
@@ -103,37 +107,18 @@
         <div class="phonebookcontents">
             <legend>주소록 목록</legend><br>
 
-            <span><a href="#" onclick="selectAddress();">번호선택</a></span>
-
             <table>
-                <colgroup>
-                    <col width="10%">
-                    <col width="30%">
-                    <col width="*">
-                </colgroup>
-
                 <thead>
                     <tr>
-                        <th class="check">
-                            <input type="checkbox" name="allcheck" id="allcheck" value="all">
-                        </th>
-                        <th class="name">이름</th>
-                        <th class="tel">번호</th>
+                        <th width="25%" class="name">이름</th>
+                        <th width="35%"class="tel">번호</th>
+                        <th width="50%"class="email">메일</th>
                     </tr>
                 </thead>
 
                 <tbody id="add">
-                    <tr>
-                        <td class="check">
-                            <input type="checkbox">
-                        </td>
-                        <td class="name">
-                            <input type="text" id="insname" class="ins" tabindex="1">
-                        </td>
-                        <td class="tel">
-                            <input type="text" id="instel" class="ins" tabindex="2">
-                        </td>
-                    </tr>
+                  <?php include 'select_addressbook.php'; ?>
+                  </tr>
                 </tbody>
             </table>
             <button type="button" id="phonebookclose">닫기</button>
@@ -169,18 +154,22 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
                 <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
-                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요"  rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
-                <textarea name="receiver" id="receiver_e" rows="1" class="autosize" placeholder="이메일을 입력하세요" style="text-align: center ;"></textarea>
+                <textarea name="receiver_number" id="receiver_number" class="autosize" placeholder="수신 번호를 입력하세요"  rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
                 <p id="count" class="count" style="font-size: 13px;">
                     <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
                     <span id="num" class="num">0</span>명 수신예정 <br><br>
                 </p>
-
+                <!-- 수신 이메일 입력 -->
+                <textarea name="receiver_email" id="receiver_email" rows="1" class="autosize" placeholder="이메일을 입력하세요" style="text-align: center ;"></textarea>
+                <p id="count" class="count" style="font-size: 13px;">
+                    <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
+                    <span id="num" class="num">0</span>명 수신예정 <br><br>
+                </p>
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br>
                 <!-- 파일 업로드 -->
-                <input type="file" name="file" style="background-color:white;"><br>
+                <input type="file" name="file" style="background-color:white; color:#7dabd0;"><br>
 
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
