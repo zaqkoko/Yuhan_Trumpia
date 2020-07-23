@@ -3,7 +3,6 @@
 
 include "../db.php";
 include "email.php";
-include "email.js";
 
 // 입력받은 id와 email의 값이 둘 중 하나라도 공백이면
 if ($_POST["id"] == "" || $_POST["email"] == "") {
@@ -30,6 +29,9 @@ if ($row["id"] == $id) {
 
     // 세션['uid']에 해당 id값 저장
     $_SESSION['uid'] = $row['id'];
+
+    echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
+    echo '<script> location.href="email.html"; </script>';
 
     /*echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
     mailer("$email", "yuhantrum@naver.com", "TOY", "TOY 비밀번호 변경 URL을 알려드립니다", "<p>아래의 링크를 클릭해주세요<p> <a href='http://localhost/Yuhan_Trumpia/login/update.php'>인증하기</a>");
