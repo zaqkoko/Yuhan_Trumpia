@@ -78,7 +78,7 @@
         }
         center{
           width: 700px;
-          height: 900px;
+          height: 600px;
           background-color: #7dabd0;
           color: white;
         }
@@ -163,8 +163,8 @@
                 <input type="datetime-local" id="send_time" name="send_time" readonly> <br> <br>
 
                 <!-- 수신 번호 입력 (input에서 textarea로 바꿈) -->
-                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요" value="" rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
-
+                <textarea name="receiver" id="receiver" class="autosize" placeholder="수신 번호를 입력하세요"  rows="1" style="text-align: center ;" onkeyup="resize(this)"></textarea><br>
+                <textarea name="receiver" rows="1" class="autosize" placeholder="이메일을 입력하세요" style="text-align: center ;"></textarea>
                 <p id="count" class="count" style="font-size: 13px;">
                     <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
                     <span id="num" class="num">0</span>명 수신예정 <br><br>
@@ -173,8 +173,8 @@
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br>
-
-                <input type="file" name="file" ><br>
+                <!-- 파일 업로드 -->
+                <input type="file" name="file" style="background-color:white;"><br>
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>

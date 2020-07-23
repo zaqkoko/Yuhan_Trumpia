@@ -1,3 +1,12 @@
+$(function(){
+  //새로고침
+  alert("gd");
+
+});
+
+
+
+
 // 키보드 이벤트가 발생할 때마다 확인 (textarea 스크롤 말고 박스 크기 자체 늘리기)
 // receiver 의 onkeyup="resize(this)"가 함수를 부르고 해당 textarea를 obj에 넣음
 function resize(obj) {
@@ -106,7 +115,17 @@ $(document).ready(function () {
   $("#receiver").keyup(function (e) {
     // 변수 receiver에 해당 id값을 넣고
     let receiver = $("#receiver").val();
+    //만약 수신자텍스트에 숫자 이외의 문자가 들어가게된다면
+    if(receiver.match(/[^0-9,.,]/)){
+      //숫자만 입력해달라는 팝업생성
+      alert("숫자만 입력해주세요");
+      receiver="";
 
+      //숫자 외 문자열을 공백으로 바꿔서 텍스트를 비워주고싶은데 replace나 val,text()를 써도 안됌
+      //나중에 다시 시도해봄
+
+
+    }
     // receiver의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면
     if (receiver.replace(/\s|/gi, "").length == 0) {
       // num id값에 0 출력
