@@ -187,13 +187,10 @@
                 <!-- 본문 입력 -->
                 <textarea name="sms_text" placeholder="메세지를 입력하세요. 150자까지 입력이 가능합니다." id="sms_text" value="" maxlength="150" style="text-align:left; width:400px; height:300px;"></textarea> <br>
                 <span id="counter">###</span> <br>
-<<<<<<< HEAD
                 <!-- 파일 업로드 -->
                 <input type="file" name="file" style="background-color:white;"><br>
-=======
 
                 <input type="file" name="file"><br>
->>>>>>> b310790d51c7978a40ceae040df7316b4630a81a
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>
