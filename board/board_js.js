@@ -125,7 +125,7 @@ $(document).ready(function() {
         //send_type 발송완료/발송예약으로 출력
         sendtype();
         //발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
-        $("#dvar").html("<p>검색 명세 <sapn>" + $(".dcell>tbody").children('tr').length + "</span>건</p><hr>");
+        $("#dvar").html("<p>검색 결과 <span>" + $(".dcell").children('tr').length + "</span>건</p><hr>");
       },
       //에러가 생겼을 때 함수 실행
       error: function() {
@@ -244,7 +244,7 @@ function sendtypevalue() {
     success: function(data) {
       //span에 데이터 출력
       $("#dvar").html(
-        "<p>전송 명세 <span>" + data + "</span>건</p><hr>"
+        "<p>발송 완료 <span>" + data + "</span>건</p><hr>"
       );
     },
     //error시 함수실행

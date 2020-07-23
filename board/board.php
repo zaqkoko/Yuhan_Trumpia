@@ -12,7 +12,7 @@
 		<div class="tt">
 			<button id="delete">삭제</button>
 			<select id="combo" name="select">
-				<option value="receiver" selected>번호</option>
+				<option value="receiver_number" selected>번호</option>
 				<option value="send_message">내용</option>
 				<option value="send_time">시간</option>
 				<option value="send_type">발송상태</option>
