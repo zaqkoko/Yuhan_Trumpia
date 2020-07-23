@@ -129,7 +129,7 @@
     </div>
 
     <!-- 메세지 보내기 !-->
-    <form action="send_db.php" method="POST">
+    <form action="send_db.php" method="POST" enctype="multipart/form-data">
         <div id="div">
             <center>
                 <!-- 보류
@@ -166,7 +166,6 @@
                 <!-- 파일 업로드 -->
                 <input type="file" name="file" style="background-color:white; color:#7dabd0;"><br>
 
-                <input type="file" name="file"><br>
                 <!-- 발송 -->
                 <input type="submit" value="메세지 보내기" id="subButton" />
             </center>

@@ -111,47 +111,38 @@ $(document).ready(function () {
 
 // 수신자 몇명인지 체크
 $(document).ready(function () {
-  // 번호입력란에서 키버튼이 눌리면
-  $("#receiver_number").keyup(function (e) {
-    // 변수 receiver_n에 해당 번호입력란 값을 넣음
-    let receiver_n = $("#receiver_number").val();
+  // receiver id값의 키버튼이 눌리면
+  $("#receiver").keyup(function (e) {
+    // 변수 receiver에 해당 id값을 넣고
+    let receiver = $("#receiver").val();
 
-  //sms:숫자와 ',','\n'빼고 입력금지
+  //숫자와 ','빼고 입력금지
     //만약 수신자텍스트에 숫자 이외의 문자가 들어가게된다면
-    if(receiver_n.match(/[^0-9,.,,.\n]/)){
+    if(receiver.match(/[^0-9,.,]/)){
       //숫자만 입력해달라는 팝업생성
       alert("숫자만 입력해주세요");
-      receiver_n="";
+      receiver="";
 
       //숫자 외 문자열을 공백으로 바꿔서 텍스트를 비워주고싶은데 replace나 val,text()를 써도 안됌
       //나중에 다시 시도해봄
 
 
     }
- //sms:수신자 명수 출력
-    // 번호입력란이 공백이라면 (receiver_n의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면)
-    if (receiver_n.replace(/\s|/gi, "").length == 0) {
+ //수신자 명수 출력
+    // receiver의 모든 문자열의 공백을 ""로 치환했을 때 문자열의 길이가 0이면
+    if (receiver.replace(/\s|/gi, "").length == 0) {
       // num id값에 0 출력
       $("#num").html(0);
     } else {
       // split(특정 문자열로 구분하여 배열로 바꾸어 줌)
-      // 변수 receiverN에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
-      let receiverN = receiver_n.split(",").length + receiver_n.split("\n").length - 1; // || 이 먹히질 않음. 왜그러지
+      // 변수 receivers에 해당 값에 "," 와 "\n"이 있을 때마다 배열로 바꾸고 해당 길이의 값을 넣는다. (-1 하는 이유 : 처음에 2명으로 체크가 되어서)
+      let receivers =
+        receiver.split(",").length + receiver.split("\n").length - 1; // || 이 먹히질 않음. 왜그러지
 
       // num id값에 receivers의 값으로 변경
-      $("#num").html(receiverN);
+      $("#num").html(receivers);
     }
   });
-
-
-  //이메일 입력란에서 키버튼이 눌리면
-  $("#receiver_email").keyup(function(){
-    //변수 receive_e에 이메일 입력란 값을 넣음
-    let receive_e=$("#receiver_email").val();
-
-    if(receive_e.replace());
-  });
-
 });
 
 // JQuery. 모든 jQuery는 $(document).ready(function() { }); 로 시작이 된다.
@@ -165,17 +156,17 @@ $(document).ready(function () {
     // 수신 번호 칸에 입력이 안 되어 있을 때 입력하라고 알려줌.
 
     //번호
-    let receive_n = $("#receiver_number").val();
+    let receive = $("#receiver").val();
     //메일
-    let receive_e=$("#receiver_email").val();
-
-    // 번호란의 문자길이가 0이고 메일란의 문자길이가 0이라면
+    let receive_e=$("#receiver_e").val();
+    console.log(receive_e.length);
+    // 번호란의 문자길이가 0이거나 메일란의 문자길이가 0이라면
     //위에 숫자외문자입력시 문자 삭제만 작동하면 replace안쓰고 그냥 length만 써도됌
-    if ((receive_n.replace(/\s| /gi, "").length == 0)&&(receive_e.length ==0) ) {
+    if (!(receive_e.length > 0) ) {
       alert("수신자를 입력해주세요");
 
       // receiver id값에 포커스 얻기(입력상태 만들어주기)
-      $("#receiver_number").focus();
+      $("#receiver").focus();
 
       // 반환 false
       return false;
@@ -223,36 +214,119 @@ $(document).ready(function () {
 
 // 주소록 모달형식
 
-function adrb() {
-  $.ajax({
-    type:"POST",
-    url:"select_addressbook.php"
-  });
+// phonebookopen id값을 가진 버튼을 클릭했을 때 phonebook fadein효과 (jQeury)
+$("#phonebookopen").click(function () {
+  $("#phonebook").fadeIn();
+});
+
+// phonebookclose id값을 가진 버튼을 클릭했을 때 phonebook fadeout효과 (jQuery)
+$("#phonebookclose").click(function () {
+  $("#phonebook").fadeOut();
+});
+
+// 번호 추가하기
+function insertAddress() {
+  // 이름과 번호의 value를 가져옴.
+  let name = $("#insname").val();
+  let tel = $("#instel").val();
+
+  // 만약 이름이나 번호가 공백이면
+  if (name == null || name == "" || tel == null || tel == "") {
+    // 알림창 띄우고 이름입력칸에 포커싱 잡아주기
+    alert("이름과 번호를 확인해주세요");
+    $("#insname").focus();
+    return;
+  }
+
+  /*$.ajax({
+                url: API.CREATE,
+                method: ACTION_METHODS.create;
+                data: {
+                    name: name,
+                    tel: tel
+                }
+            }).done(function(response) {
+
+            })*/
 }
 
+/* 보류(Clock)
 
-// // phonebookopen id값을 가진 버튼을 클릭했을 때 phonebook fadein효과 (jQeury)
-// $("#phonebookopen").click(function () {
-//   $("#phonebook").fadeIn();
-// });
-//
-// // phonebookclose id값을 가진 버튼을 클릭했을 때 phonebook fadeout효과 (jQuery)
-// $("#phonebookclose").click(function () {
-//   $("#phonebook").fadeOut();
-// });
-//
-// // 번호 추가하기
-// function insertAddress() {
-//   // 이름과 번호의 value를 가져옴.
-//   let name = $("#insname").val();
-//   let tel = $("#instel").val();
-//
-//   // 만약 이름이나 번호가 공백이면
-//   if (name == null || name == "" || tel == null || tel == "") {
-//     // 알림창 띄우고 이름입력칸에 포커싱 잡아주기
-//     alert("이름과 번호를 확인해주세요");
-//     $("#insname").focus();
-//     return;
-//   }
+            // 현재 시간을 1초마다 받아와 출력하는 스크립트
+            // 'clock'이라는 id값을 가지고 있는 요소를 찾아 변수 clockTarget에 저장한다.
+            var clockTarget = document.getElementById("clock");
 
-//거슬려서 주석지움
+            function clock() {
+
+                // 변수 date에 현재 시간을 받아오는 new Date()의 값을 넣었다. ※ 인자값이 없으면
+                var date = new Date();
+
+                // date Object를 받아온다.
+                var month = date.getMonth();
+
+                // 달(Month)을 받아온다.
+                var clockDate = date.getDate();
+
+                // 일(day)을 받아온다.
+                var day = date.getDay();
+
+                // 요일을 받아온다.
+                // 요일은 숫자형태로 리턴되기때문에 미리 배열을 만들어야한다.
+                var week = ['일', '월', '화', '수', '목', '금', '토'];
+
+                // 시간(hours)을 받아온다.
+                var hours = date.getHours();
+
+                // 분(minutes)을 받아온다.
+                var minutes = date.getMinutes();
+
+                // 초(seconds)을 받아온다.
+                var seconds = date.getSeconds();
+
+                // 각 시간을 텍스트화 한다. 문자열을 그대로 리턴한다.
+                // 월은 0부터 1월이기때문에 +1일을 해준다. // 시간 분 초는 한자리수이면 시계가 어색해? 10보다 작으면 앞에 0을 붙혀주는 작업을 진행함.
+                clockTarget.innerText = `현재 시각 : ${month + 1}월 ${clockDate}일 ${week[day]}요일 ` +
+                    `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+
+            }
+
+            function init() {
+                // 함수 clock() 실행  -   clock() 함수를 먼저 부르지 않으면 1초간의 딜레이 후 clock()함수가 불러지기 때문에
+                clock();
+                // setInterval - 함수를 몇 초의 딜레이후에 실행하고 싶을 때 사용. (호출 스케줄링) ※ 일정 시간 간격으로 함수가 주기적으로 실행됨. 중지 = clearInterval([인터벌 변수]) clockTarget
+                // setInterval(func clock, 1000) 1000 - millisecond로 1000 = 1초.
+                setInterval(clock, 1000);
+            }
+
+            // 최초 init() 실행
+            init();
+
+        */
+
+/* 공부
+
+        DOM = HTML 문서에 대한 인터페이스. (참고 링크 : https://developer.mozilla.org/ko/docs/Web/API/Document_Object_Model/%EC%86%8C%EA%B0%9C)
+
+        첫 째. 뷰 포트에 무엇을 렌더링할지 결정하기 위해 사용됨
+        둘 째. 페이지의 콘텐츠 및 구조, 그리고 스타일이 자바스크립트에 의해 수정되기 위해 사용된다.
+               (문서의 구조화된 표현을 제공하여 프로그래밍 언어가 DOM구조에 접근할 수 있는 방법을 제공하여 그들이 문서 구조, 스타일, 내용 등을 변경할 수 있게 돕는다.)
+
+        DOM은 원본 HTML 문서 형태와 비슷하지만 차이점이 있다.
+           1. 항상 유효한 HTML 형식
+            2. 자바스크립트에 수정될 수 있는 동적 모델이여야 함
+            3. 가상 요소를 포함하지않음 (ex ::after)
+            4. 보이지 않는 요소를 포함 (ex display:none)
+
+
+        var, let, const 차이점 (참고 : https://velog.io/@bathingape/JavaScript-var-let-const-%EC%B0%A8%EC%9D%B4%EC%A0%90)
+
+        var : 유연한 변수 선언. 변수를 중복 선언해도 에러가 나오지 않고 각기 다른 값이 출력된다.
+        let : 변수 재선언 했을 경우 이미 해당 변수명이 선언되었다고 에러 메세지가 출력된다. 하지만 재할당은 가능하다. let name = "111";  name="222";
+        const : let과 같지만 재할당 또한 불가능하다.
+
+        변수를 사용할 때 웬만하면 const를 사용하고 재할당이 필요한 경우에 한해서 let을 사용하자.
+
+        호이스팅 : var 선언문이나 function 선언문 등을 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성.
+                  자바스크립트는 var, let, const 등을 포함한 function 등 모든 선언을 호이스팅한다.
+                  하지만 var로 선언된 변수와는 달리 let 으로 선언된 변수를 선언문 이전에 참조하면 에러가 발생한다. ex) console.log(name), let name="111"; = ERROR
+        */

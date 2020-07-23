@@ -14,7 +14,8 @@ $sql =
         '{$_POST['sms_text']}',
         '{$_POST['receiver_number']}',
         '{$_POST['receiver_email']}',
-        '{$_POST['file']}',
+        -- 우선 데이터에 파일 임시경로를 저장하는데 나중에 다운로드를 어떻게 받는거지
+        '{$_FILES['file']['tmp_name']}',
         '$name'
 
     )
