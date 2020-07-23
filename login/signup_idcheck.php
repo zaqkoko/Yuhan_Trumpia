@@ -12,7 +12,7 @@ $ret = mysqli_query($conn, $sql);
 //받은 결과값을 $row에 array로 저장
 $row = mysqli_fetch_array($ret);
 //$row의 값이 null일때 (결과가 없을 때)
-if ($row >= 0) {
+if ($row == 0) {
     //1을 출력
     echo "1";
 }
