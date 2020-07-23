@@ -1,3 +1,4 @@
+<!-- board의 테이블에 명세를 출력하는 php파일 -->
 <?php
 
 include "../db.php";

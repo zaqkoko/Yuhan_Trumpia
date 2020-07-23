@@ -98,6 +98,8 @@ $(document).ready(function() {
       // input 체크박스가 체크 되었을때,
       if($("#inputcheck").is(":checked") == true){
         // text는 2로 바꿔줌
+        // send_type 칼럼은 1은 발송완료, 2는 발송예약으로 데이터를 저장하고있음.
+        // text가 2일때는 발송 예약, 1일때는 발송완료인 데이터만 가져오겠다는 의미.
         text = 2;
         // input 체크박스가 미체크 되었을때,
       }else if($("#inputcheck").is(":checked") == false){
@@ -186,8 +188,8 @@ function removepost(u, cr, t) {
   $.ajax({
     //post타입으로 전송
     type: "POST",
-    //url호출
-    url: "delete.php",
+    //인자로 받은 url호출
+    url: u,
     //삭제할 데이터(send_id),전체삭제일 때는 null을 보냄
     data: {
       val: t
