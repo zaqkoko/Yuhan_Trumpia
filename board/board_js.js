@@ -1,13 +1,11 @@
-// js 옮기니까 요상함
 $(document).ready(function() {
-
-
 
   //발송완료, 발송예약 출력
   sendtype();
   //전송완료 건수 출력
   sendtypevalue();
-
+  //체크박스 검사
+  check();
 
   //전체 체크
   //전체 체크박스를 클릭했을 때
@@ -18,7 +16,6 @@ $(document).ready(function() {
       $(".checkbox").each(function() {
         //현재 하위체크박스 상태를 true로 변경
         $(this).prop("checked", true);
-
       });
       //전체 체크박스가 false 상태라면
     } else {
@@ -29,7 +26,6 @@ $(document).ready(function() {
       });
     }
   });
-
 
 
   //주의
@@ -57,7 +53,6 @@ $(document).ready(function() {
 
   //삭제 버튼을 클릭했을 때 함수 실행
   $("#delete").click(function() {
-
     //전체 삭제를 원할 때
     //전체체크박스가 true일 때
     if ($("#allCheck").is(":checked")) {
@@ -67,8 +62,6 @@ $(document).ready(function() {
       alert("삭제되었습니다.");
       //전체 체크박스 체크해제
       $("#allCheck").prop("checked", false);
-
-
       //선택 삭제를 원할 때
       //전체체크박스가 false상태 일 때
     } else {
@@ -100,7 +93,6 @@ $(document).ready(function() {
     var text = $("#inputsearch").val();
     //combo에 콤보박스중 선택된 값을 넣어줌
     var combo = $("#combo option:selected").val();
-
     // input 체크의 값이 on이면,
     if($("#inputcheck").val() == 'on'){
       // input 체크박스가 체크 되었을때,
@@ -113,8 +105,6 @@ $(document).ready(function() {
         text = 1
       }
     }
-    //로그로 값을 제대로 초기화했는지 확인
-    //console.log("검색어:"+combo);
     //ajax실행
     $.ajax({
       //post타입으로 전송
@@ -133,7 +123,7 @@ $(document).ready(function() {
         //send_type 발송완료/발송예약으로 출력
         sendtype();
         //발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
-        $("#dvar").html("<p>검색건수 <sapn>" + $(".dcell>tbody").children('tr').length + "</span></p><hr>");
+        $("#dvar").html("<p>검색 명세 <sapn>" + $(".dcell>tbody").children('tr').length + "</span>건</p><hr>");
       },
       //에러가 생겼을 때 함수 실행
       error: function() {
@@ -208,7 +198,6 @@ function removepost(u, cr, t) {
       $(".dcell").html(data);
       //발송완료/예약 출력
       sendtype();
-
     },
     //에러가 생겼을 때 함수 실행
     error: function() {
@@ -253,7 +242,7 @@ function sendtypevalue() {
     success: function(data) {
       //span에 데이터 출력
       $("#dvar").html(
-        "<p>전송내역 <span>" + data + "</span>건</p><hr>"
+        "<p>전송 명세 <span>" + data + "</span>건</p><hr>"
       );
     },
     //error시 함수실행
@@ -262,4 +251,17 @@ function sendtypevalue() {
       alert("실패");
     }
   });
+}
+
+// 전체 체크박스 검사하는 함수
+function check() {
+  //만약 전체체크박스 상태가 true, 현재 체크한 체크박스의 상태가 false라면
+  if ($("#allCheck").is(":checked") && $(this).is(":checked") == false) {
+    //전체 체크박스 상태를 false로 변경
+    $("#allCheck").prop("checked", false);
+    //체크된 체크박스 수와 전체 하위 체크박스 수가 같다면
+  } else if ($("input[type=checkbox]:checked").length == $(".checkbox").length) {
+    //전체 체크박스 상태를 true로 변경
+    $("#allCheck").prop("checked", true);
+  }
 }

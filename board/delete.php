@@ -1,6 +1,5 @@
 <?php
 
-
 include "../db.php";
 
 //post형식으로 val값을 가져와 t에 초기화(val는 가져온 체크박스 value or null)

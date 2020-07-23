@@ -2,7 +2,6 @@
 
 include "../db.php";
 
-
 //$_POST로 가져온 데이터가 null이 아닐때
 if ($_POST['kword'] != null) {
   //kword를 가져온 데이터로 초기화
