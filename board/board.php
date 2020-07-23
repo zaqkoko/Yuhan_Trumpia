@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>board</title>
-		<link rel="stylesheet" href="board_css.css">
+		<link rel="stylesheet" href="board_style.css">
 	</head>
 	<body>
 		<div class="tt">
@@ -49,6 +49,6 @@
 			</table>
 		</table>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-		<script type="text/javascript" src="board_js.js"></script>
+		<script type="text/javascript" src="board_script.js"></script>
 	</body>
 </html>

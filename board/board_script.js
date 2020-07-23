@@ -1,3 +1,4 @@
+// DOM(문서객체모델) 생성 이후 바로 실행 
 $(document).ready(function() {
 
   //발송완료, 발송예약 출력
