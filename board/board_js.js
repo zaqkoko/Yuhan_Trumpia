@@ -102,7 +102,7 @@ $(document).ready(function() {
         // text가 2일때는 발송 예약, 1일때는 발송완료인 데이터만 가져오겠다는 의미.
         text = 2;
         // input 체크박스가 미체크 되었을때,
-      }else if($("#inputcheck").is(":checked") == false){
+      } else if($("#inputcheck").is(":checked") == false){
         // text는 1로 바꿔줌
         text = 1
       }
