@@ -2,64 +2,7 @@
   margin: 0 auto;
   /* padding: 0; */
   font-size: 13px;
-
 }
-/* 왼쪽메뉴바, 채팅 마크업 */
-/* <div class="menu">
-  <img src="img/sms.png">
-  <img src="img/cal.png">
-  <img src="img/hi2.png">
-  <img src="img/ad.png">
-</div>
-<img id="cht" src="img/KakaoTalk_20200707_135753569.png"> */
-/* img{
-	float: left;
-	width: 50px;
-	height: 50px;
-	padding:15px 0;
-}
-.menu{
-	width: 50px;
-	margin:0;
-	padding-left: 5%;
-	position: fixed;
-	top: 20%;
-}
-#cht{
-	position: fixed;
-	right: 5%;
-	bottom: 5%;
-} */
-/* 메뉴바, 채팅 */
-/* 유저이름 마크업
-<div class="userI">
-  <button>Logout</button>
-  <p>User Name 님 환영합니다.</p>
-  <hr>
-</div>*/
-/* .userI{
-  float: right;
-  height: 28px;
-}
-hr{width: 250px;}
-.userI>button{
-float: right;
-padding: 5px;
-}
-.userI>p{
-  width: 220px;
-  padding-top: 10px;
-} */
-
-
-
-/*table{
-	position: fixed;
-	left: 50%;
-	top:50%;
-	transform: translate(-50%, 0);
-
-}*/
 table{
   width: 1000px;
 }
@@ -86,7 +29,7 @@ th{
 	color: white;
   padding: 15px;
 }
-.tt	{
+.tt{
 	width: 1000px;
 	height: 23px; /*주의*/
 	text-align: right;
@@ -113,18 +56,16 @@ th{
 }
 #inputsearch{
   float: left;
+  /* 여기 margin 안주면 형태 흐트러짐  */
+  margin-left: 10px;
+  margin-right: 10px;
 }
 #inputcheck{
   float: left;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 #box_text{
   float: left;
+  margin-left: 10px;
 }
-
-
-
-
-
-
-
-/*메뉴바 +채팅아이콘*/

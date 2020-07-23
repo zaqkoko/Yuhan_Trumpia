@@ -1,7 +1,9 @@
 <?php
+// 회원가입 db 체크
+
 //sql에 연결
 include "../db.php";
-//signup.php에서 입력받은 id, pw, email, name, mobile을 각각 $id, $pw, $email, $name, $mobile로 지정
+//signup.html에서 입력받은 id, pw, email, name, mobile을 각각 $id, $pw, $email, $name, $mobile로 지정
 $id = $_POST["id"];
 $pw = $_POST["pw"];
 $email = $_POST["email"];
@@ -20,12 +22,12 @@ if ($ret) {
     if (!$name == "") {
         //입력한 name값으로 회원가입 alert
         echo "<script>window.alert('" . $name . "님 회원가입 되셨습니다');</script>";
-        //index.php로 이동
-        echo "<script>location.href='index.php';</script>";
+        //index.html로 이동
+        echo "<script>location.href='index.html';</script>";
     } else {
         //입력한 id값으로 회원가입 alert
         echo "<script>window.alert('" . $id . "님 회원가입 되셨습니다');</script>";
-        //index.php로 이동
-        echo "<script>location.href='index.php';</script>";
+        //index.html로 이동
+        echo "<script>location.href='index.html';</script>";
     }
 }
