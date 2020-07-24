@@ -128,12 +128,18 @@
             <div class="modal_content">
                 <span id="send_modalClose" class="close">&times;</span>
                 <h2>발송 예약 리스트</h2>
+                <div id="send_list">
+
+                </div>
             </div>
         </div>
         <div id="sentModal" class="modal">
             <div class="modal_content">
                 <span id="sent_modalClose" class="close">&times;</span>
                 <h2>발송 완료 리스트</h2>
+                <div id="sent_list">
+                    
+                </div>
             </div>
         </div>
         <script type="text/javascript" src="cal_script.js"></script>

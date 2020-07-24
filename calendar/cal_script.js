@@ -127,6 +127,7 @@ function calendarPrint()
             ({
                 //signup_idcheck.php에 연결
                 url: "send_db.php",
+                async:false,
                 //id가 id인 값이 data
                 data:
                 {
@@ -137,7 +138,7 @@ function calendarPrint()
                 //ajax요청이 완료되면
               }).success(function (data)
                 {
-                    alert(data);
+                    $("#send_list").html(data);
                 });
         });
         // t_tiles의 i번째 요소를 t_tile에 넣고
@@ -151,6 +152,7 @@ function calendarPrint()
                 //signup_idcheck.php에 연결
                 url: "sent_db.php",
                 //id가 id인 값이 data
+                async:false,
                 data:
                 {
                   id : $(this).attr('id'),
@@ -160,7 +162,8 @@ function calendarPrint()
                 //ajax요청이 완료되면
               }).success(function (data)
                 {
-                    alert(data);
+                    $("#sent_list").html(data);
+
                 });
 
         });
