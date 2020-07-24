@@ -1,6 +1,4 @@
 // Node.js를 활용한 이메일 보내기!!
-session_start();
-$row["email"] = $email;
 
 var nodemailer = require("nodemailer");
 
@@ -14,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
   from: "yuhantrum@gmail.com",
-  to: $email,
+  to: "zaqkoko@naver.com",
   subject: "안녕하세요. TOY입니다.",
   text: "아래의 링크를 클릭해주세요",
   html:
