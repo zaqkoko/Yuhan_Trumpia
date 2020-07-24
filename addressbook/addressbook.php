@@ -8,14 +8,6 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="addressbook_js.js"></script>
     <script type="text/javascript">
-      $(function() {
-        $(".datacell").hover(function(){
-
-
-
-        });
-
-      });
     </script>
   </head>
   <body>
