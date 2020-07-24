@@ -5,93 +5,7 @@
     <meta charset="UTF-8" />
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
     <title>ToySend</title>
-
-    <style media="screen">
-        * {
-            margin: 0 auto;
-        }
-
-        /* 날짜 영역 */
-
-        #time {
-            /* display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-bottom: 10px;
-            border: 3px; */
-            align-items: center;
-            padding: 10px;
-        }
-/* 어딨냐
-        #moreReceiver {
-            top: 10%;
-            left: 60%;
-            position: fixed;
-        } */
-
-        #phonebook {
-            /* display: none; */
-            /* position: relative; */
-            width: 100%;
-            height: 100%;
-            /* z-index: 1; */
-        }
-
-        #phonebook h4 {
-            margin: 0;
-        }
-
-        #phonebook button {
-            display: inline-block;
-            width: 50px;
-            margin-left: calc(100% - 100px - 10px);
-        }
-
-        #phonebook .phonebookcontents {
-            text-align: center;
-            width: 500px;
-            margin: 100px auto;
-            padding: 20px 10px;
-            /* background: #fff; */
-            border: 2px solid #7dabd0;
-        }
-
-        #phonebook .phonebooklayer {
-            /* position: fixed; */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            /* z-index: -1; */
-        }
-
-        #name {
-            width: 50px;
-        }
-
-        textarea.autosize {
-            width: 200px;
-            min-height: 20px;
-            max-height: 500px;
-            resize: vertical;
-        }
-
-        .sms_text {
-            resize: none;
-        }
-        center{
-          width: 700px;
-          height: 700px;
-          background-color: #7dabd0;
-          color: white;
-
-        }
-        table{
-          border: 1px solid  #7dabd0;
-          width: 400px;
-        }
-    </style>
+    <link rel="stylesheet" href="css_send.css">
 </head>
 
 <body>
@@ -102,26 +16,26 @@
 
     <!-- 주소록 -->
     <div id="phonebook">
-
         <!-- 주소록 내용 -->
         <div class="phonebookcontents">
             <legend>주소록 목록</legend><br>
-
             <table>
-                <thead>
-                    <tr>
-                        <th width="25%" class="name">이름</th>
-                        <th width="35%"class="tel">번호</th>
-                        <th width="50%"class="email">메일</th>
-                    </tr>
-                </thead>
-
-                <tbody id="add">
-                  <?php include 'select_addressbook.php'; ?>
-                  </tr>
-                </tbody>
+              <tr>
+                  <th width="25%">이름</th>
+                  <th width="35%">번호</th>
+                  <th width="50%">메일</th>
+              </tr>
             </table>
+            <table id="add">
+              <?php include 'data_select_send.php'; ?>
+            </table>
+            <!-- 선택한 수신자 출력해주는 상자 -->
+            <!-- 임시 스타일 -->
+            <div id="box" style="background:#ebf7ff; width:400px; height:50px; padding-top:10px;">
+
+            </div>
             <button type="button" id="phonebookclose">닫기</button>
+            <button type="button" id='phonebookok' style="display:none;">확인</button>
         </div>
 
         <!-- 주소록 배경 -->
@@ -136,7 +50,7 @@
                     <p id="clock" style="text-align:left; width:300px; margin:0 auto;">00:00</p>
                 -->
 
-                <button type="button" id="phonebookopen">주소록 열기</button><br><br>
+                <button type="button" id="phonebookopen" >주소록 열기</button><br><br>
 
                 <h4>발송 선택에서 현재, 예약 중 선택 후 날짜를 입력해 주세요.</h4> <br>
 
@@ -160,7 +74,7 @@
                     <span id="num" class="num">0</span>명 수신예정 <br><br>
                 </p>
                 <!-- 수신 이메일 입력 -->
-                <textarea name="receiver_email" id="receiver_email" rows="1" class="autosize" placeholder="이메일을 입력하세요" style="text-align: center ;"></textarea>
+                <textarea name="receiver_email" id="receiver_email" rows="1" class="autosize" placeholder="이메일을 입력하세요" onkeyup="resize(this)" style="text-align: center ;"></textarea>
                 <p id="count" class="count" style="font-size: 13px;">
                     <!-- 아직 구현중. 번호 입력하기 시작하면 증가연산자 사용으로 1씩 증가, 엔터치고 다시 번호 입력 시작하면 다시 1 증가-->
                     <span id="num" class="num">0</span>명 수신예정 <br><br>

@@ -178,8 +178,30 @@ $(document).ready(function() {
     }
   })
 
-  //$("#")
+  // 숫자 1 누르면
+  $("#num1").click(function(){
+    // 히든타입인녀석의 값을 0으로 바꿔주고
+    $("#hiddenNum").prop("value", '0');
+    // 출력 함수 실행
+    // 함수에서 저 값을 ajax의 POST로 넘겨준다음 php에서 변수에 저장해 숫자를 곱해주고 해당 숫자부터의 데이터를 출력해줌 
+    print();
+  })
 
+  // 숫자 2 누르면
+  $("#num2").click(function(){
+    // 히든타입인 녀석의 값을 1로 바꿔주고
+    $("#hiddenNum").prop("value", '1');
+    // 출력 함수 실행
+    print();
+  })
+
+  // 숫자 3 누르면
+  $("#num3").click(function(){
+    // 히든타입인 녀석의 값을 2로 바꿔주고
+    $("#hiddenNum").prop("value", '2');
+    // 출력 함수 실행
+    print();
+  })
 
 //$(document).ready 끝
 });
@@ -274,12 +296,13 @@ function check() {
 }
 
 // 기본 명세 출력하는 함수
-function print(n) {
+function print() {
+  var pgNum = $("#hiddenNum").val();
   $.ajax({
     type: "POST",
     url: "select_sms.php",
     data: {
-      num: n
+      pgNum: pgNum
     },
     //성공했을 때 함수 실행
     success: function(data) {
