@@ -47,6 +47,16 @@
 				<!-- 데이터 출력 -->
 				<?php include "select_sms.php"; ?>
 			</table>
+			<div id="pageNum">
+				<button type="button" name="leftbutton"><</button>
+				<span>1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+				<button type="button" name="rightbutton">></button>
+				<button type="button" name="endbutton">>></button>
+			</div>
 		</table>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
 		<script type="text/javascript" src="board_script.js"></script>

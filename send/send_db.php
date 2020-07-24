@@ -14,7 +14,8 @@ $sql =
         '{$_POST['sms_text']}',
         '{$_POST['receiver_number']}',
         '{$_POST['receiver_email']}',
-        '{$_POST['file']}',
+        -- 파일이 저장된 임시 서버를 저장함(어떤 내용을 저장해야할지 잘 모르겠음)
+        '{$_POST['file']['tmp_name']}',
         '$name'
 
     )

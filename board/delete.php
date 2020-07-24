@@ -22,6 +22,6 @@ if ($_POST['val'] == null) {
 }
 
 //sms 테이블에서 사용자(user_id) 데이터만 조회하는 쿼리문 작성
-$q = "SELECT * FROM sms WHERE user_id='$name'";
+$q = "SELECT * FROM sms WHERE user_id='$name' ORDER BY `sms`.`send_id` DESC";
 // 조회한 데이터를 출력하는 php
 include "print_table.php";
