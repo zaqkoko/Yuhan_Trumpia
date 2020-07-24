@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <title>TOY_INDEX</title>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style media="screen">
         * {
             background: #7dabd0;
@@ -59,8 +60,7 @@
         <tr>
             <td align="right">PW</td>
             <td valign="top">
-                <!-- 엔터 keydown이 먹히지않는다. 왜일까 -->
-                <input type="password" name="pw" style="height:25px; width:300px;" id="pw" autocomplete="off" onkeydown="if(event.keycode==13)LogIn()">
+                <input type="password" name="pw" style="height:25px; width:300px;" id="pw" autocomplete="off"">
             </td>
         </tr>
 
@@ -69,7 +69,13 @@
             <td valign="top" style="font-size: 15px;">
                 <input type="checkbox" id="saveid" name="saveid"> 아이디 기억하기
             </td>
+            
             <td><a href="signup.html" style="font-size: 15px;">회원가입</a></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="padding-left: 40px;">
+                <div id="captcha" class="g-recaptcha" data-sitekey="6LdScbUZAAAAANI6NfZGyFNdPvlEYrsiGa-u8_Nz"></div>
+            </td>>
         </tr>
 
         <tr>
