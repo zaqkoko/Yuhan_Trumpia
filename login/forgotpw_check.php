@@ -29,12 +29,20 @@ if ($row["id"] == $id) {
 
     // 세션['uid']에 해당 id값 저장
     $_SESSION['uid'] = $row['id'];
+    $_SESSION['email'] = $row['email'];
+
+    // Node.js
+
+    // 이용자가 도메인에 접속(서버컴에 접속)하면 이용자는 노드가 안 깔려 있어도 메일 전송이 가능하다. (이용자 -> 도메인 -> DNS -> IP -> 서버 컴퓨터)
+    // 개발자끼리 로컬에서 개발한다면 각자 Node를 깔아야 함. 그래서 원래 프로젝트 진행하기 전에 개발자끼리 합의 후에 서로 설치한다고 하심. 
+
+    // shell_exec = 쉘 명령어 실행해서 결과를 웹브라우저에서 확인이 가능하다.    system = 바로 실행.
+    system("node nodemail.js");
+    echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); location.href="index.html"; </script>';
 
     // JS
-    shell_exec("node nodemail.js");
-    echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); location.href="inedx.html"; </script>';
-
-    //echo '<script> location.href="email.html"; </script>';
+    // echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
+    // echo '<script> location.href="email.html"; </script>';
 
     // PHP
     /*echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
@@ -45,6 +53,7 @@ if ($row["id"] == $id) {
     // 알림창 이후 update.php로 즉시이동
     // echo "<script> alert('비밀번호를 재설정합니다'); location.href = 'update.php'; </script>";
 
+    // 암호화 PW 알려줌
     // echo "<script> alert('당신의 비밀번호는  {$row['pw']} 입니다');  location.href = 'index.php'; </script>";
 
 } else {
