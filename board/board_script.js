@@ -183,7 +183,7 @@ $(document).ready(function() {
     // 히든타입인녀석의 값을 0으로 바꿔주고
     $("#hiddenNum").prop("value", '0');
     // 출력 함수 실행
-    // 함수에서 저 값을 ajax의 POST로 넘겨준다음 php에서 변수에 저장해 숫자를 곱해주고 해당 숫자부터의 데이터를 출력해줌 
+    // 함수에서 저 값을 ajax의 POST로 넘겨준다음 php에서 변수에 저장해 숫자를 곱해주고 해당 숫자부터의 데이터를 출력해줌
     print();
   })
 
@@ -311,7 +311,7 @@ function print() {
       //send_type 발송완료/발송예약으로 출력
       sendtype();
       //발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
-      $("#dvar").html("<p>검색 결과 <span>" + $(".dcell").children('tr').length + "</span>건</p><hr>");
+      //$("#dvar").html("<p>검색 결과 <span>" + $(".dcell").children('tr').length + "</span>건</p><hr>");
     },
     //에러가 생겼을 때 함수 실행
     error: function() {
