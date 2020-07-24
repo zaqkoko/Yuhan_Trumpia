@@ -1,5 +1,5 @@
 <?php
-    //include '../title.php';
+    include '../title.php';
     include 'cal_db.php';
 ?>
 
@@ -45,6 +45,7 @@
 
 
         </style>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
         <div id="caption">
