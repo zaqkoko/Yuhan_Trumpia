@@ -12,6 +12,7 @@ var leapYear=[31,29,31,30,31,30,31,31,30,31,30,31];
 var notLeapYear=[31,28,31,30,31,30,31,31,30,31,30,31];
 var pageFirst = first;
 var pageYear;
+
 //윤년 구별
 if(first.getFullYear() % 4 === 0)
 {
@@ -50,6 +51,7 @@ function showCalendar()
                 //$send, $sent는 div요소를 추가하는거라고 정의
                 var $send = document.createElement('div');
                 var $sent = document.createElement('div');
+                var $sendday = document.createElement('span');
                 //td에 cnt를 넣는다
                 $td.textContent = cnt;
                 //td에 $send, $sent 추가
@@ -60,9 +62,11 @@ function showCalendar()
                 $sent.textContent = "sent";
                 //$send, $sent는의 클래스와 아이디를 지정
                 $send.setAttribute('class', 'sendTile');
-                $send.setAttribute('value', cnt);
+                $send.setAttribute('id', cnt);
+                //$send.setAttribute('onclick', 'sendC();');
                 $sent.setAttribute('class', 'sentTile');
-                $sent.setAttribute('value', cnt);
+                $sent.setAttribute('id', cnt);
+                //$sent.setAttribute('onclick', 'sentC();');
                 // $td.setAttribute('id', cnt);
                 $tr.appendChild($td);
                 cnt++;
@@ -75,7 +79,9 @@ function showCalendar()
     }
     //currentTitle에 innerHTML로 연도와 공백과 달을 입.력
     currentTitle.innerHTML = first.getFullYear() + '&nbsp;' + monthList[first.getMonth()];
+
 }
+
 //함수실행
 showCalendar();
 
@@ -137,41 +143,37 @@ function rightBtn()
     showCalendar();
 }
 
+//modal과 닫는 버튼 지정
 let d_modal = document.getElementById("sendModal");
-let d_btn = document.getElementsByClassName("close")[0];
-let d_tiles = document.getElementsByClassName("sendtile");
-let d_tile = new Array();
-
 let t_modal = document.getElementById("sentModal");
+let d_btn = document.getElementsByClassName("close")[0];
 let t_btn = document.getElementsByClassName("close")[1];
-let t_tiles = document.getElementsByClassName("senttile");
-let t_tile = new Array();
+let d_tile = document.getElementByClassName("sendTile");
+let t_tile = document.getElementByClassName("sentTile");
+let d_tiles = new Array();
+let t_tiles = new Array();
 
-// 타일들의 길이만큼 반복
-for (i = 0; i < d_tiles.length; i++) {
-  // d_tiles의 i번째 요소를 d_tile에 넣고
-  d_tile[i] = d_tiles[i];
+for (i = 0; i < d_tile.length; i++)
+{
+  d_tiles[i] = d_tile[i];
   // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너 넣음
-  d_tile[i].addEventListener("click", function tileClick() {
+  d_tiles[i].addEventListener("click", function tileClick() {
     d_modal.style.display = "block";
   });
   // t_tiles의 i번째 요소를 t_tile에 넣고
-  t_tile[i] = t_tiles[i];
+  t_tiles[i] = t_tile[i];
   // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너 넣음
-  t_tile[i].addEventListener("click", function tileClick() {
+  t_tiles[i].addEventListener("click", function tileClick() {
     t_modal.style.display = "block";
   });
 }
-// 이벤트 리스너 넣을때 인수 1,2 넣어서 1이면 d모달 2면 t모달 열어주려 했으나  안됨.
-
-// 예약 모달의 close 버튼을 클릭하면
-d_btn.onclick = function () {
-  // 예약 모달의 display 속성을 none으로 변경. 안보이게 된다.
+//버튼을 클릭하면 modal이 다시 안보이게 되는 함수들
+d_btn.onclick = function ()
+{
   d_modal.style.display = "none";
 };
 
-// 발송 모달의 close 버튼을 클릭하면
-t_btn.onclick = function () {
-  // 발송 모달의 display 속성을 none으로 변경. 안보이게 된다.
+t_btn.onclick = function ()
+{
   t_modal.style.display = "none";
 };
