@@ -48,6 +48,7 @@
 			</table>
 			<div id="pageBar">
 				<button type="button" name="leftbutton"><</button>
+				<input id="hiddenNum" type="hidden">
 				<span id="num1" class="nums">1</span> |
 				<span id="num2" class="nums">2</span> |
 				<span id="num3" class="nums">3</span> |

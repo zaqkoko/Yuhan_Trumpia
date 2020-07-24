@@ -1,5 +1,5 @@
 //주소록 자바스크립트
-
+//2~3초정도 테이블 데이터가 늦게 출력되는데 웨지감자
 
 
 $(function(){
@@ -63,7 +63,6 @@ $("#delete").click(function() {
               callphp("delete",t);
 
             }
-            callphp("selete","null");
           });
 
           //삭제되었다는 팝업창 생성

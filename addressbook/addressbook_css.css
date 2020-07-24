@@ -33,7 +33,7 @@ th{
 }
 #delete{
 	float: left;
-	width: 70px;
+	width: 90px;
 	height: 20px;
 	background-color: #f58970;
 	border: 1px solid #f52600;
@@ -42,12 +42,30 @@ th{
 	background:#f52600;
 	color: white;
 }
+
+#create{
+  float: left;
+  width: 90px;
+  height: 20px;
+  background-color: #00ced0;
+  border: 1px solid #0000cd;
+  margin: 0px 5px;
+}
+#create:active{
+	background:blue;
+  color: white;
+}
+
 #dvar>hr{
 	width: 100px;
 	float: right;
 }
 
-
+.create{
+  width: 700px;
+  height: 100px;
+  text-align: center;
+}
 .table, .dcell, .tt, #dvar{
   width: 700px;
 }
