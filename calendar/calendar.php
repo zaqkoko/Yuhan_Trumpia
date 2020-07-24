@@ -34,16 +34,18 @@
                 {color : black; cursor: pointer;}
 
             .modal
-                {display: none; z-index: 1;position: fixed; width: 100%; height: 100%;top : 0; left : 0; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);}
+                {display: none; z-index: 1;position: fixed; width: 100%; height: 100%;top : 0; left : 0; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); text-align: center;}
             .modal_content
                 {background-color: #fff; color:#7dabd0; position: fixed; width: 50%; height: 40%; top: 25%; left: 25%;}
             .close
                 {color: #7dabd0; float: right; font-size: 28px; font-weight: bold;}
             .close:hover, .close:focus
                 {color: black; cursor: pointer;}
+            #listspan {color : #6488a6; font-weight: bold;}
 
 
         </style>
+        <!--제이쿼리-->
         <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
@@ -138,7 +140,7 @@
                 <span id="sent_modalClose" class="close">&times;</span>
                 <h2>발송 완료 리스트</h2>
                 <div id="sent_list">
-                    
+
                 </div>
             </div>
         </div>

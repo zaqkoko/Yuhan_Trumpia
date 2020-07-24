@@ -26,13 +26,15 @@ function calendarPrint()
     // 마지막 날의 일자 반환. dayCount가 lastDay를 넘어가면 이번달이 끝난것이니 다음 셀부터는 회색 칠해주자
     let lastDay = lastDate.getDate();
     // 발송건수 영역 디폴트는 안보이게(영역은 차지) 누르면 sendModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
+    // 반으로 나눠서 id에 날짜를 넣게 함
     let sendTile = "<div class='sendtile' id='";
     let sendTile2 = "'>send</div>"
     // 예약건수 영억 디폴트는 안보이게(영역은 차지) 누르면 sentModal을 띄우게. 내용은 db에서 받아온 후 출력하게 하기
+    //마찬가지로 반으로 나눠서 id에 날짜를 넣게 함
     let sentTile = "<div class='senttile' id='";
     let sentTile2 = "'>sent</div>"
     // td내의 여백
-    let spaceTile = "<div class='spacetile'></div>";
+    let spaceTile = "<div class='spacetile'><br></div>";
     // 달력의 모든 셀을 하나씩 카운트
     for (i = 1; i < 43; i++)
     {
@@ -41,17 +43,24 @@ function calendarPrint()
         {
             // i번째 셀 선택
             let thisDay = document.getElementById(i);
+            //일이 두자리수일때
             if(dayCount >= 10)
             {
+                //달도 두자리수일때
                 if(month>= 9)
                 {
+                    //ymd를 datetime 형식으로 정의
                     let ymd = year + "-" + (month+1) + "-" + dayCount;
+                    //thisday에 위에 정의한 div를 추가, tile의 id에 ymd넣음
                     thisDay.innerHTML = dayCount + spaceTile + sendTile + ymd + sendTile2 + sentTile + ymd + sentTile2;
+                    //일수 올리기
                     dayCount++;
                 }
                 else
                 {
+                    //ymd를 datetime 형식으로 정의
                     let ymd = year + "-0" + (month+1) + "-" + dayCount;
+                    //thisday에 위에 정의한 div를 추가, tile의 id에 ymd넣음
                     thisDay.innerHTML = dayCount + spaceTile + sendTile + ymd + sendTile2 + sentTile + ymd + sentTile2;
                     dayCount++;
                 }
@@ -60,13 +69,17 @@ function calendarPrint()
             {
                 if(month>= 9)
                 {
+                    //ymd를 datetime 형식으로 정의
                     let ymd = year + "-" + (month+1) + "-0" + dayCount;
+                    //thisday에 위에 정의한 div를 추가, tile의 id에 ymd넣음
                     thisDay.innerHTML = dayCount + spaceTile + sendTile + ymd + sendTile2 + sentTile + ymd + sentTile2;
                     dayCount++;
                 }
                 else
                 {
+                    //ymd를 datetime 형식으로 정의
                     let ymd = year + "-0" + (month+1) + "-0" + dayCount;
+                    //thisday에 위에 정의한 div를 추가, tile의 id에 ymd넣음
                     thisDay.innerHTML = dayCount + spaceTile + sendTile + ymd + sendTile2 + sentTile + ymd + sentTile2;
                     dayCount++;
                 }
@@ -122,13 +135,15 @@ function calendarPrint()
         // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너 넣음
         d_tile[i].addEventListener("click", function tileClick()
         {
+            //modal 보이게
             d_modal.style.display = "block";
             $.ajax
             ({
-                //signup_idcheck.php에 연결
+                //send_db.php에 연결
                 url: "send_db.php",
+                //async가 true이면(기본) modal창이 먼저 뜬 후 데이터가 들어오고, async를 false로 바꾸면 데이터가 다 들어온 상태에서 모달이 뜬다
                 async:false,
-                //id가 id인 값이 data
+                //이것의 id값이 데이터로 들어감
                 data:
                 {
                   id : $(this).attr('id'),
@@ -138,6 +153,7 @@ function calendarPrint()
                 //ajax요청이 완료되면
               }).success(function (data)
                 {
+                    //#send_list div에 data를 넣음
                     $("#send_list").html(data);
                 });
         });
@@ -146,13 +162,14 @@ function calendarPrint()
         // 클릭했을때 발송 모달 디스플레이 나오게  이벤트리스너 넣음
         t_tile[i].addEventListener("click", function tileClick()
         {
+            //modal 보이게
             t_modal.style.display = "block";
             $.ajax
             ({
-                //signup_idcheck.php에 연결
+                //sent_db.php에 연결
                 url: "sent_db.php",
-                //id가 id인 값이 data
                 async:false,
+                //이것의 id값이 데이터로 들어감
                 data:
                 {
                   id : $(this).attr('id'),
@@ -162,10 +179,10 @@ function calendarPrint()
                 //ajax요청이 완료되면
               }).success(function (data)
                 {
+                    //#sent_list div에 data를 넣음
                     $("#sent_list").html(data);
 
                 });
-
         });
     };
     // 이벤트 리스너 넣을때 인수 1,2 넣어서 1이면 d모달 2면 t모달 열어주려 했으나  안됨.

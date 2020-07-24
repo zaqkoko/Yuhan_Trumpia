@@ -201,7 +201,7 @@ $(document).ready(function () {
     if(receiver_n.match(/[^0-9,.,,.\n]/)){
       //숫자만 입력해달라는 팝업생성
       alert("숫자만 입력해주세요");
-      receiver_n="";
+      $("#receiver_number").prop("value","");
 
       //숫자 외 문자열을 공백으로 바꿔서 텍스트를 비워주고싶은데 replace나 val,text()를 써도 안됌
       //나중에 다시 시도해봄
