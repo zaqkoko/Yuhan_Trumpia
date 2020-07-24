@@ -11,7 +11,10 @@ $(function(){
  callphp("select","null");
 
 
-  //전체 체크
+
+
+
+//전체 체크
 //전체 체크박스를 클릭했을 때
 $("#allCheck").click(function() {
       //전체체크박스가 true 상태라면
@@ -79,6 +82,16 @@ $("#delete").click(function() {
 
 //$(function()끝
 });
+
+//데이터 수정
+//테이블 데이터를 클릭했을 때
+function onwrite(obj){
+  //td를 하나 더 추가해 수정하기 버튼과 수정하는 함수 생성
+$(obj).append("<td width='5%' onclick='write();'>수정하기</td>");
+
+}
+
+
 
 //callback:수행하고싶은 동작 타입(selete:데이터조회, value:데이터건수,delete: 선택삭제/전체삭제)
 //d:삭제하고싶은 요소(null:데이터조회하거나 건수출력,all:전체삭제,[삭제하고싶은 id값]:해당 id를 가진 데이터삭제)

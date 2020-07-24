@@ -18,7 +18,7 @@
    echo "<script>console.log('실패');</script>";
  }else{
    //성공
-   echo "<script>console.log('연락처를 추가했습니다.');</script>";
+   echo "<script>console.log('연락처를 추가했습니다.');<a href='addressbook.php'>돌아가기</a></script>";
  }
 echo $q;
 
