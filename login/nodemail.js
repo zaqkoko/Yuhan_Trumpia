@@ -12,7 +12,7 @@ var transporter = nodemailer.createTransport({
 
 var mailOptions = {
   from: "yuhantrum@gmail.com",
-  to: "zaqkoko@naver.com",
+  to: $email,
   subject: "Sending Email using Node.js",
   text: "아래의 링크를 클릭해주세요",
   html:
