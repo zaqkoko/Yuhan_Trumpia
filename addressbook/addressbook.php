@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title></title>
-    <!--<link rel="stylesheet" href="../board/board_css.css">-->
     <link rel="stylesheet" href="addressbook_css.css">
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="addressbook_js.js"></script>

@@ -126,7 +126,7 @@ function calendarPrint()
             $.ajax
             ({
                 //signup_idcheck.php에 연결
-                url: "cal_db.php",
+                url: "send_db.php",
                 //id가 id인 값이 data
                 data:
                 {
@@ -149,7 +149,7 @@ function calendarPrint()
             $.ajax
             ({
                 //signup_idcheck.php에 연결
-                url: "cal_db.php",
+                url: "sent_db.php",
                 //id가 id인 값이 data
                 data:
                 {
