@@ -33,13 +33,9 @@
         <th width="25%">이름</th>
         <th width="35%">번호</th>
         <th width="50%">메일</th>
-
       </tr>
     </table>
     <table class="dcell" cellpadding="10%">
-      <tr class="">
-        <p>수정하기</p>
-      </tr>
       <?php include 'select_addressbook.php'; ?>
       <!-- 데이터 출력 -->
     </table>

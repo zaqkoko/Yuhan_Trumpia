@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+  Email.send({
+    CharSet: "UTF-8",
+    Host: "smtp.naver.com",
+    Username: "yuhantrum",
+    Password: "xmfjavldk123",
+    To: "zaqkoko@naver.com",
+    From: "yuhantrum@naver.com",
+    Subject: "This is the TOY password changing URL.",
+    Body:
+      "<p>Please click on the link below.<p> <a href='http://localhost/Yuhan_Trumpia/login/update.php'>To authenticate</a>",
+  }).then((message) => alert(message));
+</script>

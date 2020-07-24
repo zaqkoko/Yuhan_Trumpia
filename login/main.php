@@ -3,6 +3,12 @@
 
 // 세션 시작
 session_start();
+
+if (!isset($_SESSION['id'])) {
+    echo "<script> alert('잘못된 접근입니다. 로그인 페이지로 이동합니다.'); location.href='/Yuhan_Trumpia/login/index.html'; </script>";
+} else {
+}
+
 //$_session[name]이 공백일 때
 if ($_SESSION['name'] == "") {
     //$name은 $_session[id]로 지정
@@ -70,11 +76,11 @@ if ($_SESSION['name'] == "") {
         <a href="../send/send.php"> <img src="../img/main_sms.png"> </a>
         <a href="../board/board.php"> <img src="../img/main_history.png"> </a>
         <a href="../calendar/calendar.php"> <img src="../img/main_calendar.png"> </a>
-        <a href="#"> <img src="../img/main_address.png"></a>
+        <a href="../addressbook/addressbook.php"> <img src="../img/main_address.png"></a>
     </div>
     <a href="#"> <img id="chat" src="../img/cht.png"> </a>
     <!-- php변수 $name을 밑의 형식으로 불러옴 -->
-    <p id="hi">안녕하세요 <?php echo $name; ?>님</p>
+    <p id="hi"><?php echo $name; ?>님 안녕하세요</p>
     <!-- submit하면 logout.php로 전송 -->
     <form action="../logout.php" method="post">
         <input type="submit" name="logout" value="LOGOUT">
