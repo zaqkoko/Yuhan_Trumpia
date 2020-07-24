@@ -1,4 +1,6 @@
 // Node.js를 활용한 이메일 보내기!!
+session_start();
+$row["email"] = $email;
 
 var nodemailer = require("nodemailer");
 
@@ -13,10 +15,10 @@ var transporter = nodemailer.createTransport({
 var mailOptions = {
   from: "yuhantrum@gmail.com",
   to: $email,
-  subject: "Sending Email using Node.js",
+  subject: "안녕하세요. TOY입니다.",
   text: "아래의 링크를 클릭해주세요",
   html:
-    "<p>아래의 링크를 클릭해주세요</p> + <a href = 'http://localhost/login/update.php'>인증하기</a>",
+    "<p>아래의 링크를 클릭해주세요</p> + <a href = 'http://localhost/Yuhan_Trumpia/login/update.php'>인증하기</a>",
 };
 
 transporter.sendMail(mailOptions, function (error, info) {
