@@ -1,5 +1,5 @@
 <?php
-    include '../title.php';
+    //include '../title.php';
     include 'cal_db.php';
 ?>
 
