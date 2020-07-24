@@ -1,4 +1,6 @@
 <?php
+// PHPMailer를 활용해 메일보내기!
+
 require "PHPMailer/PHPMailerAutoload.php";
 
 function mailer($to, $from, $from_name, $subject, $body)

@@ -69,3 +69,9 @@ th{
   float: left;
   margin-left: 10px;
 }
+#pageBar{
+  text-align: center;
+}
+.nums:hover, .nums:focus{
+  cursor: pointer;
+}
