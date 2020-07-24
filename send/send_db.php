@@ -4,7 +4,6 @@ include "../db.php";
 
 // INSERT = 테이블에 레코드를 삽입하기 위해 사용하는 구문.
 $sql =
-
     // sms 테이블의 (컬럼명)의 값을 post로 받아온 값을 컬럼명 순서대로 값을 넣음.
     " INSERT INTO sms (send_time, send_type, send_message,receiver_number,receiver_email,file,user_id)
     VALUES(
@@ -17,7 +16,6 @@ $sql =
         -- 파일이 저장된 임시 서버를 저장함(어떤 내용을 저장해야할지 잘 모르겠음)
         '{$_POST['file']['tmp_name']}',
         '$name'
-
     )
 ";
 

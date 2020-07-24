@@ -1,8 +1,87 @@
+// send 스크립트 입니다.
+
 $(function(){
   //새로고침
-  alert("gd");
+  // alert($("#box>span").length);
 
 });
+//주소록에서 수신자박스에 추가(sms나 메일을 수신할 사람을 주소록에서 골라 수신예정 박스(수신자박스)에 추가함)
+//근데 박스에 추가한 수신자를 취소할 때 이름이 같으면 같이 사라짐(흠...)
+function dataclick(obj){
+  //만약 동작이 발생한 요소의 value(수신자 박스box에 포함되있는지 여부)가 false라면
+  if($(obj).val()==false){
+  //클릭한 데이터의 배경색변경(수신자 박스box에 포함되었다고 표시)
+  $(obj).css("background","pink");
+  //수신자박스(#box)에 추가
+  $("#box").append("<span id="+ $(obj).children(".name").text()+">"+$(obj).children(".name").text()+"</span>");
+
+  console.log("가져오는 아이디:"+"#"+$(obj).children('.name').text());
+
+  //수신자박스에 추가되었으니 value를 true로 바꿔줌
+  $(obj).val(true);
+    //만약 수신자박스에 수신자 수가 0보다 많으면
+  if($("#box>span").length>0){
+    //확인버튼 보여줌
+    $("#phonebookok").removeAttr('style');
+  }
+
+}
+//만약 동작이 발생한 요소의 value(수신자 박스box에 포함되있는지 여부)가 true라면(다시 클릭했으니 수신을 취소)
+else{
+  //배경색 원상복구
+  $(obj).css("background","white");
+  //수신자 박스에서 삭제
+  $("#box").children("#"+$(obj).children(".name").text()).remove();
+  //value값을 false로 변경
+  $(obj).val(false);
+
+  //만약 수신자박스에 수신자 수가 없다면
+  if($("#box>span").length==0){
+    //확인버튼 없앰
+    $("#phonebookok").css("display","none");
+  }
+
+  console.log("false:"+$(obj).val());
+
+
+}
+}
+
+//아직 수정중(함수 resize()와 전화번호 이메일 keypu(), css를 같이 손봐야해서 아직 생각중입니다.)
+//확인버튼을 눌렀을 때 수신자 값을 텍스트로 옮김
+$("#phonebookok").click(function(){
+console.log("확인버튼 누름");
+
+//주소록에 each를 실행함
+  $("#add tr").each(function(){
+console.log("each 실행했어요^^!만세!");
+
+    //tr의 value가 true일 때(수신자 추가를 했을 때)
+    if($(this).val()==true){
+      //전화번호의 텍스트가 null이 아니면
+      if($(this).children(".tel").text()!=null){
+console.log("전화번호:"+"\n"+$(this).children(".tel").text());
+
+        //전화번호 텍스트 추가
+        $("#receiver_number").text("\n"+$(this).children(".tel").text());
+      }
+      //이메일 텍스트가 null이 아니면
+      if($(this).children(".mail").text()!=null){
+console.log("메일:"+"\n"+$(this).children(".mail").text());
+
+          //이메일 텍스트 추가
+          $("#receiver_email").text("\n"+$(this).children(".mail").text());
+      }
+    }
+  });
+
+
+});
+
+
+
+
+
 
 
 
@@ -108,6 +187,7 @@ $(document).ready(function () {
   // 입력하지 않았어도 키업이 발생했다고 함수를 선언. 안 그러면 기존값인 ###이 나오고 입력하기 시작해야 ~/150 이 출력되기 때문.
   $("#sms_text").keyup();
 });
+
 
 // 수신자 몇명인지 체크
 $(document).ready(function () {
@@ -221,16 +301,13 @@ $(document).ready(function () {
 });
 
 
-// 주소록 모달형식
-
-function adrb() {
-  $.ajax({
-    type:"POST",
-    url:"select_addressbook.php"
-  });
-}
 
 
+
+
+
+//거슬려서 접어놓음
+{
 // // phonebookopen id값을 가진 버튼을 클릭했을 때 phonebook fadein효과 (jQeury)
 // $("#phonebookopen").click(function () {
 //   $("#phonebook").fadeIn();
@@ -254,5 +331,5 @@ function adrb() {
 //     $("#insname").focus();
 //     return;
 //   }
-
+}
 //거슬려서 주석지움
