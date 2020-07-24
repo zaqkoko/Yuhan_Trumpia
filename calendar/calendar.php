@@ -1,6 +1,5 @@
 <?php
-    //include '../title.php';
-    include 'cal_db.php';
+    include '../title.php';
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +44,7 @@
 
 
         </style>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
         <div id="caption">
@@ -128,30 +128,12 @@
             <div class="modal_content">
                 <span id="send_modalClose" class="close">&times;</span>
                 <h2>발송 예약 리스트</h2>
-                <?php
-                    while($row = mysqli_fetch_array($d_result)) {
-                ?>
-                <?php
-                    echo "받을 사람: " . $row[0]. " 보낼 메세지: " . $row[1]. " 보낼 시간: " . $row[2] . "<br>"
-                ?>
-                <?php
-                    }
-                ?>
             </div>
         </div>
         <div id="sentModal" class="modal">
             <div class="modal_content">
                 <span id="sent_modalClose" class="close">&times;</span>
                 <h2>발송 완료 리스트</h2>
-                <?php
-                    while($row = mysqli_fetch_array($t_result)) {
-                ?>
-                <?php
-                    echo "받은 사람: " . $row[0]. " 보낸 메세지: " . $row[1]. " 보낸 시간: " . $row[2] . "<br>"
-                ?>
-                <?php
-                    }
-                ?>
             </div>
         </div>
         <script type="text/javascript" src="cal_script.js"></script>
