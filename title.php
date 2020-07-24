@@ -5,7 +5,6 @@
 
 // 세션 초기화.
 session_start();
-
 // 만약 세션의 name의 값이 ""라면
 if ($_SESSION['name'] == "") {
     // $name의 값은 세션 id값으로 지정

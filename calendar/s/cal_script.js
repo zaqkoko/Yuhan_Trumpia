@@ -136,6 +136,7 @@ function calendarPrint()
     d_tile[i] = d_tiles[i];
     // 클릭했을때 예약 모달 디스플레이 나오게  이벤트리스너 넣음
     d_tile[i].addEventListener("click", function tileClick() {
+
       d_modal.style.display = "block";
     });
     // t_tiles의 i번째 요소를 t_tile에 넣고
@@ -166,7 +167,8 @@ function calendarPrint()
 
 function sendTT()
 {
-    console.log(ymd);
+    console.log("hello");
+    var id = document.getElementById(i);
 }
 function sentTT()
 {
