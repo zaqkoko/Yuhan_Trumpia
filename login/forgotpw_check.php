@@ -31,8 +31,10 @@ if ($row["id"] == $id) {
     $_SESSION['uid'] = $row['id'];
 
     // JS
-    echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
-    echo '<script> location.href="email.html"; </script>';
+    shell_exec("node nodemail.js");
+    echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); location.href="inedx.html"; </script>';
+
+    //echo '<script> location.href="email.html"; </script>';
 
     // PHP
     /*echo '<script> alert("안녕하세요. TOY입니다. 비밀번호 재설정 URL이 발송되었습니다."); </script>';
