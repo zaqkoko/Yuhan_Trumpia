@@ -1,6 +1,8 @@
-// DOM(문서객체모델) 생성 이후 바로 실행 
+// DOM(문서객체모델) 생성 이후 바로 실행
 $(document).ready(function() {
 
+  //명세 출력
+  print();
   //발송완료, 발송예약 출력
   sendtype();
   //전송완료 건수 출력
@@ -176,8 +178,10 @@ $(document).ready(function() {
     }
   })
 
+  //$("#")
 
 
+//$(document).ready 끝
 });
 
 
@@ -267,4 +271,29 @@ function check() {
     //전체 체크박스 상태를 true로 변경
     $("#allCheck").prop("checked", true);
   }
+}
+
+// 기본 명세 출력하는 함수
+function print(n) {
+  $.ajax({
+    type: "POST",
+    url: "select_sms.php",
+    data: {
+      num: n
+    },
+    //성공했을 때 함수 실행
+    success: function(data) {
+      //테이블에 html 작성(검색결과를 테이블에 재출력)
+      $(".dcell").html(data);
+      //send_type 발송완료/발송예약으로 출력
+      sendtype();
+      //발송건수가 출력되있던 자리에 검색건수와 테이블 안에 있는 자식요소 tr 요소 갯수를 출력한다.
+      $("#dvar").html("<p>검색 결과 <span>" + $(".dcell").children('tr').length + "</span>건</p><hr>");
+    },
+    //에러가 생겼을 때 함수 실행
+    error: function() {
+      //실패라는 팝업창 생성
+      alert("실패");
+    }
+  });
 }

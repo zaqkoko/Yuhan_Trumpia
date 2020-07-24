@@ -30,7 +30,7 @@
 		<table class="table" cellpadding="10%">
 		<br>
 			<!-- 전체 체크박스 -->
-			<th width="5%"><input type="checkbox" id="allCheck"></th>
+			<th width="5%"><input type="checkbox" id="allCheck" checked="false"></th>
 			<th width="20%">
 				<p>번호</p>
 			</th>
@@ -45,15 +45,14 @@
 			</th>
 			<table class="dcell">
 				<!-- 데이터 출력 -->
-				<?php include "select_sms.php"; ?>
 			</table>
-			<div id="pageNum">
+			<div id="pageBar">
 				<button type="button" name="leftbutton"><</button>
-				<span>1</span>
-				<span>2</span>
-				<span>3</span>
-				<span>4</span>
-				<span>5</span>
+				<span id="num1" class="nums">1</span> |
+				<span id="num2" class="nums">2</span> |
+				<span id="num3" class="nums">3</span> |
+				<span id="num4" class="nums">4</span> |
+				<span id="num5" class="nums">5</span>
 				<button type="button" name="rightbutton">></button>
 				<button type="button" name="endbutton">>></button>
 			</div>
