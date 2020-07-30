@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>chatting</title>
+  <link rel="stylesheet" type="text/css" href="chat_style.css">
+</head>
+
+<body>
+  <dl id="list">
+  </dl>
+  <form>
+    <input type="text" name="name" id="name" placeholder="닉네임(5자)">
+    <input type="text" name="message" id="message" placeholder="내용을 입력해 주세요" onkeypress="press()">
+    <input type="button" name="submit" id="submit" value="제출" onclick="doSend()">
+  </form>
+  <script type="text/javascript" src="chat_script.js"></script>
+</body>
+
+</html>
