@@ -3,6 +3,7 @@ var ws = new WebSocket("ws://localhost:9000/");
 
 // 연결이 되면 안내문을 출력
 ws.onopen = function(event) {
+  console.log("CONNECT OPEN");
   // writeToScreen에 매개변수 두개를 보내서 안내문 출력하게함
   writeToScreen("안내", "채팅이 연결 되었습니다.");
 }
@@ -23,11 +24,18 @@ ws.onmessage = function(event) {
 // 에러나면 콘솔에 찍기
 ws.onerror = function(event) {
   console.log("Server error message: ", event.data);
+
+  writeToScreen("안내", "오류가 발생했습니다.");
+}
+
+ws.onclose = function(event) {
+  console.log("CONNECT CLOSE");
+
+  writeToScreen("안내", "채팅이 종료 되었습니다.");
 }
 
 // 화면에 이름과 메세지 출력 함수
-function writeToScreen(name, message)
-{
+function writeToScreen(name, message) {
   // 채팅을 보여줄 list DOM에서 id 찾아서 연결
   var list = document.getElementById("list");
 
@@ -50,12 +58,11 @@ function writeToScreen(name, message)
 }
 
 // 채팅 보내는 함수
-function doSend()
-{
+function doSend() {
   // JSON으로 보낼거임
   var msg = {
-    name : document.getElementById("name").value,
-    text : document.getElementById("message").value
+    name: document.getElementById("name").value,
+    text: document.getElementById("message").value
   };
   // msg 문자열로 바꿔서 보내구
   ws.send(JSON.stringify(msg));
@@ -64,15 +71,4 @@ function doSend()
 
   // 메세지 쓰는 칸 비워주기
   document.getElementById("message").value = "";
-}
-
-// 텍스트입력에서 엔터키를 누르면 바로 버튼을 클릭하게되는 함수
-function press()
-{
-  // 엔터키 누르면
-  if(event.keyCode == 13)
-  {
-    // 전송버튼 클릭해주기 
-    document.getElementById("submit").click();
-  }
 }
