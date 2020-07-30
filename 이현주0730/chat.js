@@ -17,6 +17,8 @@ function pressBt()
     var chatt = document.getElementById("text");
     var chatting = $('#text').val();
     doSend(name + " : " + chatting);
+    //내가 친 내용은 빨간색으로
+    writeToScreen('<span style="color : red; font-weight : bold;">' +name + " : " + chatting +'</span>');
     chatt.value = "";
 }
 //나가는 버튼을 눌렀을 때 실행되는 함수
