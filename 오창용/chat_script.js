@@ -72,3 +72,21 @@ function doSend() {
   // 메세지 쓰는 칸 비워주기
   document.getElementById("message").value = "";
 }
+
+
+// 텍스트입력에서 엔터키를 누르면 바로 버튼을 클릭하게되는 함수
+function press() {
+  // 엔터를 입력했을 때
+  if (event.keyCode == 13) {
+    // 공백을 전송하려고 하면
+    if (document.getElementById("message").value == "") {
+      // 경고해준다
+      alert("내용을 입력해주세요");
+    }
+    // 내용이 있으면
+    else {
+      // 전송버튼을 클릭해준다
+      document.getElementById("submit").click();
+    }
+  }
+}

@@ -10,10 +10,14 @@
 <body>
   <dl id="list">
   </dl>
-  <form>
+  <form id="form">
     <input type="text" name="name" id="name" placeholder="닉네임(5자)">
     <input type="text" name="message" id="message" placeholder="내용을 입력해 주세요" onkeypress="press()">
     <input type="button" name="submit" id="submit" value="제출" onclick="doSend()">
+  </form>
+  <form action='uploads' method='post' enctype="multipart/form-data">
+      <input type='file' name='userfile'>
+      <input type='submit'>
   </form>
   <script type="text/javascript" src="chat_script.js"></script>
 </body>

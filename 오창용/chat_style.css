@@ -40,7 +40,7 @@ dd {
   box-shadow: 1px 1px;
 }
 
-form {
+#form {
   width: 640px;
   border: 1px solid #BDBDBD;
   border-radius: 10px;
