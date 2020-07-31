@@ -7,8 +7,19 @@ var app = require("express")();
 var url = require("url");
 // express에 multer모듈 적용 (for 파일업로드)
 var multer = require('multer');
-// 입력한 파일이 uploads/ 폴더 내에 저장된다.
-var uploads = multer({ dest: 'uploads/' })
+// 저장될 파일의 이름을 관리한다
+var storage = multer.diskStorage({
+  // 저장될 디렉터리, 이전이랑 그대로
+  destination: (req, file, callback) => {
+    callback(null, "uploads/");
+  },
+  // 저장될 이름은 전송자가 보낸 원래 이름 그대로
+  filename: (req, file, callback) => {
+    callback(null, file.originalname);
+  }
+});
+// 입력한 파일이 storage 객체에서 지정한 대로 올라감
+var uploads = multer({ storage:storage });
 
 //루트에 대한 get 요청에 응답 (라우팅)
 app.get("/", function(req, res) {
