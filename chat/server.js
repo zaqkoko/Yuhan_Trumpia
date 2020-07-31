@@ -3,14 +3,18 @@
 // var wss = require('websocket').server;
 // var webSocketServer = require('ws').Server;
 var webSocket = require('ws');
-// var fs = require('fs');
+var fs = require('fs');
 // var http = require('http');
+var multer = require('multer');
+var express=require('express');
+// 입력한 파일이 uploads/ 폴더 내에 저장된다.
+var upload= multer({dest:'uploads/'});
+var app=express();
+
 
 //5.나혼자 채팅에 클라이언트 foreach문 썼음 되긴되는데...
 var wss=new webSocket.Server({port:8080});
 
-//원래 ip값 받아온거 저장소를 하려했으나 아직 미사용중
-// var clientlist= [];
 
 wss.on('connection', function(ws,req){
   console.log("connect");
@@ -23,9 +27,17 @@ wss.on('connection', function(ws,req){
   // console.log("ws:"+ws);
 
   ws.on('message', function(data){
-    //json 연습중
-    // // console.log(JSON.stringify(data)+'\n');
-    // console.log("username:"+data.username+"\n"+"message:"+data.message);
+
+    //json을 문자열로 변환 (그냥 json 어떻게 가져오는지 콘솔 확인용)
+    var test=JSON.stringify(data);
+    console.log(test+'\n');
+
+    //파일 서버
+    var parse=JSON.parse(data);
+    console.log("json parse file:"+parse.file);
+
+    //파일이름
+    var filename=parse.file;
 
     //웹소켓서버 클라이언트만큼 반복
     wss.clients.forEach(function (client){
@@ -34,9 +46,7 @@ wss.on('connection', function(ws,req){
       //websocket.OPEN은 상수 1값을 가짐
       //연결된 클라이언트 현재 상태와 서버 오픈상태가 같다면
       if(client.readyState===ws.OPEN){
-        //콘솔은 출려되는 값 확인용
-        // console.log("클라이언트.레디스테이트:"+client.readyState);
-        // console.log("웹소켓.오픈:"+ws.OPEN);
+
         //현재 연결된 클라이언트에 데이터를 전송
         client.send(data);
       }
